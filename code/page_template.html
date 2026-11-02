@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>When the Ice Came South</title>
+<meta name="description" content="An interactive map of the Northern Hemisphere's ice sheets at {{areas.n_stages|int}} moments of the last 3.6 million years, from the reconstructions of Batchelor et al. (2019): how big they were, how far south they reached, which of today's cities and countries lay beneath them, and the land a lower sea uncovered.">
+<meta property="og:title" content="When the ice came south: the Northern Hemisphere's ice sheets through the Quaternary">
+<meta property="og:description" content="At its largest, {{stages.mis6.age|raw}}, the ice covered {{stages.mis6.area|m1}} million km², {{areas.mis6_over_lgm_pct|int}}% more than at the Last Glacial Maximum. Click anywhere to see which ice ages reached it.">
+<meta property="og:image" content="https://maps.tristanhotham.com/ice-ages/header.png">
+<meta property="og:url" content="https://maps.tristanhotham.com/ice-ages/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800;9..144,900&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<style>
+/* Ice line: pale paper, glacier blue for the ice, sand for the sea floor a lower sea would uncover. */
+:root{
+  --bg:#F6F4EF; --panel:#EAE7DF; --fg:#1D2128; --muted:#636A72; --rule:#DDD8CC; --card:#FFFEFA; --border:#CBC5B8;
+  --hot:#C8322B; --ice:#2F6FA8; --icefill:#F7FBFE; --iceedge:#2F6FA8; --sand:#E2C48C; --sand2:#C99B52; --ink:#1F3E66; --land:#E4E0D6; --sea:#E3ECF0; --coast:#BDB6A8;
+  --na:#2F6FA8; --eu:#C8322B; --max:#7B57A8;
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#11151B; --panel:#1B2029; --fg:#ECEEF1; --muted:#A2A8B0; --rule:#30353F; --card:#161A21; --border:#444B57;
+  --hot:#FF6A5C; --ice:#8EC0EE; --icefill:#DCEAF6; --iceedge:#8EC0EE; --sand:#A88A55; --sand2:#C9A15E; --ink:#9EC1F2; --land:#262B33; --sea:#141B24; --coast:#4A515C;
+  --na:#8EC0EE; --eu:#FF8A7E; --max:#B89BE6; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11151B; --panel:#1B2029; --fg:#ECEEF1; --muted:#A2A8B0; --rule:#30353F; --card:#161A21; --border:#444B57;
+  --hot:#FF6A5C; --ice:#8EC0EE; --icefill:#DCEAF6; --iceedge:#8EC0EE; --sand:#A88A55; --sand2:#C9A15E; --ink:#9EC1F2; --land:#262B33; --sea:#141B24; --coast:#4A515C;
+  --na:#8EC0EE; --eu:#FF8A7E; --max:#B89BE6; color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 18px/1.62 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));overflow-x:hidden}
+.wrap{max-width:700px;margin:0 auto;padding-block:28px 64px}
+.wrap .bleed{width:min(1180px,calc(100vw - 32px));margin-left:calc((100% - min(1180px,100vw - 32px))/2);margin-right:0}
+a{color:inherit;text-decoration-color:var(--ice);text-underline-offset:3px}
+.kicker{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.kicker b{background:var(--ink);color:#fff;padding:5px 8px;font-weight:500}
+:root[data-theme="dark"] .kicker b{color:#11151B}
+header.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 24px;align-items:end;border-bottom:6px double var(--fg);padding-bottom:22px;margin-top:18px}
+h1{font:900 clamp(44px,11vw,92px)/.9 var(--display);letter-spacing:-.02em;margin:0;text-wrap:balance}
+h1 .a{color:var(--ice)}
+.mark{width:clamp(78px,16vw,128px);height:auto;display:block;color:var(--fg)}
+.dek{grid-column:1/-1;font-size:21px;line-height:1.42;margin:8px 0 0;max-width:56ch}
+.byline{font:400 13px/1.4 var(--mono);color:var(--muted);margin-top:14px}
+h2{font:800 34px/1.04 var(--display);letter-spacing:-.01em;margin:54px 0 10px;text-wrap:balance}
+h2 .n{font:500 13px/1 var(--mono);color:var(--ice);display:block;letter-spacing:.1em;margin-bottom:10px}
+h3{font:600 20px/1.25 var(--display);margin:28px 0 6px}
+p{margin:0 0 16px}
+.lede::first-letter{font:900 72px/.8 var(--display);float:left;margin:6px 10px 0 0;color:var(--ice)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:26px 0 8px}
+.stats div{background:var(--card);padding:14px 12px}
+.stats b{display:block;font:900 clamp(22px,4.4vw,32px)/1 var(--display);letter-spacing:-.01em}
+.stats b.h{color:var(--hot)} .stats b.c{color:var(--ice)} .stats b.g{color:var(--sand2)} .stats b.p{color:var(--ink)}
+.stats span{font:400 12px/1.35 var(--mono);color:var(--muted);display:block;margin-top:6px}
+@media (max-width:600px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.figure{margin:26px 0 30px}
+.fig-h{font:600 19px/1.25 var(--display);margin:0 0 4px}
+.fig-sub{font:400 13px/1.45 var(--mono);color:var(--muted);margin:0 0 12px}
+.src{font:400 12px/1.45 var(--mono);color:var(--muted);margin-top:10px}
+.chart{width:100%;position:relative}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--mono);fill:var(--fg)}
+.lab{font-size:12px}.lab.m{fill:var(--muted)}.lab.b{font-weight:500}.lab.s{font-size:11px}
+.tip{position:absolute;pointer-events:none;background:var(--fg);color:var(--bg);font:400 12px/1.45 var(--mono);padding:8px 10px;border-radius:3px;max-width:300px;z-index:100001;transform:translate(-50%,calc(-100% - 12px));display:none}
+.tip b{font-weight:500}
+.controls{display:flex;gap:8px;align-items:center;margin:0 0 10px;flex-wrap:wrap}
+.scrollrow{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;padding-bottom:2px;max-width:100%}
+.scrollrow .btn{flex:0 0 auto;white-space:nowrap}
+.ctl-l{font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:2px;flex:0 0 auto;align-self:center}
+.btn{font:500 12px/1 var(--mono);background:var(--card);color:var(--fg);border:1px solid var(--border);border-radius:3px;padding:8px 10px;cursor:pointer;min-height:36px}
+.btn[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.btn i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px;border:1px solid rgba(0,0,0,.2)}
+.btn:focus-visible,input:focus-visible,summary:focus-visible,select:focus-visible{outline:2px solid var(--ice);outline-offset:2px}
+.searchbox{position:relative;flex:1 1 260px;min-width:0}
+input[type=search]{font:400 15px/1 var(--mono);background:var(--card);color:var(--fg);border:1px solid var(--border);border-radius:3px;padding:10px 11px;min-height:40px;width:100%}
+.suggest{position:absolute;left:0;right:0;top:100%;margin:2px 0 0;padding:0;list-style:none;background:var(--card);border:1px solid var(--border);z-index:1001;font:400 13px/1.3 var(--mono);display:none;max-height:340px;overflow:auto}
+.suggest li{padding:8px 10px;cursor:pointer;border-bottom:1px solid var(--rule)}
+.suggest li span{color:var(--muted)}
+.suggest li[aria-selected="true"],.suggest li:hover{background:var(--panel)}
+.timebox{display:grid;grid-template-columns:auto minmax(9ch,auto) minmax(0,1fr);gap:10px 12px;align-items:center;margin:0 0 10px;font:500 13px/1 var(--mono)}
+@media (max-width:600px){.timebox{grid-template-columns:auto minmax(0,1fr)}.timebox .sl{grid-column:1/-1}}
+.timebox .yv{font:900 26px/1 var(--display);color:var(--ice);white-space:nowrap}
+.timebox .ya{display:block;font:400 12px/1.2 var(--mono);color:var(--muted);margin-top:4px;white-space:nowrap}
+.timebox input[type=range]{width:100%;accent-color:var(--ice);height:28px}
+.sl{min-width:0;padding:0 8px}
+.ticks{position:relative;height:28px;margin:0 0 4px;font:400 10.5px/1.15 var(--mono);color:var(--muted)}
+.ticks span{position:absolute;transform:translateX(-50%);white-space:nowrap;text-align:center}
+.ticks span.t2{top:13px}
+.play{width:42px;height:38px;border-radius:3px;border:1px solid var(--fg);background:var(--fg);color:var(--bg);font:600 15px/1 var(--mono);cursor:pointer}
+.mapgrid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:14px;align-items:start}
+@media (max-width:900px){.mapgrid{grid-template-columns:1fr}}
+.side{background:var(--card);border:1px solid var(--border);padding:12px 12px 10px;font:400 13px/1.45 var(--mono);max-height:660px;overflow:auto}
+@media (max-width:900px){.side{max-height:none}}
+.side h4{font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:14px 0 8px}
+.side h4:first-child{margin-top:2px}
+.side .big{font:800 24px/1.1 var(--display);margin:2px 0 4px}
+.side .sub{color:var(--muted);font-size:12px;margin:0 0 8px}
+.side .story{font:400 15px/1.5 var(--body);margin:6px 0 10px}
+.side ol,.side ul{margin:4px 0 8px;padding-left:20px}
+.side li{margin:3px 0}
+.side li small,.side td small{color:var(--muted)}
+.side table{width:100%;border-collapse:collapse;margin:4px 0 6px}
+.side td{padding:4px 4px 4px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+.side td.num{text-align:right}
+.side td:first-child{width:42%}
+.side .warn{background:var(--panel);border-left:3px solid var(--sand2);padding:6px 8px;margin:8px 0;font-size:12px}
+.strip{display:flex;gap:2px;margin:6px 0 2px}
+.strip span{flex:1 1 0;height:16px;border:1px solid var(--border);border-radius:2px;background:var(--card);cursor:pointer;min-width:0}
+.strip span.on{background:var(--iceedge);border-color:var(--iceedge)}
+.strip span.cur{outline:2px solid var(--fg);outline-offset:1px}
+.strip span.na{background:repeating-linear-gradient(45deg,var(--rule) 0 3px,transparent 3px 6px)}
+.stripl{display:flex;justify-content:space-between;font-size:10.5px;color:var(--muted)}
+.back{font:400 12px var(--mono);background:none;border:0;color:var(--muted);padding:0;cursor:pointer;text-decoration:underline;margin-bottom:6px}
+.go{cursor:pointer;text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px}
+.lmap{height:620px;border:1px solid var(--border);background:var(--sea);border-radius:2px;position:relative;overflow:hidden}
+@media (max-width:600px){.lmap{height:min(66vh,480px)}}
+.lmap canvas.fb{display:block;width:100%;height:100%;cursor:crosshair}
+.mapfail{position:absolute;left:8px;bottom:8px;right:8px;text-align:center;padding:6px 10px;font:400 12px/1.4 var(--mono);color:var(--muted);background:color-mix(in srgb,var(--card) 85%,transparent);border-radius:3px;pointer-events:none}
+.maplibregl-map{font:400 12px/1.4 var(--mono)}
+.maplibregl-canvas{cursor:crosshair}
+.maplibregl-ctrl-group{background:var(--card)!important}
+:root[data-theme="dark"] .maplibregl-ctrl-group button .maplibregl-ctrl-icon{filter:invert(1)}
+.maplibregl-ctrl-attrib{background:color-mix(in srgb,var(--card) 85%,transparent)!important;color:var(--muted);font:400 11px/1.3 var(--mono)!important}
+.maplibregl-ctrl-attrib a{color:var(--fg)!important}
+.maplibregl-popup-content{background:var(--card);color:var(--fg);font:400 12.5px/1.45 var(--mono);padding:11px 13px;border:1px solid var(--border);border-radius:3px;box-shadow:0 3px 12px rgba(0,0,0,.2)}
+.maplibregl-popup-content b.t{display:block;font:700 16px/1.2 var(--display);margin-bottom:2px}
+.maplibregl-popup-content .al{color:var(--muted);font-size:11.5px;margin-bottom:6px}
+.maplibregl-popup-content table{border-collapse:collapse;margin:4px 0}
+.maplibregl-popup-content td{padding:2px 8px 2px 0;vertical-align:top}
+.maplibregl-popup-content td:first-child{color:var(--muted)}
+.maplibregl-popup-tip{border-top-color:var(--card)!important;border-bottom-color:var(--card)!important}
+.maplibregl-popup-close-button{font-size:18px;color:var(--muted);padding:0 6px}
+.lyr{margin:10px 0 0 10px}
+.lyrBtn{background:var(--card);color:var(--fg);border:1px solid var(--border);border-radius:3px;font:600 12px/1 var(--mono);padding:8px 10px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.lyrBtn[aria-expanded="true"]{background:var(--fg);color:var(--bg)}
+.lyrPanel{background:var(--card);color:var(--fg);border:1px solid var(--border);border-radius:3px;padding:10px 12px 8px;margin-top:6px;width:258px;box-shadow:0 2px 10px rgba(0,0,0,.15);font:400 12px/1.3 var(--mono);max-height:min(56vh,460px);overflow:auto}
+.lyrPanel[hidden]{display:none}
+.lyrPanel .row{margin:0 0 9px}
+.lyrPanel label{display:flex;gap:6px;align-items:center;cursor:pointer;font-weight:600}
+.lyrPanel .sub{display:flex;gap:6px;align-items:center;color:var(--muted);font-size:11px;margin-top:3px}
+.lyrPanel .sub span{flex:0 0 58px}
+.lyrPanel input[type=range]{width:100%;accent-color:var(--fg)}
+.lyrPanel .hd{font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:10px 0 7px;border-top:1px solid var(--rule);padding-top:9px}
+.lyrPanel .reset{font:400 11px var(--mono);color:var(--muted);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline}
+.lyrPanel p.sub{display:block}
+.cityL{font:500 11px/1 var(--mono);color:var(--fg);white-space:nowrap;text-shadow:0 0 3px var(--bg),0 0 3px var(--bg),0 0 2px var(--bg);pointer-events:none}
+.cityL i{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--fg);margin-right:4px;vertical-align:1px}
+.cntL{font:600 10.5px/1 var(--mono);color:var(--muted);white-space:nowrap;text-transform:uppercase;letter-spacing:.06em;text-shadow:0 0 3px var(--bg),0 0 3px var(--bg);pointer-events:none}
+.mapnote{margin:6px 0 0;font:400 12px/1.35 var(--mono);color:var(--muted);min-height:16px}
+.legend{display:flex;gap:6px 14px;flex-wrap:wrap;font:400 12px/1.3 var(--mono);color:var(--muted);margin-top:8px;align-items:center}
+.legend span{display:inline-flex;align-items:center}
+.legend i{display:inline-block;width:16px;height:12px;margin-right:6px;border-radius:2px;border:1px solid rgba(0,0,0,.15)}
+.legend i.ln{height:0;border:0;border-top:2px dashed currentColor;width:20px}
+.pull{font:600 26px/1.25 var(--display);border-left:6px solid var(--ice);padding:4px 0 4px 18px;margin:30px 0}
+.note{background:var(--panel);border:1px solid var(--rule);padding:14px 16px;font-size:16px;margin:22px 0}
+.note h3{margin-top:0}
+table.tbl{width:100%;border-collapse:collapse;font:400 13px/1.4 var(--mono)}
+table.tbl th{font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left;padding:6px 6px 6px 0;border-bottom:2px solid var(--fg)}
+table.tbl td{padding:6px 6px 6px 0;border-bottom:1px solid var(--rule);vertical-align:middle}
+table.tbl td.r,table.tbl th.r{text-align:right;white-space:nowrap}
+table.tbl tr[data-i]{cursor:pointer}
+table.tbl tr[data-i]:hover td{background:var(--panel)}
+table.tbl .strip{margin:0;min-width:120px}
+table.tbl .strip span{height:12px;cursor:default}
+.tablebox{max-height:470px;overflow:auto;border:1px solid var(--border);background:var(--card);padding:0 10px}
+.in{color:var(--ice);font-weight:500}
+details{margin:14px 0}
+summary{font:500 13px/1.4 var(--mono);cursor:pointer;color:var(--fg);padding:8px 0}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+.cta a{font:500 13px/1 var(--mono);text-decoration:none;border:1px solid var(--fg);padding:11px 14px;border-radius:3px}
+.cta a.p{background:var(--ink);border-color:var(--ink);color:#fff}
+:root[data-theme="dark"] .cta a.p{color:#11151B}
+footer{border-top:6px double var(--fg);margin-top:56px;padding-top:16px;font:400 13px/1.55 var(--mono);color:var(--muted)}
+footer p{margin:0 0 10px}
+.theme{position:fixed;right:12px;bottom:12px;z-index:1002}
+@media print{.theme,.controls{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="kicker"><b>Data study</b><span>Earth history</span><span>Northern Hemisphere, 3.6 million to 26,500 years ago</span></div>
+<header class="hero">
+  <h1>When the <span class="a">ice</span> came south</h1>
+  <svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><g id="heroMark"></g></svg>
+  <p class="dek">The great ice sheets of the Northern Hemisphere at {{areas.n_stages|int}} moments of the last 3.6 million years, from the reconstructions of Batchelor and colleagues (2019): how big they grew, how far south they reached, which of today's cities and countries lay beneath them, and the land that appeared when the sea fell.</p>
+</header>
+<div class="byline">Dr Tristan Hotham · Independent researcher · 2026 · Ice outlines: Batchelor et al. (2019), Nature Communications 10, 3713, CC BY 4.0 · Relief and sea floor: ETOPO1 (NOAA) and AWS Terrain Tiles · Natural Earth</div>
+
+<div class="stats">
+  <div><b class="c">{{stages.mis6.area|m1}}m</b><span>km² of ice at MIS 6, {{stages.mis6.age|raw}}: the largest of the {{areas.n_stages|int}} slices</span></div>
+  <div><b class="p">{{stages.lgm.area|m1}}m</b><span>km² at the Last Glacial Maximum, only the {{areas.lgm_rank|int}}th largest</span></div>
+  <div><b class="h">{{places.lgm.n|int}}</b><span>of Natural Earth's cities and towns stand on ground the LGM ice covered, New York among them</span></div>
+  <div><b class="g">{{exposed.m120.ice_free|m1}}m</b><span>km² of dry, ice-free land that a sea 120 m lower would uncover</span></div>
+</div>
+
+<p class="lede">Twenty-six thousand years ago a sheet of ice lay over almost all of Canada and the northern United States, and another over Scandinavia, the Baltic and much of Britain. It was not the first time. The ice has advanced and retreated many times over the past few million years, and some of those advances reached further south than the last one.</p>
+<p>In 2019 Christine Batchelor and eight colleagues gathered the published evidence for where the Northern Hemisphere's ice sheets reached, slice by slice through the Quaternary, and drew a best estimate of the ice for each of {{areas.n_stages|int}} time slices, from the late Gauss Chron, 2.6 to 3.59 million years ago, to the Last Glacial Maximum around 26,500 years ago. They also drew a minimum and a maximum outline for every slice before the LGM. I took the best estimates and asked what they cover today. Move the slider to step through the slices, and click anywhere on the map to see which of them reached that spot and how far it was from the ice edge.</p>
+
+<h2><span class="n">01 · The map</span>Step through the ice ages</h2>
+<div class="bleed" id="atlas">
+<div class="timebox"><button class="play" id="play" aria-label="Play through the time slices">&#9654;</button><div><span class="yv" id="yv">LGM</span><span class="ya" id="ya"></span></div><div class="sl"><input type="range" id="st" min="0" max="16" step="1" value="16" aria-label="Time slice, oldest on the left"><div class="ticks" id="ticks" aria-hidden="true"></div></div></div>
+<div class="controls">
+  <div class="scrollrow" id="seaRow"><span class="ctl-l">Sea level</span><button class="btn" data-s="0" aria-pressed="false">Today</button><button class="btn" data-s="60" aria-pressed="false"><i style="background:var(--sand2)"></i>60 m lower</button><button class="btn" data-s="120" aria-pressed="true"><i style="background:var(--sand)"></i>120 m lower (LGM)</button></div>
+  <div class="scrollrow" id="refRow"><span class="ctl-l">Compare</span><button class="btn" data-r="lgm" aria-pressed="false">LGM edge</button><button class="btn" data-r="max" aria-pressed="false">Furthest any slice</button></div>
+</div>
+<div class="controls">
+  <div class="searchbox"><input type="search" id="q" placeholder="Search a city (Chicago, Berlin, Moscow, London...)" aria-label="Search a city" autocomplete="off"><ul class="suggest" id="sug" role="listbox"></ul></div>
+</div>
+<div class="mapgrid">
+  <div><div id="map" class="lmap" data-fullscreen-map role="application" aria-label="Map of the Northern Hemisphere ice sheets for the chosen time slice. Click anywhere for the slices that covered it."></div>
+    <div class="legend" id="legend"></div><div class="mapnote" id="mapnote"></div></div>
+  <div class="side" id="side" aria-live="polite"></div>
+</div>
+<p class="src">Ice: the best-estimate outline for each time slice in Batchelor et al. (2019), Nature Communications 10, 3713 (doi:10.1038/s41467-019-11601-2), CC BY 4.0, generalised to about 7 km for the web. The outlines are drawn on today's coasts and relief, as the authors draw them, and give the extent of the ice, not its thickness. Sand: sea floor that a sea 60 m or 120 m lower than today would leave dry (ETOPO1 via ETOPO10, NOAA); the sea level is a fixed choice, not matched to each slice. Relief: AWS Terrain Tiles. Outlines and places: Natural Earth.</p>
+</div>
+
+<h2><span class="n">02 · How big</span>The last ice age was not the biggest</h2>
+<p>The ice we know best, the Last Glacial Maximum, covered {{stages.lgm.area|m1}} million km² in Batchelor and colleagues' best estimate, about {{x.lgm_on_land_m|f1}} million of it on today's land and {{x.lgm_on_sea_m|f1}} million ({{stages.lgm.on_sea_pct|int}}%) on what is now sea floor, from Hudson Bay to the Barents Sea. That is only the {{areas.lgm_rank|int}}th largest of the {{areas.n_stages|int}} slices. The biggest was MIS 6, {{stages.mis6.age|raw}}: {{stages.mis6.area|m1}} million km², {{areas.mis6_over_lgm_pct|int}}% more than the LGM. MIS 12 ({{stages.mis12.area|m1}} million) and MIS 16 ({{stages.mis16.area|m1}} million) were close behind.</p>
+<div class="figure"><p class="fig-h">Ice area in each time slice</p><p class="fig-sub">Area of the best-estimate outline, measured in an equal-area projection, newest at the top. Thin lines: the authors' minimum to maximum range for the slice; small ticks: the authors' own figure for the best estimate. Hatched: slices where the authors drew the ice at a warm peak, not at its largest. Hover a bar; click one to show it on the map.</p><div class="chart" id="areaChart"></div></div>
+<p>The authors' own table of areas, which comes with the outlines, gives the same order for the seven largest slices, and its figures are within {{areas.max_abs_diff_pct|f1}}% of mine for every slice but one. The exception is 40 ka, where the outline holds {{areas.ka40_diff_pct|int}}% more ice than the table, mostly ice masses in north-east Asia. The minimum and maximum outlines show how uncertain the older slices are: for MIS 20 to 24 they run from {{stages.mis20.tab_min|m1}} to {{stages.mis20.tab_max|m1}} million km².</p>
+<p>Three slices are smaller by design. For 45 ka, MIS 5a and MIS 5c the authors drew the ice at the warmest moment of the slice, not its largest, and these are the three smallest outlines, none above {{x.warm_max_m|f1}} million km². Add every slice together and the ice reached {{areas.union|m1}} million km² at one time or another, {{areas.union_over_lgm_pct|int}}% more than the LGM alone. Only {{areas.every|m1}} million km², about half of it Greenland, was ice in every slice.</p>
+
+<h2><span class="n">03 · How far south</span>To the Ohio, the Dnieper and the Don</h2>
+<p>In North America the ice of the Last Glacial Maximum reached {{south.lgm_na.lat|f1}}°N, near {{south.lgm_na.near|raw}}, Indiana. In MIS 6 and MIS 12 it went further, to {{south.na_min.lat|f1}}°N in southern Illinois, about {{south_extra.na_min_to_ohio_mouth_km|int}} km from where the Ohio River flows into the Mississippi. In Europe the LGM ice reached its lowest latitude on the floor of the Celtic Sea south of Ireland, at {{south.lgm_eu.lat|f1}}°N; on the mainland it got no further south than {{south_extra.lgm_eu_mainland_lat|f1}}°N. In MIS 6 a lobe pushed down the Dnieper valley in Ukraine to {{south.mis6_eu.lat|f1}}°N, near {{south.mis6_eu.near|raw}}, and in MIS 16 another reached {{stages.mis16.south.eu.lat|f1}}°N in the Don basin of southern Russia.</p>
+<div class="figure"><p class="fig-h">The southernmost ice in each slice</p><p class="fig-sub">Lowest latitude on any outline of 50,000 km² or more (the authors' size for an ice sheet), in North America (170°W to 50°W) and in Europe (12°W to 60°E). Hover a dot for the nearest city.</p><div class="chart" id="southChart"></div><div class="legend"><span><i style="background:var(--na)"></i>North America</span><span><i style="background:var(--eu)"></i>Europe</span></div></div>
+<p>Mountain glaciers are not in these outlines. The authors drew only ice masses thought to have covered more than 50,000 km², so the ice caps of the Alps, the Pyrenees and the Rockies' southern ranges are left out, and the southern limits here are those of the continental ice sheets.</p>
+
+<h2><span class="n">04 · What lay beneath</span>{{places.lgm.n|int}} towns and cities on old ice</h2>
+<p>At the Last Glacial Maximum the ice covered {{countries.by_iso.CAN.lgm_pct|int}}% of Canada, all of Ireland, Sweden, Finland, Iceland, Estonia and Latvia, nearly all of Norway and Lithuania, {{countries.by_iso.DNK.lgm_pct|int}}% of Denmark, {{countries.by_iso.GBR.lgm_pct|int}}% of the United Kingdom and {{countries.by_iso.USA.lgm_pct|int}}% of the United States. Across all the slices it reached {{countries.by_iso.POL.union_pct|int}}% of Poland, {{countries.by_iso.BLR.union_pct|int}}% of Belarus, {{countries.by_iso.NLD.union_pct|int}}% of the Netherlands, {{countries.by_iso.DEU.union_pct|int}}% of Germany and {{countries.by_iso.RUS.union_pct|int}}% of Russia.</p>
+<div class="figure"><p class="fig-h">How much of each country lay under ice</p><p class="fig-sub">Share of today's country area inside the LGM outline (dark) and inside at least one of the {{areas.n_mapped|int}} outlines (pale). Countries with at least 5% in any slice and more than 20,000 km². Hover a bar.</p><div class="chart" id="countryChart"></div></div>
+<p>Natural Earth lists {{places.total_n|int}} cities and towns around the world. {{places.lgm.n|int}} of them stand inside the LGM outline, {{places.lgm.n_1m|int}} with a million people or more, and their population figures add up to about {{places.lgm_pop_m|int}} million people, {{x.lgm_places_pct|f1}}% of the total for all the places on the list. That is a rough guide, not a census, but it gives the scale. The biggest is New York, {{cities.New York.lgm|abs}} km inside the edge, which matches the usual account that the ice reached Manhattan. Chicago lay {{cities.Chicago.lgm|abs}} km inside, Toronto {{cities.Toronto.lgm|abs}} km, Berlin {{cities.Berlin.lgm|abs}} km and Seattle {{cities.Seattle.lgm|abs}} km. Counting every slice, {{places.union.n|int}} places with about {{places.union_pop_m|int}} million people were under ice at least once, among them Moscow, Philadelphia, Kyiv, Birmingham and Warsaw.</p>
+<div class="figure"><p class="fig-h">Big cities and the ice edge</p><p class="fig-sub">Distance from the city centre to the edge of the LGM ice (negative: inside the ice), and the slices whose ice covered it, oldest on the left. Click a row to see the city on the map.</p><div class="tablebox"><table class="tbl" id="cityTable"></table></div></div>
+<p>London was never under the ice in any of these outlines, but in MIS 12, the Anglian glaciation of British geologists, the edge came within {{cities.London.mis12|int}} km of the centre. Moscow was {{cities.Moscow.lgm|int}} km beyond the LGM ice and under three earlier ones. Paris, Prague and Amsterdam stayed clear of the LGM ice, and of every other slice except, for Amsterdam, MIS 6.</p>
+
+<h2><span class="n">05 · Land from the sea</span>When the sea fell 120 metres</h2>
+<p>The water in all that ice came from the sea. At the Last Glacial Maximum the oceans stood about 120 to 125 m lower than today, by the figures quoted on Wikipedia. On the ETOPO1 sea floor, a fall of 120 m uncovers {{exposed.m120.km2|m1}} million km², {{exposed.m120.pct_of_land|f1}}% more land than the world has now. {{exposed.m120.under_lgm_ice|m1}} million km² of that was itself under the ice, which leaves {{exposed.m120.ice_free|m1}} million km² of new dry land. A fall of only 60 m already uncovers {{exposed.half_share_pct|int}}% as much.</p>
+<div class="figure"><p class="fig-h">The biggest new lands</p><p class="fig-sub">Ice-free sea floor uncovered by a fall of 60 m and of 120 m, in boxes drawn round the shelf seas (my choice of boxes; see the methods). Hover a bar.</p><div class="chart" id="shelfChart"></div><div class="legend"><span><i style="background:var(--sand2)"></i>60 m lower</span><span><i style="background:var(--sand)"></i>120 m lower</span></div></div>
+<p>The largest new lands were in the tropics. The Sahul shelf joined New Guinea and Tasmania to Australia ({{shelf.sahul.m120_ice_free|m1}} million km² of new land in my box), and Sundaland joined Sumatra, Java and Borneo to mainland Asia ({{shelf.sundaland.m120_ice_free|m1}} million). In the Arctic, the shelves of the Laptev, Kara and East Siberian seas added {{shelf.siberian.m120_ice_free|m1}} million, and Beringia, the Bering and Chukchi seas, {{shelf.beringia.m120_ice_free|m1}} million: along the meridian of the Bering Strait, dry land would have run unbroken for about {{bering.width_km|int}} km from north to south. In Europe, the southern North Sea and the Channel became Doggerland, about {{x.doggerland_free_k|int}},000 km² of ice-free land in my box; its northern part lay under the ice.</p>
+<p>On a grid this coarse, about 18 km, every one of the {{x.joins_n|int}} land bridges I tested is already made at 60 m: Britain to the continent, Ireland to Britain, Asia to North America, New Guinea and Tasmania to Australia, Sumatra, Java and Borneo to Asia, Sri Lanka to India, Taiwan and Sakhalin to the mainland. Narrow, deeper straits can hide below that resolution, so I leave out Japan and Newfoundland.</p>
+
+<h2><span class="n">06 · How I did this</span>Methods and caveats</h2>
+<p><b>Ice.</b> The best-estimate shapefiles from Batchelor et al. (2019), from the authors' repository on the Open Science Framework (osf.io/7jen3). The {{areas.n_stages|int}} time slices and their ages are the authors': the LGM (about 26,500 years ago), 30, 35, 40 and 45 ka, MIS 4 (58,000 to 72,000 years ago), MIS 5a to 5d (72,000 to 117,000), MIS 6 (132,000 to 190,000), MIS 8, 10, 12, 16, MIS 20 to 24 (790,000 to 928,000), the early Matuyama Chron (1.78 to 2.6 million years ago) and the late Gauss Chron (2.6 to 3.59 million). The files are in a polar Lambert equal-area projection, except the LGM, which is in latitude and longitude; I put everything in the equal-area projection, repaired invalid shapes, dissolved each slice to one outline and measured its area there. Two files, 45 ka and the late Gauss Chron, also carry today's glaciers worldwide, Antarctica included; I keep only the Northern Hemisphere parts.</p>
+<p><b>What the outlines are.</b> The authors stress that their reconstructions are generalised and partly subjective, that they should not be used for local studies, and that some, MIS 8 and MIS 10 above all, are highly uncertain and indicate the amount of ice rather than where its edge lay. For slices without direct evidence they borrowed the ice of a slice with a similar climate, and they used templates for Greenland, Iceland, the North American Cordillera and north-east Asia. Each outline aims at the largest extent within its slice, which may not have been reached everywhere at once. A city's distance to the edge is therefore a guide to the scale, not a local fact.</p>
+<p><b>Places and distances.</b> Countries are Natural Earth's (1:10m); their area under ice is measured in the same equal-area projection. Cities and towns are Natural Earth's populated places with their population figure (pop_max), which counts the built-up area; summing them is approximate. Distances to the ice edge are true distances on the WGS84 ellipsoid from the place to the nearest point of the outline. On the map, the distances are worked out in your browser from the generalised outlines and can differ by a few kilometres.</p>
+<p><b>Sea floor.</b> ETOPO10, a 10 arc-minute version of NOAA's ETOPO1, with cell areas on the sphere. Land today is ground above sea level or inside Natural Earth's land; sea is water joined to the oceans (the Black Sea is kept, the Caspian and lakes are not). Depth is the bedrock surface, so floating ice shelves do not count as shallow sea. The ice outlines are drawn on today's coasts, and I do the same: I do not model the crust sinking under the ice or rising since, or the sediment laid down, so the lower sea levels are a simple flood fill in reverse. The shelf boxes are mine.</p>
+<details><summary>Sources and licences</summary>
+<ul>
+<li>Batchelor, C.L., Margold, M., Krapp, M., Murton, D.K., Dalton, A.S., Gibbard, P.L., Stokes, C.R., Murton, J.B. and Manica, A. (2019) The configuration of Northern Hemisphere ice sheets through the Quaternary. Nature Communications 10, 3713. doi:10.1038/s41467-019-11601-2. Shapefiles and area table from osf.io/7jen3. The README with the files states no licence; the repository is released under CC BY 4.0. Only the best-estimate outlines are mapped; the minimum and maximum outlines exist for the 17 slices before the LGM, and their areas come from the authors' table.</li>
+<li>Amante, C. and Eakins, B.W. (2009) ETOPO1 1 Arc-Minute Global Relief Model. NOAA Technical Memorandum NESDIS NGDC-24. doi:10.7289/V5C8276M. Public domain. Used through ETOPO10 by Garrett Euler (MIT licence).</li>
+<li>AWS Terrain Tiles (Mapzen terrain tiles on the Registry of Open Data on AWS), Terrarium encoding, zoom 4, for the shaded relief; built from open data including ETOPO1, GMTED2010 and SRTM.</li>
+<li>Wikipedia articles (CC BY-SA 4.0), for context and the figures quoted: Last Glacial Maximum, Quaternary glaciation, Beringia, Sundaland, Sahul, Doggerland, British-Irish Ice Sheet, Fennoscandian ice sheet, Laurentide Ice Sheet.</li>
+<li>Natural Earth countries, land and populated places (public domain).</li>
+</ul></details>
+
+<div class="cta"><a class="p" href="https://doi.org/10.5281/zenodo.23878610">Read the paper</a><a href="https://github.com/Tristan-Hotham/ice-ages">Data and code</a><a href="https://blog.tristanhotham.com/2026/10/31/ice-ages/">Blog post</a></div>
+
+<footer>
+<p>Dr Tristan Hotham, Independent researcher. ORCID <a href="https://orcid.org/0000-0003-4931-9349">0000-0003-4931-9349</a>.</p>
+<p>Cite as: Hotham, T. (2026) When the ice came south: the Northern Hemisphere's ice sheets through the Quaternary, what lay beneath them and the land the sea gave up. Zenodo. <a href="https://doi.org/10.5281/zenodo.23878610">https://doi.org/10.5281/zenodo.23878610</a></p>
+<p>Ice outlines: Batchelor et al. (2019), Nature Communications 10, 3713, doi:10.1038/s41467-019-11601-2, CC BY 4.0. Licence: derived data and text CC BY 4.0, code MIT.</p>
+<p>I wrote the text, with drafting and editing assistance from Claude (Anthropic), which also helped prepare the analysis code. I reviewed and checked all text and results.</p>
+</footer>
+</div>
+
+<div class="tip" id="tip"></div>
+<button class="btn theme" id="theme" aria-label="Toggle dark mode">◐</button>
+<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script>
+const R = /*RESULTS*/;
+const SITE = /*SITE*/;
+const WORLD = /*WORLD*/;
+const CMETA = /*COUNTRIES*/;
+const CITIES = /*CITIES*/;
+const fmt = n => n == null || n === "" ? "n/a" : Math.round(n).toLocaleString("en-GB");
+const f1 = n => n == null ? "n/a" : (+n).toLocaleString("en-GB", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+const mkm = n => n == null ? "n/a" : f1(n / 1e6) + " million km²";
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const tip = document.getElementById("tip");
+function showTip(h, x, y) { tip.innerHTML = h; tip.style.display = "block"; const w = tip.offsetWidth; x = Math.max(w / 2 + 8, Math.min(innerWidth - w / 2 - 8, x)); tip.style.left = x + scrollX + "px"; tip.style.top = y + scrollY + "px"; }
+function hideTip() { tip.style.display = "none"; }
+document.addEventListener("click", e => { if (!e.target.closest || !e.target.closest(".chart")) hideTip(); });
+const NS = "http://www.w3.org/2000/svg";
+const el = (t, a, p) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; };
+const lbl = (svg, x, y, s, cls = "lab", anchor = "start") => { const t = el("text", { x, y, class: cls, "text-anchor": anchor }, svg); t.textContent = s; return t; };
+const redraws = [];
+function resp(box, render) { let last = 0; const go = force => { const w = Math.max(280, Math.round(box.clientWidth)); if (!force && Math.abs(w - last) < 4) return; last = w; box.innerHTML = ""; render(w, w < 560); }; new ResizeObserver(() => go()).observe(box); go(); redraws.push(() => go(true)); }
+const isDark = () => { const r = document.documentElement; return r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches; };
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const small = () => innerWidth < 900;
+const latS = v => `${Math.abs(v).toFixed(1)}°${v >= 0 ? "N" : "S"}`;
+const lonS = v => `${Math.abs(v).toFixed(1)}°${v >= 0 ? "E" : "W"}`;
+
+/* stages: all 18 in time order (oldest first), one slider step each */
+const ST = SITE.stages, SK = ST.map(s => s.key), SBY = Object.fromEntries(ST.map(s => [s.key, s]));
+const MAP_ST = ST.filter(s => s.outline), MK = MAP_ST.map(s => s.key);
+const ageShort = s => s.ka1 >= 1000 ? `${(s.ka0 / 1000).toFixed(2).replace(/0$/, "")} to ${(s.ka1 / 1000).toFixed(2).replace(/0$/, "")} million years ago` : s.age;
+
+/* hero mark: an ice sheet over a hill, with the sea below */
+(function () {
+  const g = document.getElementById("heroMark");
+  el("path", { d: "M6 92 C18 70 34 54 60 48 C86 42 104 58 114 92 Z", fill: "#F7FBFE", stroke: "#2F6FA8", "stroke-width": 4, "stroke-linejoin": "round" }, g);
+  el("path", { d: "M18 92 C30 80 40 74 52 72", fill: "none", stroke: "#2F6FA8", "stroke-width": 2.4, "stroke-linecap": "round", opacity: .55 }, g);
+  el("path", { d: "M6 92 L114 92", stroke: "currentColor", "stroke-width": 3 }, g);
+  el("path", { d: "M6 104 C30 101 50 107 74 103 C90 100 104 104 114 103", fill: "none", stroke: "#C99B52", "stroke-width": 4, "stroke-linecap": "round" }, g);
+  el("path", { d: "M6 114 C36 112 70 116 114 113", fill: "none", stroke: "#8FB6CE", "stroke-width": 3, "stroke-linecap": "round" }, g);
+})();
+
+/* ---------- state ---------- */
+const LYDEF = { relief: true, reliefK: 85, borders: true, cnames: true, cities: true, iceK: 82 };
+const LY = { ...LYDEF };
+try { Object.assign(LY, JSON.parse(localStorage.getItem("ia_layers") || "{}")); } catch (e) {}
+const saveLY = () => { try { localStorage.setItem("ia_layers", JSON.stringify(LY)); } catch (e) {} };
+const S = { i: MAP_ST.length - 1, sea: 120, ref: { lgm: false, max: false }, pt: null, play: null };
+const curKey = () => MK[S.i];
+
+/* ---------- geometry for the click query (loaded after the page) ---------- */
+let ICE = null, EXP = null;     // { key: [polygons as arrays of rings] }, { 60: [...], 120: [...] }
+function polysOf(g) { return g.type === "Polygon" ? [g.coordinates] : g.coordinates; }
+function bboxOf(poly) { let a = 180, b = 90, c = -180, d = -90; for (const [x, y] of poly[0]) { if (x < a) a = x; if (x > c) c = x; if (y < b) b = y; if (y > d) d = y; } return [a, b, c, d]; }
+function prep(fc, keyf) { const o = {}; fc.features.forEach(f => { o[keyf(f)] = polysOf(f.geometry).map(p => ({ p, b: bboxOf(p) })); }); return o; }
+function inRing(r, x, y) { let c = false; for (let i = 0, j = r.length - 1; i < r.length; j = i++) { const [xi, yi] = r[i], [xj, yj] = r[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c; } return c; }
+function inPolys(P, x, y) { if (!P) return false; for (const { p, b } of P) { if (x < b[0] || x > b[2] || y < b[1] || y > b[3]) continue; if (inRing(p[0], x, y) && !p.slice(1).some(h => inRing(h, x, y))) return true; } return false; }
+const RAD = Math.PI / 180, RE = 6371.0;
+const vec = (lon, lat) => [Math.cos(lat * RAD) * Math.cos(lon * RAD), Math.cos(lat * RAD) * Math.sin(lon * RAD), Math.sin(lat * RAD)];
+const dot3 = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+const ang = (a, b) => Math.atan2(Math.hypot(...cross(a, b)), dot3(a, b));
+function segDist(P, A, B) {      // great-circle distance (radians) from P to the arc AB
+  const n = cross(A, B), nn = Math.hypot(...n); if (nn < 1e-12) return ang(P, A);
+  const u = n.map(v => v / nn), s = dot3(P, u), F = [P[0] - s * u[0], P[1] - s * u[1], P[2] - s * u[2]], fn = Math.hypot(...F);
+  if (fn > 1e-12) { const f = F.map(v => v / fn); if (dot3(cross(A, f), u) >= 0 && dot3(cross(f, B), u) >= 0) return Math.abs(Math.asin(Math.max(-1, Math.min(1, s)))); }
+  return Math.min(ang(P, A), ang(P, B));
+}
+function edgeKm(P, lon, lat, polys) {   // distance to the nearest edge; edges along the 180 degree cut are not real edges
+  let best = Infinity; const cl = Math.cos(lat * RAD);
+  for (const { p, b } of polys) {
+    const gap = Math.max(0, b[1] - lat, lat - b[3]) * 111.2; if (gap > best) continue;
+    for (const ring of p) for (let i = 1; i < ring.length; i++) {
+      const a = ring[i - 1], c = ring[i];
+      if (Math.abs(a[0]) > 179.99 && Math.abs(c[0]) > 179.99) continue;
+      const dy = Math.min(Math.abs(a[1] - lat), Math.abs(c[1] - lat)) * 111.2; if (dy > best && (a[1] - lat) * (c[1] - lat) > 0) continue;
+      const d = segDist(P, vec(a[0], a[1]), vec(c[0], c[1])) * RE; if (d < best) best = d;
+    }
+  }
+  return best;
+}
+let WORLDP = null;
+function onLand(x, y) { if (!WORLDP) WORLDP = WORLD.features.map(f => polysOf(f.geometry).map(p => ({ p, b: bboxOf(p) }))).flat(); return inPolys(WORLDP, x, y); }
+function query(lon, lat) {
+  lon = ((lon + 540) % 360) - 180;
+  const P = vec(lon, lat), o = { lon, lat, under: {}, d: null, near: null };
+  if (!ICE) return o;
+  MK.forEach(k => o.under[k] = inPolys(ICE[k], lon, lat));
+  const k = curKey(); o.d = edgeKm(P, lon, lat, ICE[k]) * (o.under[k] ? -1 : 1);
+  if (!MK.some(k2 => o.under[k2])) { let b = Infinity, bk = null; MK.forEach(k2 => { const d = edgeKm(P, lon, lat, ICE[k2]); if (d < b) { b = d; bk = k2; } }); o.near = { k: bk, d: b }; }
+  o.land = onLand(lon, lat); o.e60 = !o.land && EXP && inPolys(EXP[60], lon, lat); o.e120 = !o.land && EXP && inPolys(EXP[120], lon, lat);
+  return o;
+}
+function placeName(lon, lat) {   // nearest listed city within 60 km, for the panel title
+  let best = null, bd = 60;
+  for (const c of CITIES) { const d = ang(vec(lon, lat), vec(c.lon, c.lat)) * RE; if (d < bd) { bd = d; best = c; } }
+  return best ? { c: best, d: bd } : null;
+}
+
+/* ---------- map ---------- */
+let map = null, mapOK = false, popup = null, FB = null;
+const HOME = () => small() ? { center: [-30, 56], zoom: .35 } : { center: [-25, 57], zoom: 1.25 };
+const BASE = location.href.replace(/[#?].*$/, "").replace(/[^/]*$/, "");
+function iceFilter() { return ["==", ["get", "key"], curKey()]; }
+function initMap() {
+  const box = document.getElementById("map");
+  if (!window.maplibregl) { fallback("The interactive map library (MapLibre, from cdn.jsdelivr.net) could not load here, so this is a simpler map drawn in the page. Click it all the same."); return; }
+  try {
+    map = new maplibregl.Map({ container: "map", ...HOME(), minZoom: 0, maxZoom: 8, attributionControl: false, dragRotate: false, pitchWithRotate: false, renderWorldCopies: true,
+      style: { version: 8, sources: {}, layers: [{ id: "bg", type: "background", paint: { "background-color": css("--sea") } }] } });
+  } catch (e) { fallback("This browser could not start the interactive map (it needs WebGL), so this is a simpler map drawn in the page. Click it all the same."); return; }
+  map.touchZoomRotate.disableRotation();
+  map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
+  map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: 'Ice: Batchelor et al. 2019 (CC BY 4.0) · Relief: AWS Terrain Tiles, ETOPO1 · Natural Earth' }), "bottom-left");
+  map.on("error", () => { /* missing relief tiles: the plain base map still works */ });
+  map.on("load", () => {
+    mapOK = true;
+    const at = document.querySelector(".maplibregl-ctrl-attrib.maplibregl-compact"); if (at) { at.classList.remove("maplibregl-compact-show"); at.removeAttribute("open"); }
+    map.addSource("world", { type: "geojson", data: WORLD });
+    map.addSource("relief", { type: "raster", tiles: [BASE + "img/relief/{z}/{x}/{y}.jpg"], tileSize: 256, minzoom: 0, maxzoom: 4, attribution: "Relief: AWS Terrain Tiles (ETOPO1, GMTED2010, SRTM)" });
+    const empty = { type: "FeatureCollection", features: [] };
+    map.addSource("ice", { type: "geojson", data: empty });
+    map.addSource("exp", { type: "geojson", data: empty });
+    map.addSource("pin", { type: "geojson", data: empty });
+    map.addLayer({ id: "land", type: "fill", source: "world", paint: { "fill-color": css("--land") } });
+    map.addLayer({ id: "relief", type: "raster", source: "relief", paint: { "raster-opacity": LY.reliefK / 100, "raster-fade-duration": 0 } });
+    map.addLayer({ id: "exp120", type: "fill", source: "exp", filter: ["==", ["get", "sea_level_m"], -120], paint: { "fill-color": css("--sand"), "fill-opacity": .8 } });
+    map.addLayer({ id: "exp60", type: "fill", source: "exp", filter: ["==", ["get", "sea_level_m"], -60], paint: { "fill-color": css("--sand2"), "fill-opacity": .75 } });
+    map.addLayer({ id: "borders", type: "line", source: "world", paint: { "line-color": css("--coast"), "line-width": ["interpolate", ["linear"], ["zoom"], 0, .3, 5, .9] } });
+    map.addLayer({ id: "maxline", type: "line", source: "ice", layout: { visibility: "none" }, paint: { "line-color": css("--max"), "line-width": 1.6, "line-dasharray": [2, 1.5] } });
+    map.addLayer({ id: "ice", type: "fill", source: "ice", filter: iceFilter(), paint: { "fill-color": css("--icefill"), "fill-opacity": LY.iceK / 100 } });
+    map.addLayer({ id: "iceline", type: "line", source: "ice", filter: iceFilter(), paint: { "line-color": css("--iceedge"), "line-width": ["interpolate", ["linear"], ["zoom"], 0, .8, 5, 1.8] } });
+    map.addLayer({ id: "lgmline", type: "line", source: "ice", filter: ["==", ["get", "key"], "lgm"], layout: { visibility: "none" }, paint: { "line-color": css("--hot"), "line-width": 1.6, "line-dasharray": [3, 2] } });
+    map.addLayer({ id: "pin", type: "circle", source: "pin", paint: { "circle-radius": 6, "circle-color": css("--hot"), "circle-stroke-color": "#fff", "circle-stroke-width": 2 } });
+    applyLayers(); retheme(); placeNames();
+    if (ICE) setIceData(); if (EXP) setExpData();
+    map.on("click", e => pickPoint(e.lngLat.lng, e.lngLat.lat, { popup: true, fly: false }));
+    map.on("moveend", placeNames);
+  });
+  layerControl();
+}
+let ICEFC = null, MAXFC = null, EXPFC = null;
+function setIceData() { if (!mapOK) return; map.getSource("ice").setData({ type: "FeatureCollection", features: ICEFC.features.concat(MAXFC ? [MAXFC] : []) }); }
+function setExpData() { if (mapOK) map.getSource("exp").setData(EXPFC); }
+function applyLayers() {
+  if (!mapOK) return;
+  const vis = (id, on) => map.setLayoutProperty(id, "visibility", on ? "visible" : "none");
+  vis("relief", LY.relief); map.setPaintProperty("relief", "raster-opacity", LY.reliefK / 100);
+  vis("borders", LY.borders); vis("exp120", S.sea === 120); vis("exp60", S.sea >= 60);
+  vis("lgmline", S.ref.lgm); vis("maxline", S.ref.max); map.setFilter("maxline", ["==", ["get", "key"], "max"]);
+  map.setPaintProperty("ice", "fill-opacity", LY.iceK / 100);
+  map.setFilter("ice", iceFilter()); map.setFilter("iceline", iceFilter());
+  placeNames();
+}
+let nameMarkers = [];
+function placeNames() {
+  nameMarkers.forEach(m => m.remove()); nameMarkers = [];
+  if (!mapOK) return;
+  const z = map.getZoom(), b = map.getBounds(), bxs = [];
+  const put = (lon, lat, html, cls, w, hgt, anchor = "center") => {
+    let x = lon; const c = map.getCenter().lng; while (x - c > 180) x -= 360; while (x - c < -180) x += 360;
+    if (!b.contains([x, lat])) return false; const pt = map.project([x, lat]);
+    const bx = anchor === "left" ? [pt.x - 4, pt.y - hgt / 2, pt.x + w, pt.y + hgt / 2] : [pt.x - w / 2, pt.y - hgt / 2, pt.x + w / 2, pt.y + hgt / 2];
+    if (bxs.some(o => bx[0] < o[2] && bx[2] > o[0] && bx[1] < o[3] && bx[3] > o[1])) return false; bxs.push(bx);
+    const d = document.createElement("div"); d.className = cls; d.innerHTML = html; nameMarkers.push(new maplibregl.Marker({ element: d, anchor }).setLngLat([x, lat]).addTo(map)); return true;
+  };
+  if (LY.cities && z >= 1.0) { const minPop = z < 2 ? 7e6 : z < 3 ? 2.5e6 : z < 4 ? 1e6 : z < 5.5 ? 4e5 : 0; let n = 0;
+    for (const c of CITIES) { if (c.pop < minPop) continue; if (put(c.lon, c.lat, `<i></i>${esc(c.name)}`, "cityL", 10 + c.name.length * 6.6, 14, "left")) n++; if (n > 40) break; } }
+  if (LY.cnames && z >= 2.2) { const minPop = z < 3 ? 2e7 : z < 4 ? 4e6 : 0; let n = 0;
+    Object.entries(CMETA).sort((a, c) => c[1].pop - a[1].pop).forEach(([iso, m]) => { if (m.pop < minPop || n > 50) return; if (put(m.lx, m.ly, esc(m.name), "cntL", m.name.length * 7.4, 13)) n++; }); }
+}
+function layerControl() {
+  class Ctl { onAdd() { const d = document.createElement("div"); d.className = "maplibregl-ctrl lyr";
+    d.innerHTML = `<button class="lyrBtn" aria-expanded="false">Map layers</button>
+<div class="lyrPanel" hidden>
+ <div class="row"><label><input type="checkbox" data-k="relief"> Shaded relief and sea floor</label><div class="sub"><span>strength</span><input type="range" data-k="reliefK" min="20" max="100" step="5" aria-label="Relief strength"></div></div>
+ <div class="row"><label><input type="checkbox" data-k="borders"> Borders and coasts</label></div>
+ <div class="row"><label><input type="checkbox" data-k="cnames"> Country names</label></div>
+ <div class="row"><label><input type="checkbox" data-k="cities"> City names</label></div>
+ <div class="hd">Ice</div>
+ <div class="row"><label style="font-weight:400">Ice fill</label><div class="sub"><input type="range" data-k="iceK" min="20" max="100" step="5" aria-label="Ice fill strength"></div></div>
+ <div class="row"><label><input type="checkbox" data-r="lgm"> LGM edge (red dashes)</label></div>
+ <div class="row"><label><input type="checkbox" data-r="max"> Furthest of any slice (purple dashes)</label></div>
+ <p class="sub" style="margin:4px 0 8px">The relief comes as image tiles; if they do not load, the plain map still works.</p>
+ <button class="reset">Reset layers</button>
+</div>`;
+    ["click", "dblclick", "mousedown", "touchstart", "wheel"].forEach(t => d.addEventListener(t, e => e.stopPropagation(), { passive: t !== "click" }));
+    const btn = d.querySelector(".lyrBtn"), pan = d.querySelector(".lyrPanel");
+    btn.onclick = () => { const o = pan.hidden; pan.hidden = !o; btn.setAttribute("aria-expanded", o); };
+    const sync = () => { pan.querySelectorAll("[data-k]").forEach(i => { const k = i.dataset.k; if (i.type === "checkbox") i.checked = LY[k]; else i.value = LY[k]; }); pan.querySelectorAll("[data-r]").forEach(i => i.checked = S.ref[i.dataset.r]); };
+    syncPanel = sync;
+    pan.querySelectorAll("[data-k]").forEach(i => i.addEventListener(i.type === "range" ? "input" : "change", () => { const k = i.dataset.k; LY[k] = i.type === "checkbox" ? i.checked : +i.value; if (k === "reliefK") LY.relief = true; sync(); saveLY(); applyLayers(); legend(); }));
+    pan.querySelectorAll("[data-r]").forEach(i => i.addEventListener("change", () => setRef(i.dataset.r, i.checked)));
+    pan.querySelector(".reset").onclick = () => { Object.assign(LY, LYDEF); saveLY(); sync(); applyLayers(); legend(); };
+    sync(); return d; } onRemove() {} }
+  map.addControl(new Ctl(), "top-left");
+}
+let syncPanel = () => {};
+function retheme() {
+  if (!mapOK) return;
+  map.setPaintProperty("bg", "background-color", css("--sea")); map.setPaintProperty("land", "fill-color", css("--land"));
+  map.setPaintProperty("borders", "line-color", css("--coast"));
+  map.setPaintProperty("ice", "fill-color", css("--icefill")); map.setPaintProperty("iceline", "line-color", css("--iceedge"));
+  map.setPaintProperty("exp120", "fill-color", css("--sand")); map.setPaintProperty("exp60", "fill-color", css("--sand2"));
+  map.setPaintProperty("lgmline", "line-color", css("--hot")); map.setPaintProperty("maxline", "line-color", css("--max"));
+  const d = isDark();
+  map.setPaintProperty("relief", "raster-brightness-min", d ? .62 : 0); map.setPaintProperty("relief", "raster-brightness-max", d ? .02 : 1);
+  map.setPaintProperty("relief", "raster-saturation", d ? -.35 : 0); map.setPaintProperty("relief", "raster-contrast", d ? .1 : 0);
+  map.setPaintProperty("ice", "fill-color", d ? "#C7DCEC" : css("--icefill"));
+}
+
+/* ---------- fallback map: Natural Earth drawn on a canvas (no MapLibre or no WebGL) ---------- */
+function fallback(msg) {
+  const box = document.getElementById("map");
+  const cv = document.createElement("canvas"); cv.className = "fb"; box.appendChild(cv);
+  box.insertAdjacentHTML("beforeend", `<div class="mapfail">${msg}</div>`);
+  const V = { lon0: -180, lon1: 180, lat0: -48, lat1: 84 };
+  const merc = la => Math.log(Math.tan(Math.PI / 4 + Math.max(-84, Math.min(84, la)) * RAD / 2));
+  FB = { cv, draw: null };
+  const sz = () => { const r = box.getBoundingClientRect(); const dpr = devicePixelRatio || 1; cv.width = r.width * dpr; cv.height = r.height * dpr; return [r.width, r.height, dpr]; };
+  FB.draw = () => {
+    const [W, H, dpr] = sz(); const c = cv.getContext("2d"); c.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const k = Math.min(W / ((V.lon1 - V.lon0) * RAD), H / (merc(V.lat1) - merc(V.lat0)));
+    const ox = (W - k * (V.lon1 - V.lon0) * RAD) / 2, oy = (H - k * (merc(V.lat1) - merc(V.lat0))) / 2;
+    const X = lo => ox + k * (lo - V.lon0) * RAD, Y = la => oy + k * (merc(V.lat1) - merc(la));
+    FB.inv = (px, py) => [V.lon0 + (px - ox) / k / RAD, (2 * Math.atan(Math.exp(merc(V.lat1) - (py - oy) / k)) - Math.PI / 2) / RAD];
+    c.fillStyle = css("--sea"); c.fillRect(0, 0, W, H);
+    const fillP = (polys, fs, ss, lw, dash) => { c.beginPath(); polys.forEach(pp => (pp.p || pp).forEach(r => r.forEach(([x, y], i) => i ? c.lineTo(X(x), Y(y)) : c.moveTo(X(x), Y(y))))); if (fs) { c.fillStyle = fs; c.fill("evenodd"); } if (ss) { c.strokeStyle = ss; c.lineWidth = lw; c.setLineDash(dash || []); c.stroke(); c.setLineDash([]); } };
+    fillP(WORLD.features.map(f => polysOf(f.geometry)).flat(), css("--land"), css("--coast"), .5);
+    if (EXP && S.sea >= 60) { if (S.sea === 120) fillP(EXP[120], css("--sand")); fillP(EXP[60], css("--sand2")); }
+    if (ICE) { c.globalAlpha = LY.iceK / 100; fillP(ICE[curKey()], css("--icefill")); c.globalAlpha = 1; fillP(ICE[curKey()], null, css("--iceedge"), 1);
+      if (S.ref.lgm) fillP(ICE.lgm, null, css("--hot"), 1.4, [5, 3]); if (S.ref.max && MAXP) fillP(MAXP, null, css("--max"), 1.4, [4, 3]); }
+    if (S.pt) { c.beginPath(); c.arc(X(S.pt[0]), Y(S.pt[1]), 5, 0, 7); c.fillStyle = css("--hot"); c.fill(); c.strokeStyle = "#fff"; c.lineWidth = 2; c.stroke(); }
+  };
+  cv.addEventListener("click", e => { const r = cv.getBoundingClientRect(); const [lo, la] = FB.inv(e.clientX - r.left, e.clientY - r.top); if (la > -85 && la < 85 && lo >= -180 && lo <= 180) pickPoint(lo, la, { popup: false, fly: false }); });
+  new ResizeObserver(() => FB.draw()).observe(box); FB.draw();
+}
+let MAXP = null;
+function redraw() { if (FB) FB.draw(); else applyLayers(); }
+
+/* ---------- stage, sea level and comparison controls ---------- */
+const sl = document.getElementById("st"); sl.max = MAP_ST.length - 1;
+(function ticks() {
+  const t = document.getElementById("ticks"), n = MAP_ST.length - 1;
+  const show = small() ? ["lgauss", "mis16", "mis6", "lgm"] : ["lgauss", "emat", "mis20", "mis16", "mis12", "mis10", "mis8", "mis6", "mis5d", "mis4", "lgm"];
+  t.innerHTML = MAP_ST.map((s, i) => show.includes(s.key) ? `<span class="${i % 2 && !small() ? "t2" : ""}" style="left:${(100 * i / n).toFixed(2)}%;${i === 0 ? "transform:none" : i === n ? "transform:translateX(-100%)" : ""}">${esc(s.label.replace("Late Gauss", "Gauss").replace("Early Matuyama", "Matuyama").replace("MIS 20 to 24", "MIS 20+"))}</span>` : "").join("");
+})();
+function setStage(i, keepSide) {
+  S.i = Math.max(0, Math.min(MAP_ST.length - 1, i)); sl.value = S.i;
+  const s = MAP_ST[S.i];
+  document.getElementById("yv").textContent = s.label; document.getElementById("ya").textContent = ageShort(s);
+  redraw(); legend();
+  if (S.pt && !keepSide) { renderPoint(); if (popup) popup.remove(); } else if (!keepSide) side();
+  document.querySelectorAll("#areaChart [data-k]").forEach(r => r.setAttribute("stroke", r.dataset.k === s.key ? css("--fg") : "none"));
+}
+sl.addEventListener("input", () => { stop(); setStage(+sl.value); });
+function stop() { if (S.play) { clearInterval(S.play); S.play = null; document.getElementById("play").innerHTML = "&#9654;"; } }
+document.getElementById("play").onclick = () => {
+  if (S.play) return stop();
+  if (S.i >= MAP_ST.length - 1) setStage(0);
+  document.getElementById("play").innerHTML = "&#10074;&#10074;";
+  S.play = setInterval(() => { if (S.i >= MAP_ST.length - 1) return stop(); setStage(S.i + 1); }, 1500);
+};
+const press = (row, b) => document.querySelectorAll(row + " .btn").forEach(x => x.setAttribute("aria-pressed", x === b));
+document.querySelectorAll("#seaRow .btn").forEach(b => b.onclick = () => { S.sea = +b.dataset.s; press("#seaRow", b); redraw(); legend(); if (S.pt) renderPoint(); });
+function setRef(r, on) { S.ref[r] = on; document.querySelector(`#refRow [data-r="${r}"]`).setAttribute("aria-pressed", on); syncPanel(); redraw(); legend(); }
+document.querySelectorAll("#refRow .btn").forEach(b => b.onclick = () => setRef(b.dataset.r, !S.ref[b.dataset.r]));
+function legend() {
+  const e = document.getElementById("legend"), s = MAP_ST[S.i];
+  let h = `<span><i style="background:${css("--icefill")};border-color:${css("--iceedge")}"></i>ice, ${esc(s.label)} (best estimate)</span>`;
+  if (S.sea === 120) h += `<span><i style="background:${css("--sand")}"></i>dry at 120 m lower</span>`;
+  if (S.sea >= 60) h += `<span><i style="background:${css("--sand2")}"></i>dry at 60 m lower</span>`;
+  if (S.ref.lgm) h += `<span style="color:${css("--hot")}"><i class="ln"></i><span style="color:var(--muted)">LGM edge</span></span>`;
+  if (S.ref.max) h += `<span style="color:${css("--max")}"><i class="ln"></i><span style="color:var(--muted)">furthest of any slice</span></span>`;
+  e.innerHTML = h;
+  document.getElementById("mapnote").textContent = s.warm ? `${s.label}: the authors drew the ice at the warmest point of this slice, not its largest.` : (["mis8", "mis10"].includes(s.key) ? `${s.label}: the authors rate this outline highly uncertain; read it as the amount of ice, not where the edge lay.` : "Click anywhere on the map for the slices that covered that spot.");
+}
+
+/* ---------- side panel ---------- */
+const chips = (under, cur) => `<div class="strip">${MAP_ST.map(s => `<span class="${under[s.key] ? "on" : ""} ${s.key === cur ? "cur" : ""}" title="${esc(s.label)}: ${under[s.key] ? "under ice" : "no ice"}" data-k="${s.key}"></span>`).join("")}</div><div class="stripl"><span>${esc(MAP_ST[0].label)}</span><span>LGM</span></div>`;
+function side() {
+  const box = document.getElementById("side"), s = MAP_ST[S.i];
+  let h = `<h4>Time slice ${S.i + 1} of ${MAP_ST.length}</h4><div class="big">${esc(s.name)}</div><p class="sub">${esc(s.label)} · ${esc(ageShort(s))}</p>`;
+  h += `<table><tr><td>Ice area (best estimate)</td><td class="num">${mkm(s.area)}</td></tr><tr><td>Size rank, of ${MAP_ST.length}</td><td class="num">${s.rank}</td></tr>
+<tr><td>Authors' range, minimum to maximum</td><td class="num">${s.tab_min ? f1(s.tab_min / 1e6) + " to " + f1(s.tab_max / 1e6) + "m" : "LGM: one outline"}</td></tr>
+<tr><td>Share over today's sea</td><td class="num">${f1(s.on_sea_pct)}%</td></tr></table>`;
+  if (s.warm) h += `<div class="warn">For this slice the authors drew the ice at the warmest point, not the largest.</div>`;
+  if (["mis8", "mis10"].includes(s.key)) h += `<div class="warn">The authors call this outline highly uncertain: a guide to the amount of ice, not to where its edge lay.</div>`;
+  h += `<h4>Southernmost ice</h4><table>${["na", "eu"].map(c => s.south[c] ? `<tr><td>${c === "na" ? "North America" : "Europe"}</td><td class="num">${latS(s.south[c].lat)}<br><small>${fmt(s.south[c].near_km)} km from ${esc(s.south[c].near)}</small></td></tr>` : "").join("")}</table>`;
+  h += `<h4>Under this ice today</h4><p style="margin:0 0 6px">${fmt(s.places_n)} Natural Earth cities and towns, ${s.places_pop >= 1e7 ? fmt(s.places_pop / 1e6) : f1(s.places_pop / 1e6)} million people by its figures. Largest:</p><ul>${s.places_top.map(p => `<li>${esc(p[0])} <small>${esc(p[1])}, ${p[2] >= 1e6 ? f1(p[2] / 1e6) + "m" : fmt(p[2])}</small></li>`).join("")}</ul>`;
+  h += `<h4>Countries with most land under it</h4><table>${s.countries_top.map(c => `<tr><td>${esc(c[0])}</td><td class="num">${fmt(c[1])} km²<br><small>${f1(c[2])}% of the country</small></td></tr>`).join("")}</table>`;
+  h += `<p class="sub" style="margin-top:10px">Click the map for any spot's ice history.</p>`;
+  box.innerHTML = h;
+}
+function renderPoint() {
+  const box = document.getElementById("side"); if (!S.pt) return side();
+  const [lon, lat] = S.pt, q = query(lon, lat), s = MAP_ST[S.i], nm = placeName(lon, lat);
+  const nUnder = MK.filter(k => q.under[k]).length;
+  let h = `<button class="back">Back to the time slice</button><h4>The spot you picked</h4><div class="big">${nm ? esc(nm.c.name) : latS(lat) + ", " + lonS(lon)}</div><p class="sub">${nm ? `${esc(nm.c.country)} · ${latS(lat)}, ${lonS(lon)}` : "no listed city within 60 km"}</p>`;
+  if (!ICE) { box.innerHTML = h + `<p>The ice outlines are still loading.</p>`; box.querySelector(".back").onclick = clearPoint; return; }
+  h += `<h4>Under ice in ${nUnder} of ${MK.length} slices</h4>${chips(q.under, curKey())}`;
+  h += `<table><tr><td>${esc(s.label)}</td><td class="num">${q.under[s.key] ? `<span class="in">under the ice</span>, ${fmt(-q.d)} km in from the edge` : `${fmt(q.d)} km beyond the ice edge`}</td></tr>`;
+  if (q.near) h += `<tr><td>Closest any slice came</td><td class="num">${fmt(q.near.d)} km, ${esc(SBY[q.near.k].label)}</td></tr>`;
+  h += `<tr><td>Ice thickness</td><td class="num">unknown: the outlines give extent only</td></tr>`;
+  h += `<tr><td>With the sea 120 m lower</td><td class="num">${q.land ? "land today" : q.e120 ? (q.e60 ? "dry land already at 60 m lower" : "dry land at 120 m lower") : "still under the sea"}</td></tr></table>`;
+  const under = MK.filter(k => q.under[k]).map(k => SBY[k].label);
+  if (under.length) h += `<p class="story">Ice covered this spot in ${under.length === 1 ? under[0] : under.slice(0, -1).join(", ") + " and " + under[under.length - 1]}.</p>`;
+  else h += `<p class="story">None of the ${MK.length} outlines covers this spot.</p>`;
+  h += `<p class="sub">Distances are measured in your browser on the generalised outlines and can be a few km out. The outlines are not meant for local detail.</p>`;
+  box.innerHTML = h; box.querySelector(".back").onclick = clearPoint;
+  box.querySelectorAll(".strip span").forEach(c => c.onclick = () => { stop(); setStage(MK.indexOf(c.dataset.k)); });
+  return q;
+}
+function clearPoint() { S.pt = null; if (popup) popup.remove(); if (mapOK) map.getSource("pin").setData({ type: "FeatureCollection", features: [] }); redraw(); side(); }
+function pickPoint(lon, lat, o = {}) {
+  S.pt = [((lon + 540) % 360) - 180, lat];
+  if (mapOK) map.getSource("pin").setData({ type: "FeatureCollection", features: [{ type: "Feature", properties: {}, geometry: { type: "Point", coordinates: [lon, lat] } }] });
+  const q = renderPoint(); redraw();
+  if (o.fly && mapOK) map.flyTo({ center: [lon, lat], zoom: Math.max(map.getZoom(), 4), speed: 1.4 });
+  if (o.popup && mapOK && q && ICE) {
+    if (popup) popup.remove(); const s = MAP_ST[S.i], n = MK.filter(k => q.under[k]).length;
+    popup = new maplibregl.Popup({ offset: 10, maxWidth: "280px" }).setLngLat([lon, lat]).setHTML(`<b class="t">${n ? `Under ice in ${n} of ${MK.length} slices` : "Never under ice here"}</b><div class="al">${latS(S.pt[1])}, ${lonS(S.pt[0])}</div><table><tr><td>${esc(s.label)}</td><td>${q.under[s.key] ? fmt(-q.d) + " km inside the ice" : fmt(q.d) + " km from the ice"}</td></tr><tr><td>Thickness</td><td>unknown</td></tr></table>`).addTo(map);
+  }
+  if (small() && o.fly) document.getElementById("map").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+/* ---------- search ---------- */
+(function search() {
+  const inp = document.getElementById("q"), sug = document.getElementById("sug"); let opts = [], k = -1;
+  const nrm = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  const build = v => { v = nrm(v.trim()); if (v.length < 2) return []; return CITIES.filter(c => nrm(c.name).startsWith(v)).slice(0, 8).concat(CITIES.filter(c => !nrm(c.name).startsWith(v) && nrm(c.name).includes(v)).slice(0, 4)); };
+  const show = () => { sug.innerHTML = opts.map((c, i) => `<li role="option" aria-selected="${i === k}" data-i="${i}">${esc(c.name)} <span>${esc(c.country)}</span></li>`).join(""); sug.style.display = opts.length ? "block" : "none"; };
+  const choose = c => { sug.style.display = "none"; inp.blur(); inp.value = c.name; pickPoint(c.lon, c.lat, { popup: true, fly: true }); };
+  inp.addEventListener("input", () => { opts = build(inp.value); k = -1; show(); });
+  inp.addEventListener("keydown", e => { if (e.key === "ArrowDown") { k = Math.min(opts.length - 1, k + 1); show(); e.preventDefault(); } else if (e.key === "ArrowUp") { k = Math.max(0, k - 1); show(); e.preventDefault(); } else if (e.key === "Enter" && opts.length) { choose(opts[Math.max(0, k)]); } else if (e.key === "Escape") { sug.style.display = "none"; } });
+  sug.addEventListener("click", e => { const li = e.target.closest("li"); if (li) choose(opts[+li.dataset.i]); });
+  document.addEventListener("click", e => { if (!e.target.closest(".searchbox")) sug.style.display = "none"; });
+})();
+
+/* ---------- charts ---------- */
+function goStage(k) { const i = MK.indexOf(k); if (i < 0) return; document.getElementById("atlas").scrollIntoView({ behavior: "smooth" }); stop(); setStage(i); }
+function areaChart() {
+  const rows = ST.slice().reverse();
+  resp(document.getElementById("areaChart"), (w, sm) => {
+    const rh = 25, lw = sm ? 112 : 200, rr = sm ? 44 : 70, h = rows.length * rh + 34, svg = el("svg", { viewBox: `0 0 ${w} ${h}`, role: "img", "aria-label": "Bar chart of ice area in each time slice" }, document.getElementById("areaChart"));
+    const mx = 38e6, X = v => lw + (w - lw - rr) * v / mx;
+    const defs = el("defs", {}, svg), pat = el("pattern", { id: "hatch", width: 6, height: 6, patternUnits: "userSpaceOnUse", patternTransform: "rotate(45)" }, defs);
+    el("rect", { width: 6, height: 6, fill: css("--icefill") }, pat); el("line", { x1: 0, y1: 0, x2: 0, y2: 6, stroke: css("--ice"), "stroke-width": 2.2 }, pat);
+    for (let v = 0; v <= 35e6; v += 5e6) { const x = X(v); el("line", { x1: x, x2: x, y1: 18, y2: h - 14, stroke: css("--rule") }, svg); lbl(svg, x, h - 2, v / 1e6, "lab s m", "middle"); }
+    lbl(svg, w - 2, 11, "million km²", "lab s m", "end");
+    rows.forEach((s, i) => { const y = 20 + i * rh;
+      lbl(svg, lw - 8, y + 12, sm ? s.label.replace("Early Matuyama", "E. Matuyama") : s.label, "lab b", "end");
+      if (!sm) lbl(svg, lw - 8, y + 23, s.ka1 >= 1000 ? `${(s.ka0 / 1000).toFixed(2)} to ${(s.ka1 / 1000).toFixed(2)} Ma` : s.ka0 === s.ka1 ? `${s.ka0} ka` : `${s.ka0} to ${s.ka1} ka`, "lab s m", "end");
+      if (s.tab_min) { el("line", { x1: X(s.tab_min), x2: X(s.tab_max), y1: y + 13, y2: y + 13, stroke: css("--muted"), "stroke-width": 1 }, svg); [s.tab_min, s.tab_max].forEach(v => el("line", { x1: X(v), x2: X(v), y1: y + 9, y2: y + 17, stroke: css("--muted") }, svg)); }
+      el("rect", { x: lw, y: y + 5, width: X(s.area) - lw, height: rh - 9, fill: s.warm ? "url(#hatch)" : (s.key === "mis6" ? css("--ice") : isDark() ? "#5E8DB8" : "#8DB4D6"), rx: 2, "data-k": s.key, stroke: s.key === curKey() ? css("--fg") : "none", "stroke-width": 1.5 }, svg);
+      el("line", { x1: X(s.tab_best), x2: X(s.tab_best), y1: y + 3, y2: y + rh - 2, stroke: css("--fg"), "stroke-width": 1.6 }, svg);
+      lbl(svg, X(Math.max(s.area, s.tab_max || 0, s.tab_best)) + 6, y + 16, f1(s.area / 1e6), "lab s b");
+      const hr = el("rect", { x: 0, y, width: w, height: rh, fill: "transparent", style: "cursor:pointer" }, svg);
+      hr.addEventListener("click", () => goStage(s.key));
+      hr.addEventListener("mousemove", ev => showTip(`<b>${esc(s.name)}</b>, ${esc(ageShort(s))}<br>outline: ${mkm(s.area)} (rank ${s.rank} of ${MK.length})<br>authors' best: ${mkm(s.tab_best)}${s.tab_min ? `<br>authors' range: ${f1(s.tab_min / 1e6)} to ${f1(s.tab_max / 1e6)} million km²` : ""}${s.warm ? "<br>drawn at the warm peak of the slice" : ""}`, ev.clientX, ev.clientY));
+      hr.addEventListener("mouseleave", hideTip); });
+  });
+}
+function southChart() {
+  const rows = MAP_ST.slice().reverse();
+  resp(document.getElementById("southChart"), (w, sm) => {
+    const rh = 22, lw = sm ? 104 : 140, h = rows.length * rh + 34, svg = el("svg", { viewBox: `0 0 ${w} ${h}`, role: "img", "aria-label": "Dot chart of the southernmost latitude reached by the ice in North America and Europe in each slice" }, document.getElementById("southChart"));
+    const a = 36, b = 60, X = v => lw + (w - lw - 14) * (v - a) / (b - a);
+    for (let v = a; v <= b; v += 4) { const x = X(v); el("line", { x1: x, x2: x, y1: 14, y2: h - 16, stroke: css("--rule") }, svg); lbl(svg, x, h - 3, v + "°N", "lab s m", "middle"); }
+    lbl(svg, lw, 10, "further south", "lab s m"); lbl(svg, w - 14, 10, "further north", "lab s m", "end");
+    rows.forEach((s, i) => { const y = 22 + i * rh;
+      lbl(svg, lw - 8, y + 4, sm ? s.label.replace("Early Matuyama", "E. Matuyama") : s.label, "lab", "end");
+      el("line", { x1: lw, x2: w - 14, y1: y, y2: y, stroke: css("--rule"), "stroke-dasharray": "1 3" }, svg);
+      [["na", css("--na")], ["eu", css("--eu")]].forEach(([c, col]) => { const v = s.south[c]; if (!v) return;
+        const d = el("circle", { cx: X(v.lat), cy: y, r: 5.5, fill: col, stroke: css("--card"), "stroke-width": 1.2, style: "cursor:pointer" }, svg);
+        d.addEventListener("click", () => goStage(s.key));
+        d.addEventListener("mousemove", ev => showTip(`<b>${esc(s.label)}</b>, ${c === "na" ? "North America" : "Europe"}<br>${latS(v.lat)}, ${lonS(v.lon)}<br>${fmt(v.near_km)} km from ${esc(v.near)}, ${esc(v.near_country)}`, ev.clientX, ev.clientY)); d.addEventListener("mouseleave", hideTip); }); });
+  });
+}
+function countryChart() {
+  const rows = R.countries.union_top_pct.filter(r => r.pct >= 5).map(r => ({ ...r, lgm: (R.countries.lgm_top_pct.find(x => x.iso === r.iso) || { pct: 0 }).pct }));
+  resp(document.getElementById("countryChart"), (w, sm) => {
+    const rh = 24, lw = sm ? 118 : 160, h = rows.length * rh + 30, svg = el("svg", { viewBox: `0 0 ${w} ${h}`, role: "img", "aria-label": "Bar chart of the share of each country under ice at the LGM and in any slice" }, document.getElementById("countryChart"));
+    const X = v => lw + (w - lw - 48) * v / 100;
+    [0, 25, 50, 75, 100].forEach(v => { el("line", { x1: X(v), x2: X(v), y1: 4, y2: h - 18, stroke: css("--rule") }, svg); lbl(svg, X(v), h - 4, v + "%", "lab s m", "middle"); });
+    rows.forEach((r, i) => { const y = 6 + i * rh;
+      lbl(svg, lw - 8, y + 14, r.name, "lab", "end");
+      el("rect", { x: lw, y: y + 4, width: Math.max(1, X(r.pct) - lw), height: rh - 8, fill: isDark() ? "#3E5F7E" : "#C9DCEC", rx: 2 }, svg);
+      if (r.lgm > 0) el("rect", { x: lw, y: y + 4, width: Math.max(1, X(r.lgm) - lw), height: rh - 8, fill: css("--ice"), rx: 2 }, svg);
+      lbl(svg, X(r.pct) + 5, y + 15, Math.round(r.pct) + "%", "lab s b");
+      const hr = el("rect", { x: 0, y, width: w, height: rh, fill: "transparent" }, svg);
+      hr.addEventListener("mousemove", ev => showTip(`<b>${esc(r.name)}</b><br>LGM: ${f1(r.lgm)}% of the country<br>any slice: ${f1(r.pct)}% (${fmt(r.km2)} km²)`, ev.clientX, ev.clientY)); hr.addEventListener("mouseleave", hideTip); });
+  });
+}
+function cityTable() {
+  const t = document.getElementById("cityTable"), C = SITE.cities.slice().sort((a, b) => a.d[SK.indexOf("lgm")] - b.d[SK.indexOf("lgm")]);
+  t.innerHTML = `<thead><tr><th>City</th><th class="r">LGM edge</th><th>Slices with ice over it</th></tr></thead><tbody>` + C.map((c, i) => { const d = c.d[SK.indexOf("lgm")], under = {}; MK.forEach(k => under[k] = c.d[SK.indexOf(k)] < 0);
+    return `<tr data-i="${i}"><td>${esc(c.name)}<br><small style="color:var(--muted)">${esc(c.country)}</small></td><td class="r">${d < 0 ? `<span class="in">${fmt(d)} km</span>` : "+" + fmt(d) + " km"}</td><td><div class="strip">${MAP_ST.map(s => `<span class="${under[s.key] ? "on" : ""}" title="${esc(s.label)}"></span>`).join("")}</div><small style="color:var(--muted)">${MK.filter(k => under[k]).length} of ${MK.length}</small></td></tr>`; }).join("") + `</tbody>`;
+  t.querySelectorAll("tr[data-i]").forEach(r => r.onclick = () => { const c = C[+r.dataset.i]; document.getElementById("atlas").scrollIntoView({ behavior: "smooth" }); setTimeout(() => pickPoint(c.lon, c.lat, { popup: true, fly: true }), 350); });
+}
+function shelfChart() {
+  const rows = SITE.shelves.filter(r => r.m120 > 0);
+  resp(document.getElementById("shelfChart"), (w, sm) => {
+    const rh = 26, lw = sm ? 130 : 200, h = rows.length * rh + 28, svg = el("svg", { viewBox: `0 0 ${w} ${h}`, role: "img", "aria-label": "Bar chart of ice-free sea floor uncovered by lower sea levels, by shelf region" }, document.getElementById("shelfChart"));
+    const mx = Math.max(...rows.map(r => r.m120)), X = v => lw + (w - lw - 60) * v / mx;
+    for (let v = 0; v <= mx; v += 1e6) { el("line", { x1: X(v), x2: X(v), y1: 4, y2: h - 18, stroke: css("--rule") }, svg); lbl(svg, X(v), h - 4, v / 1e6 + (v ? "m" : ""), "lab s m", "middle"); }
+    rows.forEach((r, i) => { const y = 6 + i * rh;
+      lbl(svg, lw - 8, y + 15, r.name, "lab", "end");
+      el("rect", { x: lw, y: y + 4, width: Math.max(1, X(r.m120) - lw), height: rh - 8, fill: css("--sand"), rx: 2 }, svg);
+      el("rect", { x: lw, y: y + 4, width: Math.max(1, X(r.m60) - lw), height: rh - 8, fill: css("--sand2"), rx: 2 }, svg);
+      lbl(svg, X(r.m120) + 5, y + 16, f1(r.m120 / 1e6) + "m", "lab s b");
+      const hr = el("rect", { x: 0, y, width: w, height: rh, fill: "transparent" }, svg);
+      hr.addEventListener("mousemove", ev => showTip(`<b>${esc(r.name)}</b><br>${esc(r.covers)}<br>ice-free land at 60 m lower: ${fmt(r.m60)} km²<br>at 120 m lower: ${fmt(r.m120)} km²`, ev.clientX, ev.clientY)); hr.addEventListener("mouseleave", hideTip); });
+  });
+}
+function charts() { areaChart(); southChart(); countryChart(); cityTable(); shelfChart(); }
+
+/* ---------- start ---------- */
+document.getElementById("theme").onclick = () => { const r = document.documentElement; r.dataset.theme = isDark() ? "light" : "dark"; retheme(); redraw(); legend(); redraws.forEach(f => f()); };
+charts(); setStage(MAP_ST.length - 1); initMap();
+Promise.all([fetch("data/ice_page.json").then(r => r.json()), fetch("data/exposed.json").then(r => r.json())]).then(([ice, exp]) => {
+  ICEFC = ice; EXPFC = exp;
+  ICE = prep(ice, f => f.properties.key); EXP = prep(exp, f => -f.properties.sea_level_m);
+  // the furthest of any slice: drawn as the outline of every slice's ice, merged visually by drawing them all
+  MAXFC = { type: "Feature", properties: { key: "max" }, geometry: { type: "MultiPolygon", coordinates: [] } };
+  if (window.SITE_MAX) MAXFC.geometry = window.SITE_MAX;
+  setIceData(); setExpData(); redraw(); if (S.pt) renderPoint();
+}).catch(() => { document.getElementById("mapnote").textContent = "The ice outlines could not be loaded (data/ice_page.json)."; });
+</script>
+/*FULLSCREEN*/
+</body>
+</html>

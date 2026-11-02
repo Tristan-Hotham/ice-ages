@@ -1,0 +1,130 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Pagella}
+\newfontfamily\headfont{Inter}[UprightFont=*-ExtraBold,BoldFont=*-ExtraBold,Extension=.otf,Path=/usr/share/fonts/opentype/inter/]
+\usepackage[a4paper,margin=2.3cm]{geometry}
+\usepackage{graphicx,booktabs,float,caption,array,xcolor,longtable}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{titlesec}
+\usepackage[round]{natbib}
+\usepackage{setspace}
+\setstretch{1.05}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.75}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\titleformat{\section}{\headfont\Large}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\headfont\large}{\thesubsection}{0.8em}{}
+\captionsetup{font=small,labelfont=bf}
+\urlstyle{same}
+\newcommand{\kmq}{km\textsuperscript{2}}
+\hypersetup{pdftitle={When the Ice Came South},pdfauthor={Tristan Hotham}}
+
+\begin{document}
+\begin{center}
+{\Large\bfseries When the Ice Came South\par}
+\vspace{0.4em}
+{\large The Northern Hemisphere's ice sheets through the Quaternary,\\what lay beneath them and the land the sea gave up\par}
+\vspace{1.2em}
+{\large Tristan Hotham\par}
+\vspace{0.3em}
+{\small Independent researcher\\
+ORCID: 0000-0003-4931-9349\\
+DOI: \href{https://doi.org/{{meta.doi}}}{https://doi.org/{{meta.doi}}}\par}
+\vspace{0.8em}
+2026
+\end{center}
+
+\begin{quote}
+\small
+\begin{center}\textbf{Abstract}\end{center}
+I measure and map the best-estimate reconstructions of Northern Hemisphere ice-sheet extent published by \citet{batchelor} for {{areas.n_stages|int}} time slices from the late Gauss Chron (3.59 to 2.6 million years ago) to the Last Glacial Maximum (LGM, about 26,500 years ago), and ask what lies under them today. Measured in an equal-area projection, the largest outline is MIS 6 (132,000 to 190,000 years ago), at {{stages.mis6.area|m1}} million \kmq, {{areas.mis6_over_lgm_pct|int}}\% more than the LGM ({{stages.lgm.area|m1}} million \kmq), which ranks {{areas.lgm_rank|int}}th of the {{areas.n_stages|int}} slices; the authors' own area table gives the same order for the seven largest slices. Together the outlines cover {{areas.union|m1}} million \kmq. The LGM ice covered {{countries.by_iso.CAN.lgm_pct|int}}\% of Canada, all of Ireland, Sweden and Finland, and {{countries.by_iso.GBR.lgm_pct|int}}\% of the United Kingdom; {{places.lgm.n|int}} of the {{places.total_n|int}} cities and towns in Natural Earth, with a combined population figure of about {{places.lgm_pop_m|int}} million, stand inside it, New York {{cities.New York.lgm|abs}} km inside the edge. London lies outside every outline, {{cities.London.mis12|int}} km from the MIS 12 edge. The ice reached {{south.na_min.lat|f1}}°N in North America in MIS 6 and MIS 12 and {{south.mis6_eu.lat|f1}}°N in Europe in MIS 6. On the ETOPO1 relief, a sea 120 m lower than today exposes {{exposed.m120.km2|m1}} million \kmq\ of sea floor, {{exposed.m120.ice_free|m1}} million of it outside the LGM ice; the largest new lands are the Sahul and Sunda shelves.
+
+\textbf{Keywords:} ice sheets; Quaternary; Last Glacial Maximum; glaciation; sea level; land bridges; Doggerland; Beringia; palaeogeography; open data; mapping
+\end{quote}
+
+\section{Introduction}
+The ice sheets of the Last Glacial Maximum are familiar from maps of North America and Europe, but they were neither the only nor the largest ice sheets of the Quaternary. \citet{batchelor} compiled the published empirical and modelled evidence for the extent of Northern Hemisphere glaciation and drew minimum, maximum and best-estimate reconstructions of the ice for {{areas.n_stages|int}} time slices, from the late Gauss palaeomagnetic Chron to the LGM. Their outlines are published as shapefiles with an area table. This paper uses the best-estimate outlines to answer simple questions: how big was the ice in each slice, how far south did it reach, which of today's countries and cities lay beneath it, and how much land did the lower sea level of a glacial maximum uncover. An interactive map accompanies the paper at \url{{{meta.page}}}.
+
+\section{Data and methods}
+\subsection{Ice outlines}
+The shapefiles come from the authors' repository on the Open Science Framework (\url{{{meta.osf}}}). The README supplied with them gives the time slices and their ages: the LGM, 30, 35, 40 and 45 ka, MIS 4 (58 to 72 ka), MIS 5a (72 to 86 ka), 5b (86 to 92 ka), 5c (92 to 108 ka), 5d (108 to 117 ka), MIS 6 (132 to 190 ka), MIS 8 (243 to 279 ka), MIS 10 (337 to 365 ka), MIS 12 (429 to 477 ka), MIS 16 (622 to 677 ka), MIS 20 to 24 (790 to 928 ka), the early Matuyama Chron (1.78 to 2.6 Ma) and the late Gauss Chron (2.6 to 3.59 Ma). For the LGM there is one outline, derived mainly from \citet{ehlers}; for every earlier slice there are minimum, maximum and best-estimate outlines. I use only the best estimates; the minimum and maximum enter through the authors' area table. The README states no licence; the repository is released under CC BY 4.0.
+
+All files but one are in a north polar Lambert azimuthal equal-area projection on the WGS84 ellipsoid (centre 90°N, 0°E); the LGM file is in geographic coordinates and was reprojected after adding vertices every 0.05°. I repaired invalid polygons (in {{source.invalid_in|int}} files), dissolved each slice to a single outline, and measured areas in the equal-area projection. The files for 45 ka and the late Gauss Chron also contain today's glaciers worldwide, apparently from a global glacier layer, including Antarctica; I keep only parts north of the equator, removing {{source.dropped_sh_km2|m1}} million \kmq\ (as projected) from each. For the web map the outlines are generalised to about 7 km; the released outlines, to 1.5 km. The authors' outlines aim to show the largest extent within each slice, except that for 45 ka, MIS 5a and MIS 5c they show the ice at peak warmth. They are not intended for local-scale use, and the authors describe some, notably MIS 8 and MIS 10, as highly uncertain, indicating the likely amount of ice rather than the position of its margin. For regions without evidence, ice was taken from a slice with a similar global $\delta^{18}$O value, and templates were used for Greenland, Iceland, the North American Cordillera and north-east Asia \citep{batchelor}.
+
+\subsection{Countries, places and distances}
+Country areas under ice are the intersections of Natural Earth 1:10m countries (Northern Hemisphere parts) with each outline in the same equal-area projection, divided by the whole country's area in the Equal Earth projection. Cities and towns are the {{places.total_n|int}} points of Natural Earth's populated places, each with Natural Earth's population figure (\texttt{pop\_max}, which describes the built-up area), so sums over places are approximate and are not a census. For a list of large cities chosen in advance, I measured the distance from the city centre to the ice edge in an azimuthal equidistant projection centred on the city, which gives true distances on the ellipsoid to the generalised edge. Whether a point is inside is decided in the equal-area projection.
+
+\subsection{Southernmost reach}
+For each slice I take the lowest latitude on any outline polygon of 50,000 \kmq\ or more, the authors' threshold for an ice sheet, between 170°W and 50°W (North America) and between 12°W and 60°E (Europe). Mountain glaciers and smaller ice caps are not in the reconstructions.
+
+\subsection{Exposed sea floor}
+Sea-floor depths come from ETOPO10, a 10 arc-minute resampling of ETOPO1 \citep{etopo1}, with cell areas on the authalic sphere. Land today is any cell whose ice-surface elevation is above 0 m or which lies inside Natural Earth's land; the sea is every other cell in a water body joined to the world ocean or larger than 50,000 \kmq, except the Caspian Sea, which keeps its own level. This keeps the Black Sea ({{source.black_sea_kept|m2}} million \kmq\ on this grid) and drops the Caspian and lakes. Depth is the bedrock version, so floating ice shelves are not mistaken for shallow sea. A cell is exposed at a sea level $S$ if it is sea today and its floor is at or above $S$. I use $S=-120$ m, near the LGM lowstand of about 120 to 125 m quoted on Wikipedia \citep{wiki}, and $S=-60$ m for comparison. No isostatic adjustment, erosion or sedimentation is modelled, matching the authors' choice to draw the ice on today's topography. Regional figures use boxes I drew round the main shelf seas (Table~\ref{tab:shelves}). Land bridges are tested by whether two of today's landmasses fall in the same connected region of land plus exposed floor; at the grid's resolution of about 18 km, narrow deep straits may be missed, and I report no tests that hinge on them.
+
+\section{Results}
+\subsection{Ice area}
+Table~\ref{tab:areas} and Figure~\ref{fig:areas} give the area of every slice. The largest outline is MIS 6, {{stages.mis6.area|m1}} million \kmq, followed by MIS 12 ({{stages.mis12.area|m1}} million) and MIS 16 ({{stages.mis16.area|m1}} million). The LGM, at {{stages.lgm.area|m1}} million \kmq, ranks {{areas.lgm_rank|int}}th; MIS 6 is {{areas.mis6_over_lgm_pct|int}}\% larger ({{areas.mis6_over_lgm_pct_tab|int}}\% in the authors' table). At the LGM {{stages.lgm.on_sea_pct|f1}}\% of the ice lay over what is now sea, from Hudson Bay to the Barents Sea. My measured areas are within {{areas.max_abs_diff_pct|f1}}\% of the authors' table for every slice except 40 ka, where the outline holds {{areas.ka40_diff_pct|int}}\% more ice than the table; the difference lies mostly in ice masses in north-east Asia that the table's ``others'' column does not appear to count. The three slices drawn at peak warmth are the three smallest, none above {{x.warm_max_m|f1}} million \kmq. Together the {{areas.n_mapped|int}} outlines cover {{areas.union|m1}} million \kmq, {{areas.union_over_lgm_pct|int}}\% more than the LGM; {{areas.every|m1}} million \kmq, about half of it Greenland, is inside all of them.
+
+{{TABLE_AREAS}}
+
+\begin{figure}[tbp]\centering\includegraphics[width=\textwidth]{f_areas.png}
+\caption{Ice area in each time slice: best-estimate outlines measured in an equal-area projection (bars), the authors' best-estimate figure (ticks) and their minimum to maximum range (lines). Hatched: slices drawn at peak warmth.}\label{fig:areas}\end{figure}
+
+\begin{figure}[tbp]\centering\includegraphics[width=\textwidth]{f_stages.png}
+\caption{The best-estimate ice of every mapped slice, oldest first, with the LGM ice (red dashes) for comparison. North polar Lambert azimuthal equal-area projection, central meridian 40°W.}\label{fig:stages}\end{figure}
+
+\begin{figure}[tbp]\centering\includegraphics[width=.92\textwidth]{f_map.png}
+\caption{The LGM ice, the furthest ice of any slice (dashed purple) and the sea floor exposed by a 120 m fall in sea level (sand), with selected cities.}\label{fig:map}\end{figure}
+
+\subsection{Southernmost reach}
+In North America the LGM ice reached {{south.lgm_na.lat|f1}}°N, {{south.lgm_na.near_km|int}} km from Bloomington, Indiana. MIS 6 and MIS 12 reached {{south.na_min.lat|f1}}°N in southern Illinois, {{south_extra.na_min_to_ohio_mouth_km|int}} km from the confluence of the Ohio and the Mississippi. In Europe the LGM outline reaches its lowest latitude, {{south.lgm_eu.lat|f1}}°N, on the floor of the Celtic Sea south of Ireland; on the mainland it reaches {{south_extra.lgm_eu_mainland_lat|f1}}°N. In MIS 6 a lobe reached {{south.mis6_eu.lat|f1}}°N in the Dnieper valley, {{south.mis6_eu.near_km|int}} km from Dnipro, the southernmost European ice of any slice, and in MIS 16 the ice reached {{stages.mis16.south.eu.lat|f1}}°N in the Don basin (Figure~\ref{fig:south}, Table~\ref{tab:south}).
+
+{{TABLE_SOUTH}}
+
+\begin{figure}[tbp]\centering\includegraphics[width=\textwidth]{f_south.png}
+\caption{Lowest latitude of the ice in North America and Europe in each slice (outline polygons of 50,000 \kmq\ or more).}\label{fig:south}\end{figure}
+
+\subsection{What lay beneath}
+The LGM outline covers at least 1\% of {{countries.lgm_any|int}} countries and territories, and the union of all outlines {{countries.union_any|int}}. Under the LGM ice were {{countries.by_iso.CAN.lgm_pct|f1}}\% of Canada, all of Ireland, Sweden, Finland, Iceland, Estonia and Latvia, {{countries.by_iso.NOR.lgm_pct|f1}}\% of Norway, {{countries.by_iso.LTU.lgm_pct|f1}}\% of Lithuania, {{countries.by_iso.DNK.lgm_pct|f1}}\% of Denmark, {{countries.by_iso.GBR.lgm_pct|f1}}\% of the United Kingdom, {{countries.by_iso.POL.lgm_pct|f1}}\% of Poland, {{countries.by_iso.USA.lgm_pct|f1}}\% of the United States, {{countries.by_iso.DEU.lgm_pct|f1}}\% of Germany and {{countries.by_iso.RUS.lgm_pct|f1}}\% of Russia. Across all slices the shares rise to {{countries.by_iso.POL.union_pct|f1}}\% for Poland, {{countries.by_iso.BLR.union_pct|f1}}\% for Belarus, {{countries.by_iso.NLD.union_pct|f1}}\% for the Netherlands, {{countries.by_iso.DEU.union_pct|f1}}\% for Germany, {{countries.by_iso.RUS.union_pct|f1}}\% for Russia and {{countries.by_iso.UKR.union_pct|f1}}\% for Ukraine (Figure~\ref{fig:countries}).
+
+{{places.lgm.n|int}} Natural Earth places lie inside the LGM outline, {{places.lgm.n_1m|int}} of them with a population figure of a million or more; their figures sum to {{places.lgm.pop|int}}, {{x.lgm_places_pct|f1}}\% of the sum for all places. The union of all outlines contains {{places.union.n|int}} places summing to {{places.union.pop|int}}. Table~\ref{tab:cities} gives distances to the LGM edge for the cities chosen in advance (Figure~\ref{fig:cities}). New York is {{cities.New York.lgm|abs}} km inside the LGM outline, consistent with the usual account that the ice reached Manhattan \citep{wiki}; Chicago is {{cities.Chicago.lgm|abs}} km inside, Berlin {{cities.Berlin.lgm|abs}} km and Seattle {{cities.Seattle.lgm|abs}} km. London is outside every outline, {{cities.London.lgm|int}} km from the LGM edge and {{cities.London.mis12|int}} km from that of MIS 12, the Anglian glaciation; Moscow is {{cities.Moscow.lgm|int}} km outside the LGM ice but inside three older outlines. Given the generalisation of the outlines, distances under a few tens of kilometres say only that a city was near the edge.
+
+{{TABLE_CITIES}}
+
+\begin{figure}[tbp]\centering\includegraphics[width=\textwidth]{f_countries.png}
+\caption{Share of each country under the LGM ice and under the ice of at least one slice.}\label{fig:countries}\end{figure}
+
+\begin{figure}[tbp]\centering\includegraphics[width=\textwidth]{f_cities.png}
+\caption{Distance from city centres to the LGM ice edge (negative inside), and the slices whose outline contains each city, oldest on the left.}\label{fig:cities}\end{figure}
+
+\subsection{Exposed sea floor}
+A sea level 120 m below today's exposes {{exposed.m120.km2|int}} \kmq\ of sea floor on the ETOPO10 grid, {{exposed.m120.pct_of_land|f1}}\% of today's land area of {{exposed.land_today|int}} \kmq. Of this, {{exposed.m120.under_lgm_ice|int}} \kmq\ lies inside the LGM ice outline, leaving {{exposed.m120.ice_free|int}} \kmq\ of ice-free new land. A 60 m fall exposes {{exposed.m60.km2|int}} \kmq, {{exposed.half_share_pct|int}}\% of the 120 m figure. By region (Table~\ref{tab:shelves}, Figure~\ref{fig:exposed}) the largest ice-free gains at 120 m are the Sahul shelf ({{shelf.sahul.m120_ice_free|int}} \kmq), the Sunda shelf ({{shelf.sundaland.m120_ice_free|int}}), the Laptev, Kara and East Siberian shelves ({{shelf.siberian.m120_ice_free|int}}) and Beringia ({{shelf.beringia.m120_ice_free|int}}). The boxes hold {{exposed.boxes_share_pct|int}}\% of all ice-free exposed floor. Along the meridian of the Bering Strait (168.75°W), land and exposed floor run without a break for {{bering.width_km|int}} km, from {{bering.south_lat|f1}}°N to {{bering.north_lat|f1}}°N. All {{x.joins_n|int}} land-bridge tests (Britain and Europe, Ireland and Britain, Asia and North America, New Guinea and Tasmania with Australia, Sumatra, Java and Borneo with mainland Asia, Sri Lanka with India, Taiwan and Sakhalin with the mainland) are joined at 60 m as well as at 120 m, and none at today's level.
+
+{{TABLE_SHELVES}}
+
+\begin{figure}[tbp]\centering\includegraphics[width=\textwidth]{f_exposed.png}
+\caption{Sea floor exposed by sea levels 60 m and 120 m below today's, with the LGM ice, and ice-free exposed area in the shelf boxes.}\label{fig:exposed}\end{figure}
+
+\section{Limitations}
+First, the outlines are generalised, partly subjective reconstructions of the maximum extent within each slice, compiled from evidence of very uneven density; they are not meant for local use, and the older slices are much less certain than the LGM, as the width of the authors' minimum to maximum ranges shows. Second, each slice's ice need not have reached its limits everywhere at once. Third, two files carry unrelated present-day glaciers that I removed only south of the equator, so small Northern Hemisphere glaciers remain in those two slices. Fourth, populations are Natural Earth's figures for named places and are indicative only. Fifth, the exposed-land figures use a fixed sea level on today's sea floor, at a resolution of about 18 km, without isostasy, sediment or the timing of each slice's lowstand, and the shelf boxes are my own.
+
+\section{Conclusion}
+In the reconstructions of \citet{batchelor}, the Last Glacial Maximum is a large but not exceptional Quaternary glaciation: MIS 6, MIS 12 and MIS 16 each had more ice, and the older ice reached further south, to southern Illinois and the Dnieper and Don valleys. The ice of the LGM alone lay over land where hundreds of cities stand today, from New York and Chicago to Berlin and St Petersburg, while London, Paris and Prague stayed clear of every outline. The water locked in that ice uncovered some {{x.exp120_free_m|f1}} million \kmq\ of ice-free land, most of it in the tropics and the Arctic, and joined Britain to Europe, Asia to America and Australia to New Guinea.
+
+\section*{Data and code availability}
+The interactive map is at \url{{{meta.page}}}. Data and code are at \url{{{meta.repo}}} and archived with this paper at \url{https://doi.org/{{meta.doi}}}. Derived data and text are released under CC BY 4.0 and code under the MIT licence. The ice outlines are those of \citet{batchelor} (CC BY 4.0); please cite their paper.
+
+\section*{AI statement}
+I wrote the text, with drafting and editing assistance from Claude (Anthropic), which also helped prepare the analysis code. I reviewed and checked all text and results.
+
+\begin{thebibliography}{9}
+\bibitem[Batchelor et al.(2019)]{batchelor} Batchelor, C.L., Margold, M., Krapp, M., Murton, D.K., Dalton, A.S., Gibbard, P.L., Stokes, C.R., Murton, J.B. and Manica, A. (2019) The configuration of Northern Hemisphere ice sheets through the Quaternary. \textit{Nature Communications} 10, 3713. doi:10.1038/s41467-019-11601-2. Data: \url{https://osf.io/7jen3/}, CC BY 4.0.
+\bibitem[Ehlers et al.(2011)]{ehlers} Ehlers, J., Gibbard, P.L. and Hughes, P.D. (eds) (2011) \textit{Quaternary Glaciations: Extent and Chronology, a Closer Look}. Developments in Quaternary Science 15. Elsevier. (As cited by Batchelor et al. 2019 for the LGM outline.)
+\bibitem[Amante and Eakins(2009)]{etopo1} Amante, C. and Eakins, B.W. (2009) ETOPO1 1 Arc-Minute Global Relief Model: Procedures, Data Sources and Analysis. NOAA Technical Memorandum NESDIS NGDC-24. doi:10.7289/V5C8276M. Used through ETOPO10 by G. Euler (MIT licence).
+\bibitem[Natural Earth(2026)]{naturalearth} Natural Earth (2026) Admin 0 countries, land and populated places, 1:10m and 1:50m. Public domain. \url{https://www.naturalearthdata.com/}
+\bibitem[Wikipedia(2026)]{wiki} Wikipedia contributors (2026) Last Glacial Maximum (revision {{wiki_revs.Last Glacial Maximum|raw}}), Quaternary glaciation (revision {{wiki_revs.Quaternary glaciation|raw}}), Beringia (revision {{wiki_revs.Beringia|raw}}), Sundaland (revision {{wiki_revs.Sundaland|raw}}), Sahul (revision {{wiki_revs.Sahul|raw}}), Doggerland (revision {{wiki_revs.Doggerland|raw}}). English Wikipedia, CC BY-SA 4.0.
+\end{thebibliography}
+\end{document}
