@@ -1,0 +1,19 @@
+stage,label,na_lat,na_lon,na_near,na_near_country,na_near_km,eu_lat,eu_lon,eu_near,eu_near_country,eu_near_km
+lgauss,Late Gauss,42.52,-108.0,Casper,United States of America,144,52.18,-7.69,Cork,Ireland,64
+emat,Early Matuyama,37.92,-88.9,Belleville,United States of America,117,52.18,-7.69,Cork,Ireland,64
+mis20,MIS 20 to 24,38.06,-89.32,Belleville,United States of America,79,49.72,18.69,Ostrava,Czechia,34
+mis16,MIS 16,37.82,-89.34,Belleville,United States of America,97,48.86,42.08,Kamensk Shakhtinskiy,Russia,147
+mis12,MIS 12,37.22,-89.07,Evansville,United States of America,158,49.27,23.62,Drohobych,Ukraine,12
+mis10,MIS 10,41.16,-68.29,New Bedford,United States of America,229,54.0,11.58,Rostock,Germany,38
+mis8,MIS 8,41.46,-68.75,New Bedford,United States of America,184,54.0,11.55,Rostock,Germany,40
+mis6,MIS 6,37.22,-89.07,Evansville,United States of America,158,48.3,34.24,Dnipro,Ukraine,59
+mis5d,MIS 5d,46.23,-53.0,St. John's,Canada,152,57.01,7.42,Kristiansand,Norway,133
+mis5c,MIS 5c,43.48,-72.14,Manchester,United States of America,78,58.72,7.68,Kristiansand,Norway,64
+mis5b,MIS 5b,46.36,-53.88,St. John's,Canada,164,58.27,7.82,Kristiansand,Norway,16
+mis5a,MIS 5a,43.48,-72.14,Manchester,United States of America,78,58.71,7.61,Kristiansand,Norway,65
+mis4,MIS 4,41.31,-70.92,New Bedford,United States of America,39,51.29,-8.61,Cork,Ireland,68
+ka45,45 ka,43.48,-72.14,Manchester,United States of America,78,58.71,7.64,Kristiansand,Norway,64
+ka40,40 ka,43.48,-72.14,Manchester,United States of America,78,55.75,-4.16,Glasgow,United Kingdom,15
+ka35,35 ka,43.49,-77.24,Rochester,United States of America,47,56.58,15.1,Växjö,Sweden,37
+ka30,30 ka,43.49,-77.24,Rochester,United States of America,47,53.16,18.63,Grudziądz,Poland,36
+lgm,LGM,39.02,-85.91,Bloomington,United States of America,55,50.23,-9.27,Cork,Ireland,194

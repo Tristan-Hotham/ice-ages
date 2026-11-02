@@ -1,0 +1,4838 @@
+{
+ "meta": {
+  "page": "https://maps.tristanhotham.com/ice-ages/",
+  "repo": "https://github.com/Tristan-Hotham/ice-ages",
+  "doi": "10.5281/zenodo.23878610",
+  "bat_doi": "10.1038/s41467-019-11601-2",
+  "osf": "https://osf.io/7jen3/"
+ },
+ "stages": {
+  "lgauss": {
+   "key": "lgauss",
+   "label": "Late Gauss",
+   "name": "Late Gauss Chron",
+   "age": "2.6 to 3.59 million years ago",
+   "ka0": 2600,
+   "ka1": 3590,
+   "warm": false,
+   "outline": true,
+   "area": 11072536,
+   "tab_best": 10953630,
+   "tab_min": 3750752,
+   "tab_max": 20091930,
+   "tab_regions": {
+    "EIS": 1058225,
+    "GIS": 3180890,
+    "LIS": 3075830,
+    "CIS": 3126285,
+    "Others": 512400
+   },
+   "diff_pct": 1.1,
+   "rank": 14,
+   "rank_tab": 14,
+   "on_land": 8852983,
+   "on_sea": 2143627,
+   "grid_check_pct": -0.69,
+   "on_sea_pct": 19.5,
+   "places": {
+    "n": 197,
+    "pop": 12345964,
+    "n_100k": 16,
+    "n_1m": 3,
+    "top": [
+     {
+      "name": "Seattle",
+      "country": "United States of America",
+      "pop": 3074000,
+      "lat": 47.571948,
+      "lon": -122.341931
+     },
+     {
+      "name": "Vancouver",
+      "country": "Canada",
+      "pop": 2313328,
+      "lat": 49.275362,
+      "lon": -123.12359
+     },
+     {
+      "name": "Calgary",
+      "country": "Canada",
+      "pop": 1110000,
+      "lat": 51.084938,
+      "lon": -114.081944
+     },
+     {
+      "name": "Tacoma",
+      "country": "United States of America",
+      "pop": 719868,
+      "lat": 47.211316,
+      "lon": -122.515013
+     },
+     {
+      "name": "Everett",
+      "country": "United States of America",
+      "pop": 486903,
+      "lat": 47.960418,
+      "lon": -122.199968
+     },
+     {
+      "name": "Spokane",
+      "country": "United States of America",
+      "pop": 347705,
+      "lat": 47.669996,
+      "lon": -117.419949
+     },
+     {
+      "name": "Victoria",
+      "country": "Canada",
+      "pop": 289625,
+      "lat": 48.433283,
+      "lon": -123.350001
+     },
+     {
+      "name": "Anchorage",
+      "country": "United States of America",
+      "pop": 260283,
+      "lat": 61.21997,
+      "lon": -149.900215
+     }
+    ]
+   },
+   "south": {
+    "na": {
+     "lon": -108.0,
+     "lat": 42.52,
+     "part_km2": 3199116,
+     "near": "Casper",
+     "near_country": "United States of America",
+     "near_km": 144
+    },
+    "eu": {
+     "lon": -7.69,
+     "lat": 52.18,
+     "part_km2": 50663,
+     "near": "Cork",
+     "near_country": "Ireland",
+     "near_km": 64
+    }
+   },
+   "lgm_ratio_pct": 42
+  },
+  "emat": {
+   "key": "emat",
+   "label": "Early Matuyama",
+   "name": "Early Matuyama Chron",
+   "age": "1.78 to 2.6 million years ago",
+   "ka0": 1780,
+   "ka1": 2600,
+   "warm": false,
+   "outline": true,
+   "area": 21570472,
+   "tab_best": 21773113,
+   "tab_min": 10516676,
+   "tab_max": 29096140,
+   "tab_regions": {
+    "EIS": 3153411,
+    "GIS": 3180890,
+    "LIS": 11379300,
+    "CIS": 3126285,
+    "Others": 933227
+   },
+   "diff_pct": -0.9,
+   "rank": 8,
+   "rank_tab": 9,
+   "on_land": 15025047,
+   "on_sea": 6420970,
+   "grid_check_pct": -0.58,
+   "on_sea_pct": 29.9,
+   "places": {
+    "n": 551,
+    "pop": 75815977,
+    "n_100k": 103,
+    "n_1m": 13,
+    "top": [
+     {
+      "name": "Chicago",
+      "country": "United States of America",
+      "pop": 8990000,
+      "lat": 41.831937,
+      "lon": -87.752001
+     },
+     {
+      "name": "Toronto",
+      "country": "Canada",
+      "pop": 5213000,
+      "lat": 43.701926,
+      "lon": -79.421967
+     },
+     {
+      "name": "Boston",
+      "country": "United States of America",
+      "pop": 4467000,
+      "lat": 42.331906,
+      "lon": -71.07196
+     },
+     {
+      "name": "Detroit",
+      "country": "United States of America",
+      "pop": 4101000,
+      "lat": 42.331906,
+      "lon": -83.082002
+     },
+     {
+      "name": "Montréal",
+      "country": "Canada",
+      "pop": 3678000,
+      "lat": 45.501945,
+      "lon": -73.585243
+     },
+     {
+      "name": "Seattle",
+      "country": "United States of America",
+      "pop": 3074000,
+      "lat": 47.571948,
+      "lon": -122.341931
+     },
+     {
+      "name": "Minneapolis",
+      "country": "United States of America",
+      "pop": 2616000,
+      "lat": 44.981925,
+      "lon": -93.253732
+     },
+     {
+      "name": "Vancouver",
+      "country": "Canada",
+      "pop": 2313328,
+      "lat": 49.275362,
+      "lon": -123.12359
+     }
+    ]
+   },
+   "south": {
+    "na": {
+     "lon": -88.9,
+     "lat": 37.92,
+     "part_km2": 14557270,
+     "near": "Belleville",
+     "near_country": "United States of America",
+     "near_km": 117
+    },
+    "eu": {
+     "lon": -7.69,
+     "lat": 52.18,
+     "part_km2": 50697,
+     "near": "Cork",
+     "near_country": "Ireland",
+     "near_km": 64
+    }
+   },
+   "lgm_ratio_pct": 82
+  },
+  "mis20": {
+   "key": "mis20",
+   "label": "MIS 20 to 24",
+   "name": "Marine Isotope Stages 20 to 24",
+   "age": "790,000 to 928,000 years ago",
+   "ka0": 790,
+   "ka1": 928,
+   "warm": false,
+   "outline": true,
+   "area": 23077383,
+   "tab_best": 23086853,
+   "tab_min": 10696676,
+   "tab_max": 35686830,
+   "tab_regions": {
+    "EIS": 4592429,
+    "GIS": 3180890,
+    "LIS": 12234431,
+    "CIS": 2541511,
+    "Others": 537592
+   },
+   "diff_pct": -0.0,
+   "rank": 7,
+   "rank_tab": 7,
+   "on_land": 16196446,
+   "on_sea": 6743140,
+   "grid_check_pct": -0.6,
+   "on_sea_pct": 29.4,
+   "places": {
+    "n": 666,
+    "pop": 116528474,
+    "n_100k": 163,
+    "n_1m": 25,
+    "top": [
+     {
+      "name": "Chicago",
+      "country": "United States of America",
+      "pop": 8990000,
+      "lat": 41.831937,
+      "lon": -87.752001
+     },
+     {
+      "name": "Toronto",
+      "country": "Canada",
+      "pop": 5213000,
+      "lat": 43.701926,
+      "lon": -79.421967
+     },
+     {
+      "name": "St. Petersburg",
+      "country": "Russia",
+      "pop": 4553000,
+      "lat": 59.94096,
+      "lon": 30.314074
+     },
+     {
+      "name": "Boston",
+      "country": "United States of America",
+      "pop": 4467000,
+      "lat": 42.331906,
+      "lon": -71.07196
+     },
+     {
+      "name": "Detroit",
+      "country": "United States of America",
+      "pop": 4101000,
+      "lat": 42.331906,
+      "lon": -83.082002
+     },
+     {
+      "name": "Montréal",
+      "country": "Canada",
+      "pop": 3678000,
+      "lat": 45.501945,
+      "lon": -73.585243
+     },
+     {
+      "name": "Berlin",
+      "country": "Germany",
+      "pop": 3406000,
+      "lat": 52.523765,
+      "lon": 13.399603
+     },
+     {
+      "name": "Seattle",
+      "country": "United States of America",
+      "pop": 3074000,
+      "lat": 47.571948,
+      "lon": -122.341931
+     }
+    ]
+   },
+   "south": {
+    "na": {
+     "lon": -89.32,
+     "lat": 38.06,
+     "part_km2": 15205645,
+     "near": "Belleville",
+     "near_country": "United States of America",
+     "near_km": 79
+    },
+    "eu": {
+     "lon": 18.69,
+     "lat": 49.72,
+     "part_km2": 2978251,
+     "near": "Ostrava",
+     "near_country": "Czechia",
+     "near_km": 34
+    }
+   },
+   "lgm_ratio_pct": 88
+  },
+  "mis16": {
+   "key": "mis16",
+   "label": "MIS 16",
+   "name": "Marine Isotope Stage 16",
+   "age": "622,000 to 677,000 years ago",
+   "ka0": 622,
+   "ka1": 677,
+   "warm": false,
+   "outline": true,
+   "area": 32166255,
+   "tab_best": 32040483,
+   "tab_min": 20060646,
+   "tab_max": 36621618,
+   "tab_regions": {
+    "EIS": 10504497,
+    "GIS": 3180890,
+    "LIS": 13594500,
+    "CIS": 2311548,
+    "Others": 2449048
+   },
+   "diff_pct": 0.4,
+   "rank": 3,
+   "rank_tab": 3,
+   "on_land": 22656733,
+   "on_sea": 9317054,
+   "grid_check_pct": -0.6,
+   "on_sea_pct": 29.1,
+   "places": {
+    "n": 896,
+    "pop": 198360575,
+    "n_100k": 266,
+    "n_1m": 36,
+    "top": [
+     {
+      "name": "New York",
+      "country": "United States of America",
+      "pop": 19040000,
+      "lat": 40.751925,
+      "lon": -73.981963
+     },
+     {
+      "name": "Moscow",
+      "country": "Russia",
+      "pop": 10452000,
+      "lat": 55.75411,
+      "lon": 37.613577
+     },
+     {
+      "name": "Chicago",
+      "country": "United States of America",
+      "pop": 8990000,
+      "lat": 41.831937,
+      "lon": -87.752001
+     },
+     {
+      "name": "Philadelphia",
+      "country": "United States of America",
+      "pop": 5492000,
+      "lat": 40.001919,
+      "lon": -75.171942
+     },
+     {
+      "name": "Toronto",
+      "country": "Canada",
+      "pop": 5213000,
+      "lat": 43.701926,
+      "lon": -79.421967
+     },
+     {
+      "name": "St. Petersburg",
+      "country": "Russia",
+      "pop": 4553000,
+      "lat": 59.94096,
+      "lon": 30.314074
+     },
+     {
+      "name": "Boston",
+      "country": "United States of America",
+      "pop": 4467000,
+      "lat": 42.331906,
+      "lon": -71.07196
+     },
+     {
+      "name": "Detroit",
+      "country": "United States of America",
+      "pop": 4101000,
+      "lat": 42.331906,
+      "lon": -83.082002
+     }
+    ]
+   },
+   "south": {
+    "na": {
+     "lon": -89.34,
+     "lat": 37.82,
+     "part_km2": 16778384,
+     "near": "Belleville",
+     "near_country": "United States of America",
+     "near_km": 97
+    },
+    "eu": {
+     "lon": 42.08,
+     "lat": 48.86,
+     "part_km2": 10419993,
+     "near": "Kamensk Shakhtinskiy",
+     "near_country": "Russia",
+     "near_km": 147
+    }
+   },
+   "lgm_ratio_pct": 123
+  },
+  "mis12": {
+   "key": "mis12",
+   "label": "MIS 12",
+   "name": "Marine Isotope Stage 12",
+   "age": "429,000 to 477,000 years ago",
+   "ka0": 429,
+   "ka1": 477,
+   "warm": false,
+   "outline": true,
+   "area": 32447524,
+   "tab_best": 32521186,
+   "tab_min": 24019368,
+   "tab_max": 36469909,
+   "tab_regions": {
+    "EIS": 11288200,
+    "GIS": 3180890,
+    "LIS": 13291500,
+    "CIS": 2311548,
+    "Others": 2449048
+   },
+   "diff_pct": -0.2,
+   "rank": 2,
+   "rank_tab": 2,
+   "on_land": 22409404,
+   "on_sea": 9849152,
+   "grid_check_pct": -0.58,
+   "on_sea_pct": 30.5,
+   "places": {
+    "n": 906,
+    "pop": 196933586,
+    "n_100k": 281,
+    "n_1m": 35,
+    "top": [
+     {
+      "name": "New York",
+      "country": "United States of America",
+      "pop": 19040000,
+      "lat": 40.751925,
+      "lon": -73.981963
+     },
+     {
+      "name": "Moscow",
+      "country": "Russia",
+      "pop": 10452000,
+      "lat": 55.75411,
+      "lon": 37.613577
+     },
+     {
+      "name": "Chicago",
+      "country": "United States of America",
+      "pop": 8990000,
+      "lat": 41.831937,
+      "lon": -87.752001
+     },
+     {
+      "name": "Toronto",
+      "country": "Canada",
+      "pop": 5213000,
+      "lat": 43.701926,
+      "lon": -79.421967
+     },
+     {
+      "name": "St. Petersburg",
+      "country": "Russia",
+      "pop": 4553000,
+      "lat": 59.94096,
+      "lon": 30.314074
+     },
+     {
+      "name": "Boston",
+      "country": "United States of America",
+      "pop": 4467000,
+      "lat": 42.331906,
+      "lon": -71.07196
+     },
+     {
+      "name": "Detroit",
+      "country": "United States of America",
+      "pop": 4101000,
+      "lat": 42.331906,
+      "lon": -83.082002
+     },
+     {
+      "name": "Montréal",
+      "country": "Canada",
+      "pop": 3678000,
+      "lat": 45.501945,
+      "lon": -73.585243
+     }
+    ]
+   },
+   "south": {
+    "na": {
+     "lon": -89.07,
+     "lat": 37.22,
+     "part_km2": 16548427,
+     "near": "Evansville",
+     "near_country": "United States of America",
+     "near_km": 158
+    },
+    "eu": {
+     "lon": 23.62,
+     "lat": 49.27,
+     "part_km2": 11288158,
+     "near": "Drohobych",
+     "near_country": "Ukraine",
+     "near_km": 12
+    }
+   },
+   "lgm_ratio_pct": 124
+  },
+  "mis10": {
+   "key": "mis10",
+   "label": "MIS 10",
+   "name": "Marine Isotope Stage 10",
+   "age": "337,000 to 365,000 years ago",
+   "ka0": 337,
+   "ka1": 365,
+   "warm": false,
+   "outline": true,
+   "area": 21545640,
+   "tab_best": 21810072,
+   "tab_min": 13914726,
+   "tab_max": 34151102,
+   "tab_regions": {
+    "EIS": 7094560,
+    "GIS": 2818380,
+    "LIS": 10005068,
+    "CIS": 1457471,
+    "Others": 434593
+   },
+   "diff_pct": -1.2,
+   "rank": 9,
+   "rank_tab": 8,
+   "on_land": 13877025,
+   "on_sea": 7525787,
+   "grid_check_pct": -0.66,
+   "on_sea_pct": 35.2,
+   "places": {
+    "n": 449,
+    "pop": 45909414,
+    "n_100k": 70,
+    "n_1m": 9,
+    "top": [
+     {
+      "name": "Toronto",
+      "country": "Canada",
+      "pop": 5213000,
+      "lat": 43.701926,
+      "lon": -79.421967
+     },
+     {
+      "name": "Boston",
+      "country": "United States of America",
+      "pop": 4467000,
+      "lat": 42.331906,
+      "lon": -71.07196
+     },
+     {
+      "name": "Montréal",
+      "country": "Canada",
+      "pop": 3678000,
+      "lat": 45.501945,
+      "lon": -73.585243
+     },
+     {
+      "name": "Providence",
+      "country": "United States of America",
+      "pop": 1277000,
+      "lat": 41.823048,
+      "lon": -71.416926
+     },
+     {
+      "name": "Stockholm",
+      "country": "Sweden",
+      "pop": 1264000,
+      "lat": 59.352706,
+      "lon": 18.095389
+     },
+     {
+      "name": "Glasgow",
+      "country": "United Kingdom",
+      "pop": 1160000,
+      "lat": 55.876351,
+      "lon": -4.252653
+     },
+     {
+      "name": "Ottawa",
+      "country": "Canada",
+      "pop": 1145000,
+      "lat": 45.418643,
+      "lon": -75.701961
+     },
+     {
+      "name": "København",
+      "country": "Denmark",
+      "pop": 1085000,
+      "lat": 55.68051,
+      "lon": 12.56154
+     }
+    ]
+   },
+   "south": {
+    "na": {
+     "lon": -68.29,
+     "lat": 41.16,
+     "part_km2": 12606202,
+     "near": "New Bedford",
+     "near_country": "United States of America",
+     "near_km": 229
+    },
+    "eu": {
+     "lon": 11.58,
+     "lat": 54.0,
+     "part_km2": 7094622,
+     "near": "Rostock",
+     "near_country": "Germany",
+     "near_km": 38
+    }
+   },
+   "lgm_ratio_pct": 82
+  },
+  "mis8": {
+   "key": "mis8",
+   "label": "MIS 8",
+   "name": "Marine Isotope Stage 8",
+   "age": "243,000 to 279,000 years ago",
+   "ka0": 243,
+   "ka1": 279,
+   "warm": false,
+   "outline": true,
+   "area": 23472950,
+   "tab_best": 23622651,
+   "tab_min": 17360549,
+   "tab_max": 34549131,
+   "tab_regions": {
+    "EIS": 9182920,
+    "GIS": 2818380,
+    "LIS": 9729287,
+    "CIS": 1457471,
+    "Others": 434593
+   },
+   "diff_pct": -0.6,
+   "rank": 6,
+   "rank_tab": 6,
+   "on_land": 15825931,
+   "on_sea": 7490856,
+   "grid_check_pct": -0.67,
+   "on_sea_pct": 32.1,
+   "places": {
+    "n": 454,
+    "pop": 40814923,
+    "n_100k": 60,
+    "n_1m": 8,
+    "top": [
+     {
+      "name": "Toronto",
+      "country": "Canada",
+      "pop": 5213000,
+      "lat": 43.701926,
+      "lon": -79.421967
+     },
+     {
+      "name": "Boston",
+      "country": "United States of America",
+      "pop": 4467000,
+      "lat": 42.331906,
+      "lon": -71.07196
+     },
+     {
+      "name": "Montréal",
+      "country": "Canada",
+      "pop": 3678000,
+      "lat": 45.501945,
+      "lon": -73.585243
+     },
+     {
+      "name": "Stockholm",
+      "country": "Sweden",
+      "pop": 1264000,
+      "lat": 59.352706,
+      "lon": 18.095389
+     },
+     {
+      "name": "Glasgow",
+      "country": "United Kingdom",
+      "pop": 1160000,
+      "lat": 55.876351,
+      "lon": -4.252653
+     },
+     {
+      "name": "Ottawa",
+      "country": "Canada",
+      "pop": 1145000,
+      "lat": 45.418643,
+      "lon": -75.701961
+     },
+     {
+      "name": "Helsinki",
+      "country": "Finland",
+      "pop": 1115000,
+      "lat": 60.177509,
+      "lon": 24.932181
+     },
+     {
+      "name": "København",
+      "country": "Denmark",
+      "pop": 1085000,
+      "lat": 55.68051,
+      "lon": 12.56154
+     }
+    ]
+   },
+   "south": {
+    "na": {
+     "lon": -68.75,
+     "lat": 41.46,
+     "part_km2": 12445193,
+     "near": "New Bedford",
+     "near_country": "United States of America",
+     "near_km": 184
+    },
+    "eu": {
+     "lon": 11.55,
+     "lat": 54.0,
+     "part_km2": 9182941,
+     "near": "Rostock",
+     "near_country": "Germany",
+     "near_km": 40
+    }
+   },
+   "lgm_ratio_pct": 90
+  },
+  "mis6": {
+   "key": "mis6",
+   "label": "MIS 6",
+   "name": "Marine Isotope Stage 6",
+   "age": "132,000 to 190,000 years ago",
+   "ka0": 132,
+   "ka1": 190,
+   "warm": false,
+   "outline": true,
+   "area": 33819387,
+   "tab_best": 33653392,
+   "tab_min": 26303242,
+   "tab_max": 35732917,
+   "tab_regions": {
+    "EIS": 11091600,
+    "GIS": 3180890,
+    "LIS": 13283600,
+    "CIS": 2548081,
+    "Others": 3549221
+   },
+   "diff_pct": 0.5,
+   "rank": 1,
+   "rank_tab": 1,
+   "on_land": 22630322,
+   "on_sea": 10985628,
+   "grid_check_pct": -0.6,
+   "on_sea_pct": 32.7,
+   "places": {
+    "n": 905,
+    "pop": 200505325,
+    "n_100k": 274,
+    "n_1m": 39,
+    "top": [
+     {
+      "name": "New York",
+      "country": "United States of America",
+      "pop": 19040000,
+      "lat": 40.751925,
+      "lon": -73.981963
+     },
+     {
+      "name": "Moscow",
+      "country": "Russia",
+      "pop": 10452000,
+      "lat": 55.75411,
+      "lon": 37.613577
+     },
+     {
+      "name": "Chicago",
+      "country": "United States of America",
+      "pop": 8990000,
+      "lat": 41.831937,
+      "lon": -87.752001
+     },
+     {
+      "name": "Toronto",
+      "country": "Canada",
+      "pop": 5213000,
+      "lat": 43.701926,
+      "lon": -79.421967
+     },
+     {
+      "name": "St. Petersburg",
+      "country": "Russia",
+      "pop": 4553000,
+      "lat": 59.94096,
+      "lon": 30.314074
+     },
+     {
+      "name": "Boston",
+      "country": "United States of America",
+      "pop": 4467000,
+      "lat": 42.331906,
+      "lon": -71.07196
+     },
+     {
+      "name": "Detroit",
+      "country": "United States of America",
+      "pop": 4101000,
+      "lat": 42.331906,
+      "lon": -83.082002
+     },
+     {
+      "name": "Montréal",
+      "country": "Canada",
+      "pop": 3678000,
+      "lat": 45.501945,
+      "lon": -73.585243
+     }
+    ]
+   },
+   "south": {
+    "na": {
+     "lon": -89.07,
+     "lat": 37.22,
+     "part_km2": 16548429,
+     "near": "Evansville",
+     "near_country": "United States of America",
+     "near_km": 158
+    },
+    "eu": {
+     "lon": 34.24,
+     "lat": 48.3,
+     "part_km2": 11091592,
+     "near": "Dnipro",
+     "near_country": "Ukraine",
+     "near_km": 59
+    }
+   },
+   "lgm_ratio_pct": 129
+  },
+  "mis5d": {
+   "key": "mis5d",
+   "label": "MIS 5d",
+   "name": "Marine Isotope Stage 5d",
+   "age": "108,000 to 117,000 years ago",
+   "ka0": 108,
+   "ka1": 117,
+   "warm": false,
+   "outline": true,
+   "area": 12480181,
+   "tab_best": 12836873,
+   "tab_min": 9262465,
+   "tab_max": 25931164,
+   "tab_regions": {
+    "EIS": 4423245,
+    "GIS": 2791540,
+    "LIS": 2835820,
+    "CIS": 692758,
+    "Others": 2093510
+   },
+   "diff_pct": -2.8,
+   "rank": 13,
+   "rank_tab": 13,
+   "on_land": 9227183,
+   "on_sea": 3155974,
+   "grid_check_pct": -0.78,
+   "on_sea_pct": 25.5,
+   "places": {
+    "n": 184,
+    "pop": 4479789,
+    "n_100k": 10,
+    "n_1m": 0,
+    "top": [
+     {
+      "name": "Oslo",
+      "country": "Norway",
+      "pop": 835000,
+      "lat": 59.918636,
+      "lon": 10.748033
+     },
+     {
+      "name": "Murmansk",
+      "country": "Russia",
+      "pop": 319263,
+      "lat": 68.969988,
+      "lon": 33.100036
+     },
+     {
+      "name": "Bergen",
+      "country": "Norway",
+      "pop": 213585,
+      "lat": 60.391002,
+      "lon": 5.324522
+     },
+     {
+      "name": "Stavanger",
+      "country": "Norway",
+      "pop": 173132,
+      "lat": 58.970004,
+      "lon": 5.680004
+     },
+     {
+      "name": "Reykjavík",
+      "country": "Iceland",
+      "pop": 166212,
+      "lat": 64.150024,
+      "lon": -21.950015
+     },
+     {
+      "name": "Norilsk",
+      "country": "Russia",
+      "pop": 165873,
+      "lat": 69.340017,
+      "lon": 88.224992
+     },
+     {
+      "name": "Trondheim",
+      "country": "Norway",
+      "pop": 147139,
+      "lat": 63.416658,
+      "lon": 10.416666
+     },
+     {
+      "name": "Altay",
+      "country": "China",
+      "pop": 142000,
+      "lat": 47.866599,
+      "lon": 88.116626
+     }
+    ]
+   },
+   "south": {
+    "na": {
+     "lon": -53.0,
+     "lat": 46.23,
+     "part_km2": 1226434,
+     "near": "St. John's",
+     "near_country": "Canada",
+     "near_km": 152
+    },
+    "eu": {
+     "lon": 7.42,
+     "lat": 57.01,
+     "part_km2": 1041388,
+     "near": "Kristiansand",
+     "near_country": "Norway",
+     "near_km": 133
+    }
+   },
+   "lgm_ratio_pct": 48
+  },
+  "mis5c": {
+   "key": "mis5c",
+   "label": "MIS 5c",
+   "name": "Marine Isotope Stage 5c",
+   "age": "92,000 to 108,000 years ago",
+   "ka0": 92,
+   "ka1": 108,
+   "warm": true,
+   "outline": true,
+   "area": 6925377,
+   "tab_best": 6667419,
+   "tab_min": 2415752,
+   "tab_max": 18260652,
+   "tab_regions": {
+    "EIS": 371734,
+    "GIS": 2387170,
+    "LIS": 3075830,
+    "CIS": 670577,
+    "Others": 162108
+   },
+   "diff_pct": 3.9,
+   "rank": 17,
+   "rank_tab": 18,
+   "on_land": 6284994,
+   "on_sea": 581146,
+   "grid_check_pct": -0.86,
+   "on_sea_pct": 8.5,
+   "places": {
+    "n": 79,
+    "pop": 503985,
+    "n_100k": 1,
+    "n_1m": 0,
+    "top": [
+     {
+      "name": "Reykjavík",
+      "country": "Iceland",
+      "pop": 166212,
+      "lat": 64.150024,
+      "lon": -21.950015
+     },
+     {
+      "name": "Juneau",
+      "country": "United States of America",
+      "pop": 30711,
+      "lat": 58.314127,
+      "lon": -134.419997
+     },
+     {
+      "name": "Terrace",
+      "country": "Canada",
+      "pop": 19443,
+      "lat": 54.499993,
+      "lon": -128.583325
+     },
+     {
+      "name": "Yellowknife",
+      "country": "Canada",
+      "pop": 19234,
+      "lat": 62.442014,
+      "lon": -114.396981
+     },
+     {
+      "name": "Edmundston",
+      "country": "Canada",
+      "pop": 17894,
+      "lat": 47.379419,
+      "lon": -68.333282
+     },
+     {
+      "name": "Akureyri",
+      "country": "Iceland",
+      "pop": 16563,
+      "lat": 65.666572,
+      "lon": -18.100017
+     },
+     {
+      "name": "Nuuk",
+      "country": "Greenland",
+      "pop": 14798,
+      "lat": 64.198282,
+      "lon": -51.732659
+     },
+     {
+      "name": "Prince Rupert",
+      "country": "Canada",
+      "pop": 14708,
+      "lat": 54.31667,
+      "lon": -130.329988
+     }
+    ]
+   },
+   "south": {
+    "na": {
+     "lon": -72.14,
+     "lat": 43.48,
+     "part_km2": 84940,
+     "near": "Manchester",
+     "near_country": "United States of America",
+     "near_km": 78
+    },
+    "eu": {
+     "lon": 7.68,
+     "lat": 58.72,
+     "part_km2": 55924,
+     "near": "Kristiansand",
+     "near_country": "Norway",
+     "near_km": 64
+    }
+   },
+   "lgm_ratio_pct": 26
+  },
+  "mis5b": {
+   "key": "mis5b",
+   "label": "MIS 5b",
+   "name": "Marine Isotope Stage 5b",
+   "age": "86,000 to 92,000 years ago",
+   "ka0": 86,
+   "ka1": 92,
+   "warm": false,
+   "outline": true,
+   "area": 12890401,
+   "tab_best": 13223833,
+   "tab_min": 10177734,
+   "tab_max": 23763142,
+   "tab_regions": {
+    "EIS": 4828010,
+    "GIS": 2791540,
+    "LIS": 2809570,
+    "CIS": 691125,
+    "Others": 2103588
+   },
+   "diff_pct": -2.5,
+   "rank": 11,
+   "rank_tab": 11,
+   "on_land": 9147402,
+   "on_sea": 3643595,
+   "grid_check_pct": -0.77,
+   "on_sea_pct": 28.5,
+   "places": {
+    "n": 164,
+    "pop": 3401227,
+    "n_100k": 9,
+    "n_1m": 0,
+    "top": [
+     {
+      "name": "Oslo",
+      "country": "Norway",
+      "pop": 835000,
+      "lat": 59.918636,
+      "lon": 10.748033
+     },
+     {
+      "name": "Murmansk",
+      "country": "Russia",
+      "pop": 319263,
+      "lat": 68.969988,
+      "lon": 33.100036
+     },
+     {
+      "name": "Bergen",
+      "country": "Norway",
+      "pop": 213585,
+      "lat": 60.391002,
+      "lon": 5.324522
+     },
+     {
+      "name": "Reykjavík",
+      "country": "Iceland",
+      "pop": 166212,
+      "lat": 64.150024,
+      "lon": -21.950015
+     },
+     {
+      "name": "Norilsk",
+      "country": "Russia",
+      "pop": 165873,
+      "lat": 69.340017,
+      "lon": 88.224992
+     },
+     {
+      "name": "Trondheim",
+      "country": "Norway",
+      "pop": 147139,
+      "lat": 63.416658,
+      "lon": 10.416666
+     },
+     {
+      "name": "Altay",
+      "country": "China",
+      "pop": 142000,
+      "lat": 47.866599,
+      "lon": 88.116626
+     },
+     {
+      "name": "St. John's",
+      "country": "Canada",
+      "pop": 131469,
+      "lat": 47.584988,
+      "lon": -52.681007
+     }
+    ]
+   },
+   "south": {
+    "na": {
+     "lon": -53.88,
+     "lat": 46.36,
+     "part_km2": 1222335,
+     "near": "St. John's",
+     "near_country": "Canada",
+     "near_km": 164
+    },
+    "eu": {
+     "lon": 7.82,
+     "lat": 58.27,
+     "part_km2": 4780275,
+     "near": "Kristiansand",
+     "near_country": "Norway",
+     "near_km": 16
+    }
+   },
+   "lgm_ratio_pct": 49
+  },
+  "mis5a": {
+   "key": "mis5a",
+   "label": "MIS 5a",
+   "name": "Marine Isotope Stage 5a",
+   "age": "72,000 to 86,000 years ago",
+   "ka0": 72,
+   "ka1": 86,
+   "warm": true,
+   "outline": true,
+   "area": 6925187,
+   "tab_best": 6939710,
+   "tab_min": 2415752,
+   "tab_max": 17621480,
+   "tab_regions": {
+    "EIS": 371543,
+    "GIS": 2387170,
+    "LIS": 3075830,
+    "CIS": 670577,
+    "Others": 434590
+   },
+   "diff_pct": -0.2,
+   "rank": 18,
+   "rank_tab": 17,
+   "on_land": 6285956,
+   "on_sea": 581089,
+   "grid_check_pct": -0.84,
+   "on_sea_pct": 8.5,
+   "places": {
+    "n": 79,
+    "pop": 503985,
+    "n_100k": 1,
+    "n_1m": 0,
+    "top": [
+     {
+      "name": "Reykjavík",
+      "country": "Iceland",
+      "pop": 166212,
+      "lat": 64.150024,
+      "lon": -21.950015
+     },
+     {
+      "name": "Juneau",
+      "country": "United States of America",
+      "pop": 30711,
+      "lat": 58.314127,
+      "lon": -134.419997
+     },
+     {
+      "name": "Terrace",
+      "country": "Canada",
+      "pop": 19443,
+      "lat": 54.499993,
+      "lon": -128.583325
+     },
+     {
+      "name": "Yellowknife",
+      "country": "Canada",
+      "pop": 19234,
+      "lat": 62.442014,
+      "lon": -114.396981
+     },
+     {
+      "name": "Edmundston",
+      "country": "Canada",
+      "pop": 17894,
+      "lat": 47.379419,
+      "lon": -68.333282
+     },
+     {
+      "name": "Akureyri",
+      "country": "Iceland",
+      "pop": 16563,
+      "lat": 65.666572,
+      "lon": -18.100017
+     },
+     {
+      "name": "Nuuk",
+      "country": "Greenland",
+      "pop": 14798,
+      "lat": 64.198282,
+      "lon": -51.732659
+     },
+     {
+      "name": "Prince Rupert",
+      "country": "Canada",
+      "pop": 14708,
+      "lat": 54.31667,
+      "lon": -130.329988
+     }
+    ]
+   },
+   "south": {
+    "na": {
+     "lon": -72.14,
+     "lat": 43.48,
+     "part_km2": 84940,
+     "near": "Manchester",
+     "near_country": "United States of America",
+     "near_km": 78
+    },
+    "eu": {
+     "lon": 7.61,
+     "lat": 58.71,
+     "part_km2": 55888,
+     "near": "Kristiansand",
+     "near_country": "Norway",
+     "near_km": 65
+    }
+   },
+   "lgm_ratio_pct": 26
+  },
+  "mis4": {
+   "key": "mis4",
+   "label": "MIS 4",
+   "name": "Marine Isotope Stage 4",
+   "age": "58,000 to 72,000 years ago",
+   "ka0": 58,
+   "ka1": 72,
+   "warm": false,
+   "outline": true,
+   "area": 23770023,
+   "tab_best": 23638950,
+   "tab_min": 16901103,
+   "tab_max": 30793014,
+   "tab_regions": {
+    "EIS": 6110950,
+    "GIS": 2791540,
+    "LIS": 10000300,
+    "CIS": 2502222,
+    "Others": 2233938
+   },
+   "diff_pct": 0.6,
+   "rank": 5,
+   "rank_tab": 5,
+   "on_land": 15789325,
+   "on_sea": 7825500,
+   "grid_check_pct": -0.65,
+   "on_sea_pct": 33.1,
+   "places": {
+    "n": 529,
+    "pop": 66979925,
+    "n_100k": 91,
+    "n_1m": 17,
+    "top": [
+     {
+      "name": "Toronto",
+      "country": "Canada",
+      "pop": 5213000,
+      "lat": 43.701926,
+      "lon": -79.421967
+     },
+     {
+      "name": "Boston",
+      "country": "United States of America",
+      "pop": 4467000,
+      "lat": 42.331906,
+      "lon": -71.07196
+     },
+     {
+      "name": "Montréal",
+      "country": "Canada",
+      "pop": 3678000,
+      "lat": 45.501945,
+      "lon": -73.585243
+     },
+     {
+      "name": "Seattle",
+      "country": "United States of America",
+      "pop": 3074000,
+      "lat": 47.571948,
+      "lon": -122.341931
+     },
+     {
+      "name": "Vancouver",
+      "country": "Canada",
+      "pop": 2313328,
+      "lat": 49.275362,
+      "lon": -123.12359
+     },
+     {
+      "name": "Manchester",
+      "country": "United Kingdom",
+      "pop": 2230000,
+      "lat": 53.502361,
+      "lon": -2.249933
+     },
+     {
+      "name": "Leeds",
+      "country": "United Kingdom",
+      "pop": 1529000,
+      "lat": 53.831953,
+      "lon": -1.581963
+     },
+     {
+      "name": "Sheffield",
+      "country": "United Kingdom",
+      "pop": 1292900,
+      "lat": 53.366677,
+      "lon": -1.499997
+     }
+    ]
+   },
+   "south": {
+    "na": {
+     "lon": -70.92,
+     "lat": 41.31,
+     "part_km2": 12795712,
+     "near": "New Bedford",
+     "near_country": "United States of America",
+     "near_km": 39
+    },
+    "eu": {
+     "lon": -8.61,
+     "lat": 51.29,
+     "part_km2": 5945894,
+     "near": "Cork",
+     "near_country": "Ireland",
+     "near_km": 68
+    }
+   },
+   "lgm_ratio_pct": 91
+  },
+  "ka45": {
+   "key": "ka45",
+   "label": "45 ka",
+   "name": "45,000 years ago",
+   "age": "about 45,000 years ago",
+   "ka0": 45,
+   "ka1": 45,
+   "warm": true,
+   "outline": true,
+   "area": 7167874,
+   "tab_best": 7482082,
+   "tab_min": 5138922,
+   "tab_max": 19204108,
+   "tab_regions": {
+    "EIS": 237062,
+    "GIS": 2791540,
+    "LIS": 3075830,
+    "CIS": 670577,
+    "Others": 707073
+   },
+   "diff_pct": -4.2,
+   "rank": 16,
+   "rank_tab": 16,
+   "on_land": 6222115,
+   "on_sea": 885110,
+   "grid_check_pct": -0.85,
+   "on_sea_pct": 12.5,
+   "places": {
+    "n": 78,
+    "pop": 502753,
+    "n_100k": 1,
+    "n_1m": 0,
+    "top": [
+     {
+      "name": "Reykjavík",
+      "country": "Iceland",
+      "pop": 166212,
+      "lat": 64.150024,
+      "lon": -21.950015
+     },
+     {
+      "name": "Juneau",
+      "country": "United States of America",
+      "pop": 30711,
+      "lat": 58.314127,
+      "lon": -134.419997
+     },
+     {
+      "name": "Terrace",
+      "country": "Canada",
+      "pop": 19443,
+      "lat": 54.499993,
+      "lon": -128.583325
+     },
+     {
+      "name": "Yellowknife",
+      "country": "Canada",
+      "pop": 19234,
+      "lat": 62.442014,
+      "lon": -114.396981
+     },
+     {
+      "name": "Edmundston",
+      "country": "Canada",
+      "pop": 17894,
+      "lat": 47.379419,
+      "lon": -68.333282
+     },
+     {
+      "name": "Akureyri",
+      "country": "Iceland",
+      "pop": 16563,
+      "lat": 65.666572,
+      "lon": -18.100017
+     },
+     {
+      "name": "Nuuk",
+      "country": "Greenland",
+      "pop": 14798,
+      "lat": 64.198282,
+      "lon": -51.732659
+     },
+     {
+      "name": "Prince Rupert",
+      "country": "Canada",
+      "pop": 14708,
+      "lat": 54.31667,
+      "lon": -130.329988
+     }
+    ]
+   },
+   "south": {
+    "na": {
+     "lon": -72.14,
+     "lat": 43.48,
+     "part_km2": 84940,
+     "near": "Manchester",
+     "near_country": "United States of America",
+     "near_km": 78
+    },
+    "eu": {
+     "lon": 7.64,
+     "lat": 58.71,
+     "part_km2": 55931,
+     "near": "Kristiansand",
+     "near_country": "Norway",
+     "near_km": 64
+    }
+   },
+   "lgm_ratio_pct": 27
+  },
+  "ka40": {
+   "key": "ka40",
+   "label": "40 ka",
+   "name": "40,000 years ago",
+   "age": "about 40,000 years ago",
+   "ka0": 40,
+   "ka1": 40,
+   "warm": false,
+   "outline": true,
+   "area": 10649810,
+   "tab_best": 8897604,
+   "tab_min": 7065099,
+   "tab_max": 26845219,
+   "tab_regions": {
+    "EIS": 990362,
+    "GIS": 2791540,
+    "LIS": 3075830,
+    "CIS": 1457471,
+    "Others": 582401
+   },
+   "diff_pct": 19.7,
+   "rank": 15,
+   "rank_tab": 15,
+   "on_land": 9159197,
+   "on_sea": 1413237,
+   "grid_check_pct": -0.73,
+   "on_sea_pct": 13.4,
+   "places": {
+    "n": 168,
+    "pop": 5292772,
+    "n_100k": 10,
+    "n_1m": 1,
+    "top": [
+     {
+      "name": "Glasgow",
+      "country": "United Kingdom",
+      "pop": 1160000,
+      "lat": 55.876351,
+      "lon": -4.252653
+     },
+     {
+      "name": "Oslo",
+      "country": "Norway",
+      "pop": 835000,
+      "lat": 59.918636,
+      "lon": 10.748033
+     },
+     {
+      "name": "Anchorage",
+      "country": "United States of America",
+      "pop": 260283,
+      "lat": 61.21997,
+      "lon": -149.900215
+     },
+     {
+      "name": "Bergen",
+      "country": "Norway",
+      "pop": 213585,
+      "lat": 60.391002,
+      "lon": 5.324522
+     },
+     {
+      "name": "Stavanger",
+      "country": "Norway",
+      "pop": 173132,
+      "lat": 58.970004,
+      "lon": 5.680004
+     },
+     {
+      "name": "Reykjavík",
+      "country": "Iceland",
+      "pop": 166212,
+      "lat": 64.150024,
+      "lon": -21.950015
+     },
+     {
+      "name": "Dundee",
+      "country": "United Kingdom",
+      "pop": 151592,
+      "lat": 56.470389,
+      "lon": -3.000008
+     },
+     {
+      "name": "Trondheim",
+      "country": "Norway",
+      "pop": 147139,
+      "lat": 63.416658,
+      "lon": 10.416666
+     }
+    ]
+   },
+   "south": {
+    "na": {
+     "lon": -72.14,
+     "lat": 43.48,
+     "part_km2": 84940,
+     "near": "Manchester",
+     "near_country": "United States of America",
+     "near_km": 78
+    },
+    "eu": {
+     "lon": -4.16,
+     "lat": 55.75,
+     "part_km2": 84347,
+     "near": "Glasgow",
+     "near_country": "United Kingdom",
+     "near_km": 15
+    }
+   },
+   "lgm_ratio_pct": 41
+  },
+  "ka35": {
+   "key": "ka35",
+   "label": "35 ka",
+   "name": "35,000 years ago",
+   "age": "about 35,000 years ago",
+   "ka0": 35,
+   "ka1": 35,
+   "warm": false,
+   "outline": true,
+   "area": 12828689,
+   "tab_best": 12877502,
+   "tab_min": 11011701,
+   "tab_max": 24749673,
+   "tab_regions": {
+    "EIS": 1129551,
+    "GIS": 2791540,
+    "LIS": 7064350,
+    "CIS": 1457471,
+    "Others": 434590
+   },
+   "diff_pct": -0.4,
+   "rank": 12,
+   "rank_tab": 12,
+   "on_land": 10164430,
+   "on_sea": 2578998,
+   "grid_check_pct": -0.66,
+   "on_sea_pct": 20.2,
+   "places": {
+    "n": 254,
+    "pop": 13038935,
+    "n_100k": 18,
+    "n_1m": 3,
+    "top": [
+     {
+      "name": "Montréal",
+      "country": "Canada",
+      "pop": 3678000,
+      "lat": 45.501945,
+      "lon": -73.585243
+     },
+     {
+      "name": "Glasgow",
+      "country": "United Kingdom",
+      "pop": 1160000,
+      "lat": 55.876351,
+      "lon": -4.252653
+     },
+     {
+      "name": "Ottawa",
+      "country": "Canada",
+      "pop": 1145000,
+      "lat": 45.418643,
+      "lon": -75.701961
+     },
+     {
+      "name": "Oslo",
+      "country": "Norway",
+      "pop": 835000,
+      "lat": 59.918636,
+      "lon": 10.748033
+     },
+     {
+      "name": "Québec",
+      "country": "Canada",
+      "pop": 624177,
+      "lat": 46.839969,
+      "lon": -71.24561
+     },
+     {
+      "name": "Anchorage",
+      "country": "United States of America",
+      "pop": 260283,
+      "lat": 61.21997,
+      "lon": -149.900215
+     },
+     {
+      "name": "Bergen",
+      "country": "Norway",
+      "pop": 213585,
+      "lat": 60.391002,
+      "lon": 5.324522
+     },
+     {
+      "name": "Stavanger",
+      "country": "Norway",
+      "pop": 173132,
+      "lat": 58.970004,
+      "lon": 5.680004
+     }
+    ]
+   },
+   "south": {
+    "na": {
+     "lon": -77.24,
+     "lat": 43.49,
+     "part_km2": 6913890,
+     "near": "Rochester",
+     "near_country": "United States of America",
+     "near_km": 47
+    },
+    "eu": {
+     "lon": 15.1,
+     "lat": 56.58,
+     "part_km2": 807035,
+     "near": "Växjö",
+     "near_country": "Sweden",
+     "near_km": 37
+    }
+   },
+   "lgm_ratio_pct": 49
+  },
+  "ka30": {
+   "key": "ka30",
+   "label": "30 ka",
+   "name": "30,000 years ago",
+   "age": "about 30,000 years ago",
+   "ka0": 30,
+   "ka1": 30,
+   "warm": false,
+   "outline": true,
+   "area": 14301431,
+   "tab_best": 14301284,
+   "tab_min": 12559495,
+   "tab_max": 25041427,
+   "tab_regions": {
+    "EIS": 1705603,
+    "GIS": 2791540,
+    "LIS": 7912080,
+    "CIS": 1457471,
+    "Others": 434590
+   },
+   "diff_pct": 0.0,
+   "rank": 10,
+   "rank_tab": 10,
+   "on_land": 11132004,
+   "on_sea": 3073885,
+   "grid_check_pct": -0.67,
+   "on_sea_pct": 21.6,
+   "places": {
+    "n": 313,
+    "pop": 19909253,
+    "n_100k": 32,
+    "n_1m": 5,
+    "top": [
+     {
+      "name": "Montréal",
+      "country": "Canada",
+      "pop": 3678000,
+      "lat": 45.501945,
+      "lon": -73.585243
+     },
+     {
+      "name": "Stockholm",
+      "country": "Sweden",
+      "pop": 1264000,
+      "lat": 59.352706,
+      "lon": 18.095389
+     },
+     {
+      "name": "Glasgow",
+      "country": "United Kingdom",
+      "pop": 1160000,
+      "lat": 55.876351,
+      "lon": -4.252653
+     },
+     {
+      "name": "Ottawa",
+      "country": "Canada",
+      "pop": 1145000,
+      "lat": 45.418643,
+      "lon": -75.701961
+     },
+     {
+      "name": "København",
+      "country": "Denmark",
+      "pop": 1085000,
+      "lat": 55.68051,
+      "lon": 12.56154
+     },
+     {
+      "name": "Oslo",
+      "country": "Norway",
+      "pop": 835000,
+      "lat": 59.918636,
+      "lon": 10.748033
+     },
+     {
+      "name": "Gdańsk",
+      "country": "Poland",
+      "pop": 740000,
+      "lat": 54.359975,
+      "lon": 18.64004
+     },
+     {
+      "name": "Québec",
+      "country": "Canada",
+      "pop": 624177,
+      "lat": 46.839969,
+      "lon": -71.24561
+     }
+    ]
+   },
+   "south": {
+    "na": {
+     "lon": -77.24,
+     "lat": 43.49,
+     "part_km2": 7761613,
+     "near": "Rochester",
+     "near_country": "United States of America",
+     "near_km": 47
+    },
+    "eu": {
+     "lon": 18.63,
+     "lat": 53.16,
+     "part_km2": 1309713,
+     "near": "Grudziądz",
+     "near_country": "Poland",
+     "near_km": 36
+    }
+   },
+   "lgm_ratio_pct": 55
+  },
+  "lgm": {
+   "key": "lgm",
+   "label": "LGM",
+   "name": "Last Glacial Maximum",
+   "age": "around 26,500 years ago",
+   "ka0": 26.5,
+   "ka1": 26.5,
+   "warm": false,
+   "outline": true,
+   "area": 26211214,
+   "tab_best": 26417416,
+   "tab_min": null,
+   "tab_max": null,
+   "tab_regions": {
+    "EIS": 6238528,
+    "GIS": 3180890,
+    "LIS": 13820612,
+    "CIS": 2383189,
+    "Others": 794197
+   },
+   "diff_pct": -0.8,
+   "rank": 4,
+   "rank_tab": 4,
+   "on_land": 17103089,
+   "on_sea": 8957030,
+   "grid_check_pct": -0.58,
+   "on_sea_pct": 34.4,
+   "places": {
+    "n": 709,
+    "pop": 140570036,
+    "n_100k": 174,
+    "n_1m": 27,
+    "top": [
+     {
+      "name": "New York",
+      "country": "United States of America",
+      "pop": 19040000,
+      "lat": 40.751925,
+      "lon": -73.981963
+     },
+     {
+      "name": "Chicago",
+      "country": "United States of America",
+      "pop": 8990000,
+      "lat": 41.831937,
+      "lon": -87.752001
+     },
+     {
+      "name": "Toronto",
+      "country": "Canada",
+      "pop": 5213000,
+      "lat": 43.701926,
+      "lon": -79.421967
+     },
+     {
+      "name": "St. Petersburg",
+      "country": "Russia",
+      "pop": 4553000,
+      "lat": 59.94096,
+      "lon": 30.314074
+     },
+     {
+      "name": "Boston",
+      "country": "United States of America",
+      "pop": 4467000,
+      "lat": 42.331906,
+      "lon": -71.07196
+     },
+     {
+      "name": "Detroit",
+      "country": "United States of America",
+      "pop": 4101000,
+      "lat": 42.331906,
+      "lon": -83.082002
+     },
+     {
+      "name": "Montréal",
+      "country": "Canada",
+      "pop": 3678000,
+      "lat": 45.501945,
+      "lon": -73.585243
+     },
+     {
+      "name": "Berlin",
+      "country": "Germany",
+      "pop": 3406000,
+      "lat": 52.523765,
+      "lon": 13.399603
+     }
+    ]
+   },
+   "south": {
+    "na": {
+     "lon": -85.91,
+     "lat": 39.02,
+     "part_km2": 19177597,
+     "near": "Bloomington",
+     "near_country": "United States of America",
+     "near_km": 55
+    },
+    "eu": {
+     "lon": -9.27,
+     "lat": 50.23,
+     "part_km2": 6203756,
+     "near": "Cork",
+     "near_country": "Ireland",
+     "near_km": 194
+    }
+   },
+   "lgm_ratio_pct": 100
+  }
+ },
+ "order": [
+  "lgauss",
+  "emat",
+  "mis20",
+  "mis16",
+  "mis12",
+  "mis10",
+  "mis8",
+  "mis6",
+  "mis5d",
+  "mis5c",
+  "mis5b",
+  "mis5a",
+  "mis4",
+  "ka45",
+  "ka40",
+  "ka35",
+  "ka30",
+  "lgm"
+ ],
+ "rank": [
+  "mis6",
+  "mis12",
+  "mis16",
+  "lgm",
+  "mis4",
+  "mis8",
+  "mis20",
+  "emat",
+  "mis10",
+  "ka30",
+  "mis5b",
+  "ka35",
+  "mis5d",
+  "lgauss",
+  "ka40",
+  "ka45",
+  "mis5c",
+  "mis5a"
+ ],
+ "rank_tab": [
+  "mis6",
+  "mis12",
+  "mis16",
+  "lgm",
+  "mis4",
+  "mis8",
+  "mis20",
+  "mis10",
+  "emat",
+  "ka30",
+  "mis5b",
+  "ka35",
+  "mis5d",
+  "lgauss",
+  "ka40",
+  "ka45",
+  "mis5a",
+  "mis5c"
+ ],
+ "checks": {
+  "ka40_asia_km2": 1973311,
+  "ka40_excess_km2": 1752206,
+  "ka40_tab_others": 582401,
+  "every_greenland_km2": 2381615,
+  "every_greenland_pct": 50
+ },
+ "areas": {
+  "largest": "mis6",
+  "largest_tab": "mis6",
+  "lgm_rank": 4,
+  "lgm_rank_tab": 4,
+  "n_mapped": 18,
+  "n_stages": 18,
+  "mis6_over_lgm_pct": 29,
+  "mis6_over_lgm_pct_tab": 27,
+  "mis6_minus_lgm": 7608173,
+  "union": 36997675,
+  "every": 4765948,
+  "union_over_lgm_pct": 41,
+  "smallest": "mis5a",
+  "top7_same": true,
+  "max_abs_diff_pct": 4.2,
+  "ka40_diff_pct": 19.7,
+  "mis12_over_lgm_pct": 24,
+  "mis16_over_lgm_pct": 23,
+  "lgm_on_sea_pct": 34.4,
+  "mis6_on_sea_pct": 32.7
+ },
+ "countries": {
+  "lgm_any": 21,
+  "union_any": 25,
+  "lgm_ge90": [
+   "Canada",
+   "Estonia",
+   "Faroe Islands",
+   "Finland",
+   "Greenland",
+   "Iceland",
+   "Ireland",
+   "Isle of Man",
+   "Latvia",
+   "Lithuania",
+   "Norway",
+   "Saint Pierre and Miquelon",
+   "Sweden",
+   "Åland"
+  ],
+  "union_ge90": [
+   "Belarus",
+   "Canada",
+   "Denmark",
+   "Estonia",
+   "Faroe Islands",
+   "Finland",
+   "Greenland",
+   "Iceland",
+   "Ireland",
+   "Isle of Man",
+   "Latvia",
+   "Lithuania",
+   "Norway",
+   "Poland",
+   "Saint Pierre and Miquelon",
+   "Sweden",
+   "Åland"
+  ],
+  "lgm_ge90_n": 14,
+  "union_ge90_n": 17,
+  "lgm_top_area": [
+   {
+    "name": "Canada",
+    "iso": "CAN",
+    "km2": 9685040,
+    "pct": 97.4
+   },
+   {
+    "name": "Greenland",
+    "iso": "GRL",
+    "km2": 2154379,
+    "pct": 100.0
+   },
+   {
+    "name": "United States",
+    "iso": "USA",
+    "km2": 2004079,
+    "pct": 21.2
+   },
+   {
+    "name": "Russia",
+    "iso": "RUS",
+    "km2": 1205487,
+    "pct": 7.1
+   },
+   {
+    "name": "Sweden",
+    "iso": "SWE",
+    "km2": 446174,
+    "pct": 100.0
+   },
+   {
+    "name": "Norway",
+    "iso": "NOR",
+    "km2": 381557,
+    "pct": 99.9
+   },
+   {
+    "name": "Finland",
+    "iso": "FIN",
+    "km2": 333059,
+    "pct": 100.0
+   },
+   {
+    "name": "United Kingdom",
+    "iso": "GBR",
+    "km2": 148412,
+    "pct": 60.9
+   },
+   {
+    "name": "Poland",
+    "iso": "POL",
+    "km2": 117723,
+    "pct": 37.6
+   },
+   {
+    "name": "Iceland",
+    "iso": "ISL",
+    "km2": 102390,
+    "pct": 100.0
+   },
+   {
+    "name": "Ireland",
+    "iso": "IRL",
+    "km2": 69445,
+    "pct": 100.0
+   },
+   {
+    "name": "Latvia",
+    "iso": "LVA",
+    "km2": 64576,
+    "pct": 100.0
+   }
+  ],
+  "lgm_top_pct": [
+   {
+    "name": "Greenland",
+    "iso": "GRL",
+    "km2": 2154379,
+    "pct": 100.0
+   },
+   {
+    "name": "Sweden",
+    "iso": "SWE",
+    "km2": 446174,
+    "pct": 100.0
+   },
+   {
+    "name": "Finland",
+    "iso": "FIN",
+    "km2": 333059,
+    "pct": 100.0
+   },
+   {
+    "name": "Iceland",
+    "iso": "ISL",
+    "km2": 102390,
+    "pct": 100.0
+   },
+   {
+    "name": "Estonia",
+    "iso": "EST",
+    "km2": 45819,
+    "pct": 100.0
+   },
+   {
+    "name": "Latvia",
+    "iso": "LVA",
+    "km2": 64576,
+    "pct": 100.0
+   },
+   {
+    "name": "Ireland",
+    "iso": "IRL",
+    "km2": 69445,
+    "pct": 100.0
+   },
+   {
+    "name": "Norway",
+    "iso": "NOR",
+    "km2": 381557,
+    "pct": 99.9
+   },
+   {
+    "name": "Canada",
+    "iso": "CAN",
+    "km2": 9685040,
+    "pct": 97.4
+   },
+   {
+    "name": "Lithuania",
+    "iso": "LTU",
+    "km2": 62533,
+    "pct": 96.3
+   },
+   {
+    "name": "Denmark",
+    "iso": "DNK",
+    "km2": 32056,
+    "pct": 75.1
+   },
+   {
+    "name": "United Kingdom",
+    "iso": "GBR",
+    "km2": 148412,
+    "pct": 60.9
+   },
+   {
+    "name": "Poland",
+    "iso": "POL",
+    "km2": 117723,
+    "pct": 37.6
+   },
+   {
+    "name": "United States",
+    "iso": "USA",
+    "km2": 2004079,
+    "pct": 21.2
+   },
+   {
+    "name": "Belarus",
+    "iso": "BLR",
+    "km2": 36216,
+    "pct": 17.5
+   },
+   {
+    "name": "Germany",
+    "iso": "DEU",
+    "km2": 48271,
+    "pct": 13.5
+   },
+   {
+    "name": "Russia",
+    "iso": "RUS",
+    "km2": 1205487,
+    "pct": 7.1
+   },
+   {
+    "name": "Mongolia",
+    "iso": "MNG",
+    "km2": 0,
+    "pct": 0.0
+   },
+   {
+    "name": "Ukraine",
+    "iso": "UKR",
+    "km2": 0,
+    "pct": 0.0
+   },
+   {
+    "name": "Kazakhstan",
+    "iso": "KAZ",
+    "km2": 0,
+    "pct": 0.0
+   },
+   {
+    "name": "China",
+    "iso": "CHN",
+    "km2": 0,
+    "pct": 0.0
+   },
+   {
+    "name": "Czech Republic",
+    "iso": "CZE",
+    "km2": 0,
+    "pct": 0.0
+   },
+   {
+    "name": "Colombia",
+    "iso": "COL",
+    "km2": 0,
+    "pct": 0.0
+   },
+   {
+    "name": "Netherlands",
+    "iso": "NLD",
+    "km2": 0,
+    "pct": 0.0
+   }
+  ],
+  "union_top_pct": [
+   {
+    "name": "Greenland",
+    "iso": "GRL",
+    "km2": 2154379,
+    "pct": 100.0
+   },
+   {
+    "name": "Sweden",
+    "iso": "SWE",
+    "km2": 446174,
+    "pct": 100.0
+   },
+   {
+    "name": "Finland",
+    "iso": "FIN",
+    "km2": 333059,
+    "pct": 100.0
+   },
+   {
+    "name": "Estonia",
+    "iso": "EST",
+    "km2": 45819,
+    "pct": 100.0
+   },
+   {
+    "name": "Lithuania",
+    "iso": "LTU",
+    "km2": 64939,
+    "pct": 100.0
+   },
+   {
+    "name": "Latvia",
+    "iso": "LVA",
+    "km2": 64576,
+    "pct": 100.0
+   },
+   {
+    "name": "Ireland",
+    "iso": "IRL",
+    "km2": 69445,
+    "pct": 100.0
+   },
+   {
+    "name": "Iceland",
+    "iso": "ISL",
+    "km2": 102390,
+    "pct": 100.0
+   },
+   {
+    "name": "Denmark",
+    "iso": "DNK",
+    "km2": 42696,
+    "pct": 100.0
+   },
+   {
+    "name": "Norway",
+    "iso": "NOR",
+    "km2": 381558,
+    "pct": 99.9
+   },
+   {
+    "name": "Canada",
+    "iso": "CAN",
+    "km2": 9845533,
+    "pct": 99.0
+   },
+   {
+    "name": "Belarus",
+    "iso": "BLR",
+    "km2": 202606,
+    "pct": 97.6
+   },
+   {
+    "name": "Poland",
+    "iso": "POL",
+    "km2": 296742,
+    "pct": 94.7
+   },
+   {
+    "name": "United Kingdom",
+    "iso": "GBR",
+    "km2": 198784,
+    "pct": 81.5
+   },
+   {
+    "name": "Netherlands",
+    "iso": "NLD",
+    "km2": 22526,
+    "pct": 60.2
+   },
+   {
+    "name": "Germany",
+    "iso": "DEU",
+    "km2": 167308,
+    "pct": 46.8
+   },
+   {
+    "name": "Russia",
+    "iso": "RUS",
+    "km2": 7311626,
+    "pct": 43.1
+   },
+   {
+    "name": "United States",
+    "iso": "USA",
+    "km2": 3356902,
+    "pct": 35.5
+   },
+   {
+    "name": "Ukraine",
+    "iso": "UKR",
+    "km2": 161373,
+    "pct": 28.2
+   },
+   {
+    "name": "Czech Republic",
+    "iso": "CZE",
+    "km2": 3096,
+    "pct": 3.9
+   },
+   {
+    "name": "Mongolia",
+    "iso": "MNG",
+    "km2": 46966,
+    "pct": 3.0
+   },
+   {
+    "name": "Kazakhstan",
+    "iso": "KAZ",
+    "km2": 3463,
+    "pct": 0.1
+   },
+   {
+    "name": "China",
+    "iso": "CHN",
+    "km2": 12775,
+    "pct": 0.1
+   },
+   {
+    "name": "Colombia",
+    "iso": "COL",
+    "km2": 308,
+    "pct": 0.0
+   }
+  ],
+  "by_iso": {
+   "CAN": {
+    "name": "Canada",
+    "area": 9945625,
+    "lgm": 9685040,
+    "lgm_pct": 97.4,
+    "union": 9845533,
+    "union_pct": 99.0
+   },
+   "USA": {
+    "name": "United States",
+    "area": 9464223,
+    "lgm": 2004079,
+    "lgm_pct": 21.2,
+    "union": 3356902,
+    "union_pct": 35.5
+   },
+   "GBR": {
+    "name": "United Kingdom",
+    "area": 243783,
+    "lgm": 148412,
+    "lgm_pct": 60.9,
+    "union": 198784,
+    "union_pct": 81.5
+   },
+   "IRL": {
+    "name": "Ireland",
+    "area": 69445,
+    "lgm": 69445,
+    "lgm_pct": 100.0,
+    "union": 69445,
+    "union_pct": 100.0
+   },
+   "DEU": {
+    "name": "Germany",
+    "area": 357674,
+    "lgm": 48271,
+    "lgm_pct": 13.5,
+    "union": 167308,
+    "union_pct": 46.8
+   },
+   "POL": {
+    "name": "Poland",
+    "area": 313428,
+    "lgm": 117723,
+    "lgm_pct": 37.6,
+    "union": 296742,
+    "union_pct": 94.7
+   },
+   "RUS": {
+    "name": "Russia",
+    "area": 16980158,
+    "lgm": 1205487,
+    "lgm_pct": 7.1,
+    "union": 7311626,
+    "union_pct": 43.1
+   },
+   "NOR": {
+    "name": "Norway",
+    "area": 382072,
+    "lgm": 381557,
+    "lgm_pct": 99.9,
+    "union": 381558,
+    "union_pct": 99.9
+   },
+   "SWE": {
+    "name": "Sweden",
+    "area": 446174,
+    "lgm": 446174,
+    "lgm_pct": 100.0,
+    "union": 446174,
+    "union_pct": 100.0
+   },
+   "FIN": {
+    "name": "Finland",
+    "area": 333059,
+    "lgm": 333059,
+    "lgm_pct": 100.0,
+    "union": 333059,
+    "union_pct": 100.0
+   },
+   "DNK": {
+    "name": "Denmark",
+    "area": 42696,
+    "lgm": 32056,
+    "lgm_pct": 75.1,
+    "union": 42696,
+    "union_pct": 100.0
+   },
+   "NLD": {
+    "name": "Netherlands",
+    "area": 37397,
+    "lgm": 0,
+    "lgm_pct": 0.0,
+    "union": 22526,
+    "union_pct": 60.2
+   },
+   "BLR": {
+    "name": "Belarus",
+    "area": 207499,
+    "lgm": 36216,
+    "lgm_pct": 17.5,
+    "union": 202606,
+    "union_pct": 97.6
+   },
+   "UKR": {
+    "name": "Ukraine",
+    "area": 571999,
+    "lgm": 0,
+    "lgm_pct": 0.0,
+    "union": 161373,
+    "union_pct": 28.2
+   },
+   "EST": {
+    "name": "Estonia",
+    "area": 45819,
+    "lgm": 45819,
+    "lgm_pct": 100.0,
+    "union": 45819,
+    "union_pct": 100.0
+   },
+   "LVA": {
+    "name": "Latvia",
+    "area": 64576,
+    "lgm": 64576,
+    "lgm_pct": 100.0,
+    "union": 64576,
+    "union_pct": 100.0
+   },
+   "LTU": {
+    "name": "Lithuania",
+    "area": 64939,
+    "lgm": 62533,
+    "lgm_pct": 96.3,
+    "union": 64939,
+    "union_pct": 100.0
+   },
+   "ISL": {
+    "name": "Iceland",
+    "area": 102390,
+    "lgm": 102390,
+    "lgm_pct": 100.0,
+    "union": 102390,
+    "union_pct": 100.0
+   },
+   "GRL": {
+    "name": "Greenland",
+    "area": 2154380,
+    "lgm": 2154379,
+    "lgm_pct": 100.0,
+    "union": 2154379,
+    "union_pct": 100.0
+   },
+   "KAZ": {
+    "name": "Kazakhstan",
+    "area": 2714263,
+    "lgm": 0,
+    "lgm_pct": 0.0,
+    "union": 3463,
+    "union_pct": 0.1
+   },
+   "FRA": {
+    "name": "FRA",
+    "area": null,
+    "lgm": 0,
+    "lgm_pct": 0.0,
+    "union": 0,
+    "union_pct": 0.0
+   },
+   "BEL": {
+    "name": "BEL",
+    "area": null,
+    "lgm": 0,
+    "lgm_pct": 0.0,
+    "union": 0,
+    "union_pct": 0.0
+   },
+   "CZE": {
+    "name": "Czech Republic",
+    "area": 78759,
+    "lgm": 0,
+    "lgm_pct": 0.0,
+    "union": 3096,
+    "union_pct": 3.9
+   }
+  }
+ },
+ "places": {
+  "total_n": 7342,
+  "total_pop": 2371934177,
+  "lgm": {
+   "n": 709,
+   "pop": 140570036,
+   "n_100k": 174,
+   "n_1m": 27,
+   "top": [
+    {
+     "name": "New York",
+     "country": "United States of America",
+     "pop": 19040000,
+     "lat": 40.751925,
+     "lon": -73.981963
+    },
+    {
+     "name": "Chicago",
+     "country": "United States of America",
+     "pop": 8990000,
+     "lat": 41.831937,
+     "lon": -87.752001
+    },
+    {
+     "name": "Toronto",
+     "country": "Canada",
+     "pop": 5213000,
+     "lat": 43.701926,
+     "lon": -79.421967
+    },
+    {
+     "name": "St. Petersburg",
+     "country": "Russia",
+     "pop": 4553000,
+     "lat": 59.94096,
+     "lon": 30.314074
+    },
+    {
+     "name": "Boston",
+     "country": "United States of America",
+     "pop": 4467000,
+     "lat": 42.331906,
+     "lon": -71.07196
+    },
+    {
+     "name": "Detroit",
+     "country": "United States of America",
+     "pop": 4101000,
+     "lat": 42.331906,
+     "lon": -83.082002
+    },
+    {
+     "name": "Montréal",
+     "country": "Canada",
+     "pop": 3678000,
+     "lat": 45.501945,
+     "lon": -73.585243
+    },
+    {
+     "name": "Berlin",
+     "country": "Germany",
+     "pop": 3406000,
+     "lat": 52.523765,
+     "lon": 13.399603
+    }
+   ]
+  },
+  "union": {
+   "n": 1050,
+   "pop": 230083190,
+   "n_100k": 324,
+   "n_1m": 45,
+   "top": [
+    {
+     "name": "New York",
+     "country": "United States of America",
+     "pop": 19040000,
+     "lat": 40.751925,
+     "lon": -73.981963
+    },
+    {
+     "name": "Moscow",
+     "country": "Russia",
+     "pop": 10452000,
+     "lat": 55.75411,
+     "lon": 37.613577
+    },
+    {
+     "name": "Chicago",
+     "country": "United States of America",
+     "pop": 8990000,
+     "lat": 41.831937,
+     "lon": -87.752001
+    },
+    {
+     "name": "Philadelphia",
+     "country": "United States of America",
+     "pop": 5492000,
+     "lat": 40.001919,
+     "lon": -75.171942
+    },
+    {
+     "name": "Toronto",
+     "country": "Canada",
+     "pop": 5213000,
+     "lat": 43.701926,
+     "lon": -79.421967
+    },
+    {
+     "name": "St. Petersburg",
+     "country": "Russia",
+     "pop": 4553000,
+     "lat": 59.94096,
+     "lon": 30.314074
+    },
+    {
+     "name": "Boston",
+     "country": "United States of America",
+     "pop": 4467000,
+     "lat": 42.331906,
+     "lon": -71.07196
+    },
+    {
+     "name": "Detroit",
+     "country": "United States of America",
+     "pop": 4101000,
+     "lat": 42.331906,
+     "lon": -83.082002
+    }
+   ]
+  },
+  "lgm_pop_m": 140.6,
+  "union_pop_m": 230.1,
+  "lgm_top": [
+   {
+    "name": "New York",
+    "country": "United States of America",
+    "pop": 19040000,
+    "lat": 40.751925,
+    "lon": -73.981963
+   },
+   {
+    "name": "Chicago",
+    "country": "United States of America",
+    "pop": 8990000,
+    "lat": 41.831937,
+    "lon": -87.752001
+   },
+   {
+    "name": "Toronto",
+    "country": "Canada",
+    "pop": 5213000,
+    "lat": 43.701926,
+    "lon": -79.421967
+   },
+   {
+    "name": "St. Petersburg",
+    "country": "Russia",
+    "pop": 4553000,
+    "lat": 59.94096,
+    "lon": 30.314074
+   },
+   {
+    "name": "Boston",
+    "country": "United States of America",
+    "pop": 4467000,
+    "lat": 42.331906,
+    "lon": -71.07196
+   },
+   {
+    "name": "Detroit",
+    "country": "United States of America",
+    "pop": 4101000,
+    "lat": 42.331906,
+    "lon": -83.082002
+   },
+   {
+    "name": "Montréal",
+    "country": "Canada",
+    "pop": 3678000,
+    "lat": 45.501945,
+    "lon": -73.585243
+   },
+   {
+    "name": "Berlin",
+    "country": "Germany",
+    "pop": 3406000,
+    "lat": 52.523765,
+    "lon": 13.399603
+   },
+   {
+    "name": "Seattle",
+    "country": "United States of America",
+    "pop": 3074000,
+    "lat": 47.571948,
+    "lon": -122.341931
+   },
+   {
+    "name": "Minneapolis",
+    "country": "United States of America",
+    "pop": 2616000,
+    "lat": 44.981925,
+    "lon": -93.253732
+   },
+   {
+    "name": "Vancouver",
+    "country": "Canada",
+    "pop": 2313328,
+    "lat": 49.275362,
+    "lon": -123.12359
+   },
+   {
+    "name": "Manchester",
+    "country": "United Kingdom",
+    "pop": 2230000,
+    "lat": 53.502361,
+    "lon": -2.249933
+   },
+   {
+    "name": "Cleveland",
+    "country": "United States of America",
+    "pop": 1890000,
+    "lat": 41.471933,
+    "lon": -81.696944
+   },
+   {
+    "name": "Indianapolis",
+    "country": "United States of America",
+    "pop": 1436000,
+    "lat": 39.751934,
+    "lon": -86.171994
+   },
+   {
+    "name": "Milwaukee",
+    "country": "United States of America",
+    "pop": 1388000,
+    "lat": 43.054601,
+    "lon": -87.921913
+   }
+  ],
+  "union_not_lgm_top": [
+   {
+    "name": "Moscow",
+    "country": "Russia",
+    "pop": 10452000,
+    "lat": 55.75411,
+    "lon": 37.613577
+   },
+   {
+    "name": "Philadelphia",
+    "country": "United States of America",
+    "pop": 5492000,
+    "lat": 40.001919,
+    "lon": -75.171942
+   },
+   {
+    "name": "Katowice",
+    "country": "Poland",
+    "pop": 2746000,
+    "lat": 50.260381,
+    "lon": 19.020017
+   },
+   {
+    "name": "Kyiv",
+    "country": "Ukraine",
+    "pop": 2709000,
+    "lat": 50.435313,
+    "lon": 30.514682
+   },
+   {
+    "name": "Birmingham",
+    "country": "United Kingdom",
+    "pop": 2285000,
+    "lat": 52.47692,
+    "lon": -1.921943
+   },
+   {
+    "name": "St. Louis",
+    "country": "United States of America",
+    "pop": 2199000,
+    "lat": 38.636964,
+    "lon": -90.241926
+   },
+   {
+    "name": "Pittsburgh",
+    "country": "United States of America",
+    "pop": 1838000,
+    "lat": 40.431945,
+    "lon": -80.001931
+   },
+   {
+    "name": "Minsk",
+    "country": "Belarus",
+    "pop": 1805000,
+    "lat": 53.901923,
+    "lon": 27.564681
+   },
+   {
+    "name": "Hamburg",
+    "country": "Germany",
+    "pop": 1757000,
+    "lat": 53.551971,
+    "lon": 9.998053
+   },
+   {
+    "name": "Essen",
+    "country": "Germany",
+    "pop": 1742135,
+    "lat": 51.449998,
+    "lon": 7.016615
+   },
+   {
+    "name": "Warsaw",
+    "country": "Poland",
+    "pop": 1707000,
+    "lat": 52.251947,
+    "lon": 20.998054
+   },
+   {
+    "name": "Cincinnati",
+    "country": "United States of America",
+    "pop": 1636000,
+    "lat": 39.163831,
+    "lon": -84.458869
+   }
+  ],
+  "most_stages_big": []
+ },
+ "cities": {
+  "London": {
+   "lgm": 152.5,
+   "under": [],
+   "n_under": 0,
+   "pop": 8567000,
+   "country": "United Kingdom",
+   "closest": {
+    "stage": "mis12",
+    "km": 16.0
+   },
+   "lgauss": 443.9,
+   "emat": 443.3,
+   "mis20": 444.4,
+   "mis16": 134.3,
+   "mis12": 16.0,
+   "mis10": 377.8,
+   "mis8": 412.6,
+   "mis6": 114.1,
+   "mis5d": 739.0,
+   "mis5c": 934.7,
+   "mis5b": 887.7,
+   "mis5a": 934.6,
+   "mis4": 184.7,
+   "ka45": 932.8,
+   "ka40": 543.1,
+   "ka35": 543.1,
+   "ka30": 462.9
+  },
+  "Chicago": {
+   "lgm": -112.2,
+   "under": [
+    "emat",
+    "mis20",
+    "mis16",
+    "mis12",
+    "mis6",
+    "lgm"
+   ],
+   "n_under": 6,
+   "pop": 8990000,
+   "country": "United States of America",
+   "closest": null,
+   "lgauss": 1281.8,
+   "emat": -157.7,
+   "mis20": -352.4,
+   "mis16": -305.5,
+   "mis12": -323.8,
+   "mis10": 299.9,
+   "mis8": 298.3,
+   "mis6": -323.8,
+   "mis5d": 1658.3,
+   "mis5c": 1281.8,
+   "mis5b": 1658.3,
+   "mis5a": 1281.8,
+   "mis4": 298.2,
+   "ka45": 1281.8,
+   "ka40": 1281.8,
+   "ka35": 388.1,
+   "ka30": 330.3
+  },
+  "New York": {
+   "lgm": -13.3,
+   "under": [
+    "mis16",
+    "mis12",
+    "mis6",
+    "lgm"
+   ],
+   "n_under": 4,
+   "pop": 19040000,
+   "country": "United States of America",
+   "closest": null,
+   "lgauss": 338.0,
+   "emat": 71.9,
+   "mis20": 259.5,
+   "mis16": -23.0,
+   "mis12": -52.9,
+   "mis10": 72.7,
+   "mis8": 260.4,
+   "mis6": -52.9,
+   "mis5d": 1178.5,
+   "mis5c": 338.0,
+   "mis5b": 1184.6,
+   "mis5a": 338.0,
+   "mis4": 74.3,
+   "ka45": 338.0,
+   "ka40": 338.0,
+   "ka35": 379.7,
+   "ka30": 379.2
+  },
+  "Berlin": {
+   "lgm": -42.4,
+   "under": [
+    "mis20",
+    "mis16",
+    "mis12",
+    "mis6",
+    "lgm"
+   ],
+   "n_under": 5,
+   "pop": 3406000,
+   "country": "Germany",
+   "closest": null,
+   "lgauss": 767.5,
+   "emat": 548.5,
+   "mis20": -32.3,
+   "mis16": -31.3,
+   "mis12": -175.4,
+   "mis10": 184.8,
+   "mis8": 184.1,
+   "mis6": -146.3,
+   "mis5d": 587.2,
+   "mis5c": 771.8,
+   "mis5b": 730.7,
+   "mis5a": 772.0,
+   "mis4": 141.9,
+   "ka45": 772.5,
+   "ka40": 705.1,
+   "ka35": 461.1,
+   "ka30": 148.7
+  },
+  "Moscow": {
+   "lgm": 246.0,
+   "under": [
+    "mis16",
+    "mis12",
+    "mis6"
+   ],
+   "n_under": 3,
+   "pop": 10452000,
+   "country": "Russia",
+   "closest": null,
+   "lgauss": 1381.5,
+   "emat": 1025.1,
+   "mis20": 477.6,
+   "mis16": -281.5,
+   "mis12": -312.6,
+   "mis10": 456.9,
+   "mis8": 400.4,
+   "mis6": -88.6,
+   "mis5d": 1205.6,
+   "mis5c": 1190.2,
+   "mis5b": 945.6,
+   "mis5a": 1190.0,
+   "mis4": 684.4,
+   "ka45": 1599.4,
+   "ka40": 1230.8,
+   "ka35": 1218.3,
+   "ka30": 989.5
+  },
+  "Toronto": {
+   "lgm": -190.5,
+   "under": [
+    "emat",
+    "mis20",
+    "mis16",
+    "mis12",
+    "mis10",
+    "mis8",
+    "mis6",
+    "mis4",
+    "lgm"
+   ],
+   "n_under": 9,
+   "pop": 5213000,
+   "country": "Canada",
+   "closest": null,
+   "lgauss": 577.2,
+   "emat": -137.8,
+   "mis20": -245.7,
+   "mis16": -190.4,
+   "mis12": -277.2,
+   "mis10": -145.6,
+   "mis8": -24.4,
+   "mis6": -277.2,
+   "mis5d": 1059.8,
+   "mis5c": 577.2,
+   "mis5b": 1062.1,
+   "mis5a": 577.2,
+   "mis4": -149.6,
+   "ka45": 577.2,
+   "ka40": 577.2,
+   "ka35": 95.0,
+   "ka30": 95.0
+  },
+  "Montreal": {
+   "lgm": -512.5,
+   "under": [
+    "emat",
+    "mis20",
+    "mis16",
+    "mis12",
+    "mis10",
+    "mis8",
+    "mis6",
+    "mis4",
+    "ka35",
+    "ka30",
+    "lgm"
+   ],
+   "n_under": 11,
+   "pop": 3678000,
+   "country": "Canada",
+   "closest": null,
+   "lgauss": 187.3,
+   "emat": -455.9,
+   "mis20": -234.5,
+   "mis16": -523.1,
+   "mis12": -578.4,
+   "mis10": -455.0,
+   "mis8": -215.6,
+   "mis6": -578.4,
+   "mis5d": 660.6,
+   "mis5c": 187.3,
+   "mis5b": 667.1,
+   "mis5a": 187.3,
+   "mis4": -454.0,
+   "ka45": 187.3,
+   "ka40": 187.3,
+   "ka35": -47.5,
+   "ka30": -47.5
+  },
+  "Boston": {
+   "lgm": -116.3,
+   "under": [
+    "emat",
+    "mis20",
+    "mis16",
+    "mis12",
+    "mis10",
+    "mis8",
+    "mis6",
+    "mis4",
+    "lgm"
+   ],
+   "n_under": 9,
+   "pop": 4467000,
+   "country": "United States of America",
+   "closest": null,
+   "lgauss": 145.9,
+   "emat": -115.2,
+   "mis20": -11.7,
+   "mis16": -167.9,
+   "mis12": -210.0,
+   "mis10": -108.9,
+   "mis8": -23.6,
+   "mis6": -210.0,
+   "mis5d": 970.6,
+   "mis5c": 145.9,
+   "mis5b": 973.6,
+   "mis5a": 145.9,
+   "mis4": -112.4,
+   "ka45": 145.9,
+   "ka40": 145.9,
+   "ka35": 329.9,
+   "ka30": 327.1
+  },
+  "Seattle": {
+   "lgm": -17.2,
+   "under": [
+    "lgauss",
+    "emat",
+    "mis20",
+    "mis16",
+    "mis12",
+    "mis6",
+    "mis4",
+    "lgm"
+   ],
+   "n_under": 8,
+   "pop": 3074000,
+   "country": "United States of America",
+   "closest": null,
+   "lgauss": -146.8,
+   "emat": -146.8,
+   "mis20": -135.2,
+   "mis16": -17.0,
+   "mis12": -17.0,
+   "mis10": 61.8,
+   "mis8": 61.8,
+   "mis6": -135.2,
+   "mis5d": 216.5,
+   "mis5c": 216.5,
+   "mis5b": 216.5,
+   "mis5a": 216.5,
+   "mis4": -135.2,
+   "ka45": 216.5,
+   "ka40": 61.8,
+   "ka35": 61.8,
+   "ka30": 61.8
+  },
+  "Minneapolis": {
+   "lgm": -27.5,
+   "under": [
+    "emat",
+    "mis20",
+    "mis16",
+    "mis12",
+    "mis6",
+    "lgm"
+   ],
+   "n_under": 6,
+   "pop": 2616000,
+   "country": "United States of America",
+   "closest": null,
+   "lgauss": 1044.3,
+   "emat": -327.1,
+   "mis20": -293.0,
+   "mis16": -441.3,
+   "mis12": -340.4,
+   "mis10": 315.3,
+   "mis8": 314.8,
+   "mis6": -340.4,
+   "mis5d": 1739.6,
+   "mis5c": 1475.3,
+   "mis5b": 1739.6,
+   "mis5a": 1475.3,
+   "mis4": 314.4,
+   "ka45": 1475.3,
+   "ka40": 1475.3,
+   "ka35": 432.8,
+   "ka30": 256.6
+  },
+  "Detroit": {
+   "lgm": -195.8,
+   "under": [
+    "emat",
+    "mis20",
+    "mis16",
+    "mis12",
+    "mis6",
+    "lgm"
+   ],
+   "n_under": 6,
+   "pop": 4101000,
+   "country": "United States of America",
+   "closest": null,
+   "lgauss": 892.8,
+   "emat": -40.0,
+   "mis20": -395.8,
+   "mis16": -247.9,
+   "mis12": -129.3,
+   "mis10": 79.1,
+   "mis8": 89.5,
+   "mis6": -129.3,
+   "mis5d": 1364.3,
+   "mis5c": 892.8,
+   "mis5b": 1364.3,
+   "mis5a": 892.8,
+   "mis4": 85.8,
+   "ka45": 892.8,
+   "ka40": 892.8,
+   "ka35": 213.8,
+   "ka30": 212.7
+  },
+  "Cleveland": {
+   "lgm": -86.2,
+   "under": [
+    "mis20",
+    "mis16",
+    "lgm"
+   ],
+   "n_under": 3,
+   "pop": 1890000,
+   "country": "United States of America",
+   "closest": null,
+   "lgauss": 808.8,
+   "emat": 79.5,
+   "mis20": -249.5,
+   "mis16": -100.9,
+   "mis12": 9.8,
+   "mis10": 145.6,
+   "mis8": 151.3,
+   "mis6": 9.8,
+   "mis5d": 1369.9,
+   "mis5c": 808.8,
+   "mis5b": 1372.0,
+   "mis5a": 808.8,
+   "mis4": 144.2,
+   "ka45": 808.8,
+   "ka40": 808.8,
+   "ka35": 316.7,
+   "ka30": 316.6
+  },
+  "St Louis": {
+   "lgm": 150.6,
+   "under": [
+    "mis20"
+   ],
+   "n_under": 1,
+   "pop": 2199000,
+   "country": "United States of America",
+   "closest": null,
+   "lgauss": 1521.2,
+   "emat": 8.8,
+   "mis20": -0.5,
+   "mis16": 5.4,
+   "mis12": 5.2,
+   "mis10": 712.6,
+   "mis8": 710.8,
+   "mis6": 5.2,
+   "mis5d": 2066.1,
+   "mis5c": 1602.4,
+   "mis5b": 2066.1,
+   "mis5a": 1602.4,
+   "mis4": 710.3,
+   "ka45": 1602.4,
+   "ka40": 1602.4,
+   "ka35": 796.7,
+   "ka30": 729.9
+  },
+  "Dublin": {
+   "lgm": -179.7,
+   "under": [
+    "mis16",
+    "mis12",
+    "mis6",
+    "mis4",
+    "lgm"
+   ],
+   "n_under": 5,
+   "pop": 1059000,
+   "country": "Ireland",
+   "closest": null,
+   "lgauss": 0.8,
+   "emat": 0.8,
+   "mis20": 0.4,
+   "mis16": -26.1,
+   "mis12": -282.1,
+   "mis10": 77.1,
+   "mis8": 76.7,
+   "mis6": -264.5,
+   "mis5d": 850.6,
+   "mis5c": 883.7,
+   "mis5b": 883.7,
+   "mis5a": 883.7,
+   "mis4": -206.8,
+   "ka45": 883.7,
+   "ka40": 301.3,
+   "ka35": 301.3,
+   "ka30": 115.3
+  },
+  "Manchester": {
+   "lgm": -9.6,
+   "under": [
+    "mis16",
+    "mis12",
+    "mis6",
+    "mis4",
+    "lgm"
+   ],
+   "n_under": 5,
+   "pop": 2230000,
+   "country": "United Kingdom",
+   "closest": null,
+   "lgauss": 267.4,
+   "emat": 267.4,
+   "mis20": 266.9,
+   "mis16": -128.8,
+   "mis12": -147.4,
+   "mis10": 202.1,
+   "mis8": 202.8,
+   "mis6": -78.7,
+   "mis5d": 639.4,
+   "mis5c": 830.0,
+   "mis5b": 781.3,
+   "mis5a": 829.9,
+   "mis4": -60.1,
+   "ka45": 827.0,
+   "ka40": 279.1,
+   "ka35": 279.1,
+   "ka30": 198.2
+  },
+  "Edinburgh": {
+   "lgm": -207.6,
+   "under": [
+    "mis16",
+    "mis12",
+    "mis10",
+    "mis8",
+    "mis6",
+    "mis4",
+    "ka30",
+    "lgm"
+   ],
+   "n_under": 8,
+   "pop": 504966,
+   "country": "United Kingdom",
+   "closest": null,
+   "lgauss": 36.5,
+   "emat": 36.0,
+   "mis20": 36.8,
+   "mis16": -161.0,
+   "mis12": -372.0,
+   "mis10": -49.9,
+   "mis8": -45.8,
+   "mis6": -352.9,
+   "mis5d": 523.2,
+   "mis5c": 626.1,
+   "mis5b": 626.1,
+   "mis5a": 626.1,
+   "mis4": -294.5,
+   "ka45": 626.1,
+   "ka40": 37.9,
+   "ka35": 37.9,
+   "ka30": -6.4
+  },
+  "Amsterdam": {
+   "lgm": 183.2,
+   "under": [
+    "mis6"
+   ],
+   "n_under": 1,
+   "pop": 1031000,
+   "country": "Netherlands",
+   "closest": null,
+   "lgauss": 671.7,
+   "emat": 470.4,
+   "mis20": 397.6,
+   "mis16": 346.2,
+   "mis12": 52.1,
+   "mis10": 267.7,
+   "mis8": 207.4,
+   "mis6": -16.7,
+   "mis5d": 537.2,
+   "mis5c": 727.8,
+   "mis5b": 678.4,
+   "mis5a": 726.7,
+   "mis4": 306.1,
+   "ka45": 726.8,
+   "ka40": 648.7,
+   "ka35": 648.5,
+   "ka30": 518.4
+  },
+  "Hamburg": {
+   "lgm": 12.1,
+   "under": [
+    "mis12",
+    "mis6"
+   ],
+   "n_under": 2,
+   "pop": 1757000,
+   "country": "Germany",
+   "closest": null,
+   "lgauss": 584.8,
+   "emat": 357.4,
+   "mis20": 37.8,
+   "mis16": 37.9,
+   "mis12": -178.7,
+   "mis10": 73.9,
+   "mis8": 69.6,
+   "mis6": -157.8,
+   "mis5d": 407.1,
+   "mis5c": 591.3,
+   "mis5b": 543.0,
+   "mis5a": 591.4,
+   "mis4": 67.7,
+   "ka45": 591.7,
+   "ka40": 522.0,
+   "ka35": 425.7,
+   "ka30": 172.7
+  },
+  "Warsaw": {
+   "lgm": 79.5,
+   "under": [
+    "mis20",
+    "mis16",
+    "mis12",
+    "mis6"
+   ],
+   "n_under": 4,
+   "pop": 1707000,
+   "country": "Poland",
+   "closest": null,
+   "lgauss": 1069.2,
+   "emat": 819.3,
+   "mis20": -147.1,
+   "mis16": -259.1,
+   "mis12": -205.6,
+   "mis10": 522.4,
+   "mis8": 526.7,
+   "mis6": -106.9,
+   "mis5d": 881.1,
+   "mis5c": 1078.3,
+   "mis5b": 965.7,
+   "mis5a": 1078.3,
+   "mis4": 253.5,
+   "ka45": 1078.1,
+   "ka40": 904.0,
+   "ka35": 605.0,
+   "ka30": 171.1
+  },
+  "Copenhagen": {
+   "lgm": -202.0,
+   "under": [
+    "mis20",
+    "mis16",
+    "mis12",
+    "mis10",
+    "mis8",
+    "mis6",
+    "mis4",
+    "ka30",
+    "lgm"
+   ],
+   "n_under": 9,
+   "pop": 1085000,
+   "country": "Denmark",
+   "closest": null,
+   "lgauss": 431.4,
+   "emat": 214.9,
+   "mis20": -198.6,
+   "mis16": -199.0,
+   "mis12": -443.1,
+   "mis10": -148.9,
+   "mis8": -144.7,
+   "mis6": -442.4,
+   "mis5d": 248.2,
+   "mis5c": 436.3,
+   "mis5b": 403.7,
+   "mis5a": 436.3,
+   "mis4": -131.9,
+   "ka45": 436.0,
+   "ka40": 363.4,
+   "ka35": 138.3,
+   "ka30": -78.6
+  },
+  "Stockholm": {
+   "lgm": -615.9,
+   "under": [
+    "mis20",
+    "mis16",
+    "mis12",
+    "mis10",
+    "mis8",
+    "mis6",
+    "mis4",
+    "ka30",
+    "lgm"
+   ],
+   "n_under": 9,
+   "pop": 1264000,
+   "country": "Sweden",
+   "closest": null,
+   "lgauss": 383.2,
+   "emat": 58.4,
+   "mis20": -584.9,
+   "mis16": -590.7,
+   "mis12": -821.0,
+   "mis10": -35.9,
+   "mis8": -36.0,
+   "mis6": -810.0,
+   "mis5d": 209.1,
+   "mis5c": 488.6,
+   "mis5b": 206.9,
+   "mis5a": 487.3,
+   "mis4": -308.7,
+   "ka45": 488.2,
+   "ka40": 126.4,
+   "ka35": 11.2,
+   "ka30": -210.3
+  },
+  "Oslo": {
+   "lgm": -401.1,
+   "under": [
+    "emat",
+    "mis20",
+    "mis16",
+    "mis12",
+    "mis10",
+    "mis8",
+    "mis6",
+    "mis5d",
+    "mis5b",
+    "mis4",
+    "ka40",
+    "ka35",
+    "ka30",
+    "lgm"
+   ],
+   "n_under": 14,
+   "pop": 835000,
+   "country": "Norway",
+   "closest": null,
+   "lgauss": 27.1,
+   "emat": -239.9,
+   "mis20": -348.0,
+   "mis16": -351.5,
+   "mis12": -471.1,
+   "mis10": -446.7,
+   "mis8": -446.3,
+   "mis6": -467.1,
+   "mis5d": -167.6,
+   "mis5c": 89.3,
+   "mis5b": -12.8,
+   "mis5a": 89.4,
+   "mis4": -237.5,
+   "ka45": 89.4,
+   "ka40": -86.0,
+   "ka35": -83.9,
+   "ka30": -192.4
+  },
+  "Helsinki": {
+   "lgm": -541.9,
+   "under": [
+    "mis20",
+    "mis16",
+    "mis12",
+    "mis8",
+    "mis6",
+    "mis4",
+    "lgm"
+   ],
+   "n_under": 7,
+   "pop": 1115000,
+   "country": "Finland",
+   "closest": null,
+   "lgauss": 522.0,
+   "emat": 237.9,
+   "mis20": -414.3,
+   "mis16": -863.8,
+   "mis12": -924.6,
+   "mis10": 0.5,
+   "mis8": -1.6,
+   "mis6": -913.3,
+   "mis5d": 364.3,
+   "mis5c": 710.0,
+   "mis5b": 477.3,
+   "mis5a": 709.9,
+   "mis4": -170.4,
+   "ka45": 710.7,
+   "ka40": 449.1,
+   "ka35": 355.1,
+   "ka30": 161.6
+  },
+  "St Petersburg": {
+   "lgm": -242.7,
+   "under": [
+    "mis20",
+    "mis16",
+    "mis12",
+    "mis6",
+    "lgm"
+   ],
+   "n_under": 5,
+   "pop": 4553000,
+   "country": "Russia",
+   "closest": null,
+   "lgauss": 746.1,
+   "emat": 421.1,
+   "mis20": -131.7,
+   "mis16": -734.4,
+   "mis12": -745.0,
+   "mis10": 4.2,
+   "mis8": 9.6,
+   "mis6": -693.0,
+   "mis5d": 570.0,
+   "mis5c": 841.3,
+   "mis5b": 698.5,
+   "mis5a": 842.4,
+   "mis4": 59.6,
+   "ka45": 970.4,
+   "ka40": 671.9,
+   "ka35": 655.7,
+   "ka30": 452.6
+  },
+  "Kyiv": {
+   "lgm": 456.5,
+   "under": [
+    "mis6"
+   ],
+   "n_under": 1,
+   "pop": 2709000,
+   "country": "Ukraine",
+   "closest": null,
+   "lgauss": 1642.3,
+   "emat": 1327.1,
+   "mis20": 441.6,
+   "mis16": 179.2,
+   "mis12": 28.7,
+   "mis10": 1049.1,
+   "mis8": 1047.0,
+   "mis6": -97.8,
+   "mis5d": 1462.5,
+   "mis5c": 1686.8,
+   "mis5b": 1474.1,
+   "mis5a": 1686.7,
+   "mis4": 802.6,
+   "ka45": 1687.3,
+   "ka40": 1394.0,
+   "ka35": 1192.4,
+   "ka30": 837.2
+  },
+  "Paris": {
+   "lgm": 463.9,
+   "under": [],
+   "n_under": 0,
+   "pop": 9904000,
+   "country": "France",
+   "closest": {
+    "stage": "mis12",
+    "km": 344.6
+   },
+   "lgauss": 741.0,
+   "emat": 740.4,
+   "mis20": 741.7,
+   "mis16": 475.3,
+   "mis12": 344.6,
+   "mis10": 658.5,
+   "mis8": 622.8,
+   "mis6": 383.5,
+   "mis5d": 956.9,
+   "mis5c": 1147.2,
+   "mis5b": 1097.4,
+   "mis5a": 1146.2,
+   "mis4": 509.8,
+   "ka45": 1146.0,
+   "ka40": 883.8,
+   "ka35": 883.8,
+   "ka30": 803.6
+  },
+  "Vancouver": {
+   "lgm": -72.3,
+   "under": [
+    "lgauss",
+    "emat",
+    "mis20",
+    "mis16",
+    "mis12",
+    "mis6",
+    "mis4",
+    "lgm"
+   ],
+   "n_under": 8,
+   "pop": 2313328,
+   "country": "Canada",
+   "closest": null,
+   "lgauss": -237.6,
+   "emat": -237.6,
+   "mis20": -220.4,
+   "mis16": -72.3,
+   "mis12": -72.3,
+   "mis10": 17.8,
+   "mis8": 17.8,
+   "mis6": -220.4,
+   "mis5d": 38.7,
+   "mis5c": 38.7,
+   "mis5b": 38.7,
+   "mis5a": 38.7,
+   "mis4": -220.4,
+   "ka45": 38.7,
+   "ka40": 17.8,
+   "ka35": 17.8,
+   "ka30": 17.8
+  },
+  "Calgary": {
+   "lgm": -81.5,
+   "under": [
+    "lgauss",
+    "emat",
+    "mis20",
+    "mis16",
+    "mis12",
+    "mis6",
+    "mis4",
+    "lgm"
+   ],
+   "n_under": 8,
+   "pop": 1110000,
+   "country": "Canada",
+   "closest": null,
+   "lgauss": -68.7,
+   "emat": -68.7,
+   "mis20": -68.6,
+   "mis16": -68.2,
+   "mis12": -68.2,
+   "mis10": 95.8,
+   "mis8": 95.8,
+   "mis6": -68.6,
+   "mis5d": 106.5,
+   "mis5c": 106.5,
+   "mis5b": 106.5,
+   "mis5a": 106.5,
+   "mis4": -68.6,
+   "ka45": 106.5,
+   "ka40": 95.8,
+   "ka35": 95.8,
+   "ka30": 95.8
+  },
+  "Winnipeg": {
+   "lgm": -402.1,
+   "under": [
+    "emat",
+    "mis20",
+    "mis16",
+    "mis12",
+    "mis6",
+    "lgm"
+   ],
+   "n_under": 6,
+   "pop": 632063,
+   "country": "Canada",
+   "closest": null,
+   "lgauss": 889.0,
+   "emat": -62.0,
+   "mis20": -168.2,
+   "mis16": -488.7,
+   "mis12": -317.5,
+   "mis10": 391.5,
+   "mis8": 389.5,
+   "mis6": -317.5,
+   "mis5d": 1309.5,
+   "mis5c": 1030.3,
+   "mis5b": 1309.5,
+   "mis5a": 1030.3,
+   "mis4": 388.1,
+   "ka45": 1030.3,
+   "ka40": 1030.3,
+   "ka35": 468.5,
+   "ka30": 54.6
+  },
+  "Philadelphia": {
+   "lgm": 82.5,
+   "under": [
+    "mis16"
+   ],
+   "n_under": 1,
+   "pop": 5492000,
+   "country": "United States of America",
+   "closest": null,
+   "lgauss": 459.4,
+   "emat": 166.5,
+   "mis20": 293.2,
+   "mis16": -7.2,
+   "mis12": 45.6,
+   "mis10": 168.1,
+   "mis8": 391.2,
+   "mis6": 45.6,
+   "mis5d": 1283.1,
+   "mis5c": 459.4,
+   "mis5b": 1289.4,
+   "mis5a": 459.4,
+   "mis4": 170.4,
+   "ka45": 459.4,
+   "ka40": 459.4,
+   "ka35": 412.1,
+   "ka30": 412.1
+  },
+  "Kansas City": {
+   "lgm": 274.8,
+   "under": [
+    "mis20"
+   ],
+   "n_under": 1,
+   "pop": 1469000,
+   "country": "United States of America",
+   "closest": null,
+   "lgauss": 1180.7,
+   "emat": 73.4,
+   "mis20": -70.9,
+   "mis16": 0.2,
+   "mis12": 89.1,
+   "mis10": 870.7,
+   "mis8": 866.4,
+   "mis6": 89.1,
+   "mis5d": 2109.9,
+   "mis5c": 1928.0,
+   "mis5b": 2109.9,
+   "mis5a": 1928.0,
+   "mis4": 868.5,
+   "ka45": 1928.0,
+   "ka40": 1928.0,
+   "ka35": 966.3,
+   "ka30": 885.9
+  },
+  "Cincinnati": {
+   "lgm": 15.7,
+   "under": [
+    "mis20",
+    "mis16",
+    "mis12",
+    "mis6"
+   ],
+   "n_under": 4,
+   "pop": 1636000,
+   "country": "United States of America",
+   "closest": null,
+   "lgauss": 1129.3,
+   "emat": 222.1,
+   "mis20": -86.7,
+   "mis16": -44.3,
+   "mis12": -59.1,
+   "mis10": 448.8,
+   "mis8": 459.6,
+   "mis6": -59.1,
+   "mis5d": 1714.5,
+   "mis5c": 1129.3,
+   "mis5b": 1715.9,
+   "mis5a": 1129.3,
+   "mis4": 456.1,
+   "ka45": 1129.3,
+   "ka40": 1129.3,
+   "ka35": 581.0,
+   "ka30": 580.0
+  },
+  "Minsk": {
+   "lgm": 91.0,
+   "under": [
+    "mis16",
+    "mis12",
+    "mis6"
+   ],
+   "n_under": 3,
+   "pop": 1805000,
+   "country": "Belarus",
+   "closest": null,
+   "lgauss": 1207.0,
+   "emat": 895.2,
+   "mis20": 36.4,
+   "mis16": -150.7,
+   "mis12": -212.8,
+   "mis10": 697.0,
+   "mis8": 700.0,
+   "mis6": -202.2,
+   "mis5d": 1042.1,
+   "mis5c": 1287.3,
+   "mis5b": 1045.4,
+   "mis5a": 1287.1,
+   "mis4": 396.1,
+   "ka45": 1287.5,
+   "ka40": 965.0,
+   "ka35": 802.1,
+   "ka30": 480.3
+  },
+  "Prague": {
+   "lgm": 200.1,
+   "under": [],
+   "n_under": 0,
+   "pop": 1162000,
+   "country": "Czechia",
+   "closest": {
+    "stage": "mis12",
+    "km": 84.5
+   },
+   "lgauss": 1047.2,
+   "emat": 825.0,
+   "mis20": 203.1,
+   "mis16": 97.8,
+   "mis12": 84.5,
+   "mis10": 465.3,
+   "mis8": 464.7,
+   "mis6": 112.9,
+   "mis5d": 866.8,
+   "mis5c": 1051.0,
+   "mis5b": 1008.3,
+   "mis5a": 1051.3,
+   "mis4": 403.8,
+   "ka45": 1051.7,
+   "ka40": 985.8,
+   "ka35": 724.5,
+   "ka30": 399.9
+  },
+  "Krakow": {
+   "lgm": 255.7,
+   "under": [
+    "mis16"
+   ],
+   "n_under": 1,
+   "pop": 756000,
+   "country": "Poland",
+   "closest": null,
+   "lgauss": 1227.6,
+   "emat": 1002.1,
+   "mis20": 81.1,
+   "mis16": -25.2,
+   "mis12": 42.9,
+   "mis10": 634.8,
+   "mis8": 639.2,
+   "mis6": 60.0,
+   "mis5d": 1041.3,
+   "mis5c": 1231.4,
+   "mis5b": 1169.4,
+   "mis5a": 1231.3,
+   "mis4": 476.6,
+   "ka45": 1230.9,
+   "ka40": 1108.5,
+   "ka35": 794.4,
+   "ka30": 355.4
+  }
+ },
+ "city_list": [
+  "Stockholm",
+  "Helsinki",
+  "Montreal",
+  "Winnipeg",
+  "Oslo",
+  "St Petersburg",
+  "Edinburgh",
+  "Copenhagen",
+  "Detroit",
+  "Toronto",
+  "Dublin",
+  "Boston",
+  "Chicago",
+  "Cleveland",
+  "Calgary",
+  "Vancouver",
+  "Berlin",
+  "Minneapolis",
+  "Seattle",
+  "New York",
+  "Manchester",
+  "Hamburg",
+  "Cincinnati",
+  "Warsaw",
+  "Philadelphia",
+  "Minsk",
+  "St Louis",
+  "London",
+  "Amsterdam",
+  "Prague",
+  "Moscow",
+  "Krakow",
+  "Kansas City",
+  "Kyiv",
+  "Paris"
+ ],
+ "cities_extra": {
+  "ny_lgm_abs": 13.3
+ },
+ "south_extra": {
+  "lgm_eu_mainland_lat": 51.78,
+  "na_min_to_ohio_mouth_km": 26
+ },
+ "south": {
+  "na_min_stage": "mis12",
+  "na_min": {
+   "lon": -89.07,
+   "lat": 37.22,
+   "part_km2": 16548427,
+   "near": "Evansville",
+   "near_country": "United States of America",
+   "near_km": 158
+  },
+  "eu_min_stage": "mis6",
+  "eu_min": {
+   "lon": 34.24,
+   "lat": 48.3,
+   "part_km2": 11091592,
+   "near": "Dnipro",
+   "near_country": "Ukraine",
+   "near_km": 59
+  },
+  "lgm_na": {
+   "lon": -85.91,
+   "lat": 39.02,
+   "part_km2": 19177597,
+   "near": "Bloomington",
+   "near_country": "United States of America",
+   "near_km": 55
+  },
+  "lgm_eu": {
+   "lon": -9.27,
+   "lat": 50.23,
+   "part_km2": 6203756,
+   "near": "Cork",
+   "near_country": "Ireland",
+   "near_km": 194
+  },
+  "mis6_eu": {
+   "lon": 34.24,
+   "lat": 48.3,
+   "part_km2": 11091592,
+   "near": "Dnipro",
+   "near_country": "Ukraine",
+   "near_km": 59
+  },
+  "mis6_na": {
+   "lon": -89.07,
+   "lat": 37.22,
+   "part_km2": 16548429,
+   "near": "Evansville",
+   "near_country": "United States of America",
+   "near_km": 158
+  },
+  "mis12_eu": {
+   "lon": 23.62,
+   "lat": 49.27,
+   "part_km2": 11288158,
+   "near": "Drohobych",
+   "near_country": "Ukraine",
+   "near_km": 12
+  },
+  "na_min_label": "MIS 12",
+  "eu_min_label": "MIS 6",
+  "na_min_same": [
+   "mis12",
+   "mis6"
+  ]
+ },
+ "exposed": {
+  "m60": {
+   "km2": 14257424,
+   "ice_free": 12321694,
+   "under_lgm_ice": 1935730,
+   "pct_of_land": 9.6,
+   "ice_free_pct_of_land": 8.3
+  },
+  "m120": {
+   "km2": 21174383,
+   "ice_free": 17474989,
+   "under_lgm_ice": 3699394,
+   "pct_of_land": 14.2,
+   "ice_free_pct_of_land": 11.7
+  },
+  "land_today": 148753862,
+  "ocean_today": 360850014,
+  "earth": 510065625,
+  "m120_ocean_pct": 5.9,
+  "half_share_pct": 67,
+  "boxes_share_pct": 64
+ },
+ "shelves": [
+  {
+   "region": "Sahul",
+   "covers": "Sahul and Arafura shelves, Gulf of Carpentaria, Bass Strait",
+   "boxes": [
+    [
+     112,
+     -45,
+     155,
+     -2
+    ]
+   ],
+   "m60": 2169476,
+   "m60_ice_free": 2169476,
+   "m120": 2859872,
+   "m120_ice_free": 2859872,
+   "land_today": 8910275,
+   "total_m120": 11770147
+  },
+  {
+   "region": "Sundaland",
+   "covers": "Sunda Shelf: Gulf of Thailand, Java Sea, southern South China Sea",
+   "boxes": [
+    [
+     95,
+     -9,
+     120,
+     14
+    ]
+   ],
+   "m60": 1767483,
+   "m60_ice_free": 1767483,
+   "m120": 2345574,
+   "m120_ice_free": 2345574,
+   "land_today": 2063562,
+   "total_m120": 4409136
+  },
+  {
+   "region": "Siberian Arctic shelf",
+   "covers": "Laptev, East Siberian and Kara seas",
+   "boxes": [
+    [
+     55,
+     66,
+     180,
+     82
+    ]
+   ],
+   "m60": 1638423,
+   "m60_ice_free": 1537425,
+   "m120": 2034737,
+   "m120_ice_free": 1810593,
+   "land_today": 3611690
+  },
+  {
+   "region": "Beringia",
+   "covers": "Bering and Chukchi seas",
+   "boxes": [
+    [
+     -180,
+     52,
+     -155,
+     75
+    ],
+    [
+     160,
+     52,
+     180,
+     72
+    ]
+   ],
+   "m60": 1221660,
+   "m60_ice_free": 1186711,
+   "m120": 1713742,
+   "m120_ice_free": 1641739,
+   "land_today": 1733072,
+   "total_m120": 3446814
+  },
+  {
+   "region": "East China and Yellow seas",
+   "covers": "Yellow Sea, Bohai, East China Sea, Taiwan Strait",
+   "boxes": [
+    [
+     117,
+     22,
+     131,
+     41
+    ]
+   ],
+   "m60": 587773,
+   "m60_ice_free": 587773,
+   "m120": 1018450,
+   "m120_ice_free": 1018450,
+   "land_today": 919103
+  },
+  {
+   "region": "Patagonian shelf",
+   "covers": "Argentine shelf and the Falklands",
+   "boxes": [
+    [
+     -70,
+     -56,
+     -52,
+     -35
+    ]
+   ],
+   "m60": 262245,
+   "m60_ice_free": 262245,
+   "m120": 784516,
+   "m120_ice_free": 784516,
+   "land_today": 1066546
+  },
+  {
+   "region": "Doggerland",
+   "covers": "North Sea, English Channel and the Irish Sea",
+   "boxes": [
+    [
+     -12,
+     48,
+     10,
+     62
+    ]
+   ],
+   "m60": 416089,
+   "m60_ice_free": 213192,
+   "m120": 787162,
+   "m120_ice_free": 277636,
+   "land_today": 862207,
+   "total_m120": 1649369
+  },
+  {
+   "region": "Persian Gulf",
+   "covers": "the whole Gulf",
+   "boxes": [
+    [
+     47,
+     23,
+     57,
+     31
+    ]
+   ],
+   "m60": 202492,
+   "m60_ice_free": 202492,
+   "m120": 250154,
+   "m120_ice_free": 250154,
+   "land_today": 658785
+  },
+  {
+   "region": "Grand Banks and New England",
+   "covers": "Gulf of Maine, Scotian Shelf, Grand Banks",
+   "boxes": [
+    [
+     -75,
+     38,
+     -45,
+     52
+    ]
+   ],
+   "m60": 255641,
+   "m60_ice_free": 60971,
+   "m120": 606542,
+   "m120_ice_free": 108288,
+   "land_today": 1043150
+  },
+  {
+   "region": "Barents Sea",
+   "covers": "Barents and White seas",
+   "boxes": [
+    [
+     10,
+     66,
+     55,
+     82
+    ]
+   ],
+   "m60": 211114,
+   "m60_ice_free": 38748,
+   "m120": 413572,
+   "m120_ice_free": 39695,
+   "land_today": 682153
+  },
+  {
+   "region": "Canadian Arctic and Hudson Bay",
+   "covers": "Canadian Arctic Archipelago, Hudson Bay, Baffin Bay shelves",
+   "boxes": [
+    [
+     -125,
+     50,
+     -60,
+     84
+    ]
+   ],
+   "m60": 701736,
+   "m60_ice_free": 0,
+   "m120": 1181934,
+   "m120_ice_free": 0,
+   "land_today": 7377417
+  }
+ ],
+ "shelf": {
+  "sahul": {
+   "region": "Sahul",
+   "covers": "Sahul and Arafura shelves, Gulf of Carpentaria, Bass Strait",
+   "boxes": [
+    [
+     112,
+     -45,
+     155,
+     -2
+    ]
+   ],
+   "m60": 2169476,
+   "m60_ice_free": 2169476,
+   "m120": 2859872,
+   "m120_ice_free": 2859872,
+   "land_today": 8910275,
+   "total_m120": 11770147
+  },
+  "sundaland": {
+   "region": "Sundaland",
+   "covers": "Sunda Shelf: Gulf of Thailand, Java Sea, southern South China Sea",
+   "boxes": [
+    [
+     95,
+     -9,
+     120,
+     14
+    ]
+   ],
+   "m60": 1767483,
+   "m60_ice_free": 1767483,
+   "m120": 2345574,
+   "m120_ice_free": 2345574,
+   "land_today": 2063562,
+   "total_m120": 4409136
+  },
+  "siberian": {
+   "region": "Siberian Arctic shelf",
+   "covers": "Laptev, East Siberian and Kara seas",
+   "boxes": [
+    [
+     55,
+     66,
+     180,
+     82
+    ]
+   ],
+   "m60": 1638423,
+   "m60_ice_free": 1537425,
+   "m120": 2034737,
+   "m120_ice_free": 1810593,
+   "land_today": 3611690
+  },
+  "beringia": {
+   "region": "Beringia",
+   "covers": "Bering and Chukchi seas",
+   "boxes": [
+    [
+     -180,
+     52,
+     -155,
+     75
+    ],
+    [
+     160,
+     52,
+     180,
+     72
+    ]
+   ],
+   "m60": 1221660,
+   "m60_ice_free": 1186711,
+   "m120": 1713742,
+   "m120_ice_free": 1641739,
+   "land_today": 1733072,
+   "total_m120": 3446814
+  },
+  "east": {
+   "region": "East China and Yellow seas",
+   "covers": "Yellow Sea, Bohai, East China Sea, Taiwan Strait",
+   "boxes": [
+    [
+     117,
+     22,
+     131,
+     41
+    ]
+   ],
+   "m60": 587773,
+   "m60_ice_free": 587773,
+   "m120": 1018450,
+   "m120_ice_free": 1018450,
+   "land_today": 919103
+  },
+  "patagonian": {
+   "region": "Patagonian shelf",
+   "covers": "Argentine shelf and the Falklands",
+   "boxes": [
+    [
+     -70,
+     -56,
+     -52,
+     -35
+    ]
+   ],
+   "m60": 262245,
+   "m60_ice_free": 262245,
+   "m120": 784516,
+   "m120_ice_free": 784516,
+   "land_today": 1066546
+  },
+  "doggerland": {
+   "region": "Doggerland",
+   "covers": "North Sea, English Channel and the Irish Sea",
+   "boxes": [
+    [
+     -12,
+     48,
+     10,
+     62
+    ]
+   ],
+   "m60": 416089,
+   "m60_ice_free": 213192,
+   "m120": 787162,
+   "m120_ice_free": 277636,
+   "land_today": 862207,
+   "total_m120": 1649369
+  },
+  "persian": {
+   "region": "Persian Gulf",
+   "covers": "the whole Gulf",
+   "boxes": [
+    [
+     47,
+     23,
+     57,
+     31
+    ]
+   ],
+   "m60": 202492,
+   "m60_ice_free": 202492,
+   "m120": 250154,
+   "m120_ice_free": 250154,
+   "land_today": 658785
+  },
+  "grand": {
+   "region": "Grand Banks and New England",
+   "covers": "Gulf of Maine, Scotian Shelf, Grand Banks",
+   "boxes": [
+    [
+     -75,
+     38,
+     -45,
+     52
+    ]
+   ],
+   "m60": 255641,
+   "m60_ice_free": 60971,
+   "m120": 606542,
+   "m120_ice_free": 108288,
+   "land_today": 1043150
+  },
+  "barents": {
+   "region": "Barents Sea",
+   "covers": "Barents and White seas",
+   "boxes": [
+    [
+     10,
+     66,
+     55,
+     82
+    ]
+   ],
+   "m60": 211114,
+   "m60_ice_free": 38748,
+   "m120": 413572,
+   "m120_ice_free": 39695,
+   "land_today": 682153
+  },
+  "canadian": {
+   "region": "Canadian Arctic and Hudson Bay",
+   "covers": "Canadian Arctic Archipelago, Hudson Bay, Baffin Bay shelves",
+   "boxes": [
+    [
+     -125,
+     50,
+     -60,
+     84
+    ]
+   ],
+   "m60": 701736,
+   "m60_ice_free": 0,
+   "m120": 1181934,
+   "m120_ice_free": 0,
+   "land_today": 7377417
+  }
+ },
+ "joins": [
+  {
+   "a": "Great Britain",
+   "b": "mainland Europe",
+   "m0": false,
+   "m60": true,
+   "m120": true
+  },
+  {
+   "a": "Ireland",
+   "b": "Great Britain",
+   "m0": false,
+   "m60": true,
+   "m120": true
+  },
+  {
+   "a": "Asia",
+   "b": "North America",
+   "m0": false,
+   "m60": true,
+   "m120": true
+  },
+  {
+   "a": "New Guinea",
+   "b": "Australia",
+   "m0": false,
+   "m60": true,
+   "m120": true
+  },
+  {
+   "a": "Tasmania",
+   "b": "Australia",
+   "m0": false,
+   "m60": true,
+   "m120": true
+  },
+  {
+   "a": "Borneo",
+   "b": "mainland Asia",
+   "m0": false,
+   "m60": true,
+   "m120": true
+  },
+  {
+   "a": "Sumatra",
+   "b": "mainland Asia",
+   "m0": false,
+   "m60": true,
+   "m120": true
+  },
+  {
+   "a": "Java",
+   "b": "mainland Asia",
+   "m0": false,
+   "m60": true,
+   "m120": true
+  },
+  {
+   "a": "Sri Lanka",
+   "b": "India",
+   "m0": false,
+   "m60": true,
+   "m120": true
+  },
+  {
+   "a": "Taiwan",
+   "b": "mainland Asia",
+   "m0": false,
+   "m60": true,
+   "m120": true
+  },
+  {
+   "a": "Sakhalin",
+   "b": "mainland Asia",
+   "m0": false,
+   "m60": true,
+   "m120": true
+  }
+ ],
+ "bering": {
+  "width_km": 1914,
+  "south_lat": 56.42,
+  "north_lat": 73.58,
+  "strait_bed": -53
+ },
+ "wiki": {
+  "lgm_window": {
+   "article": "Last Glacial Maximum",
+   "revid": 1383210217
+  },
+  "lgm_sea": {
+   "article": "Last Glacial Maximum",
+   "revid": 1383210217
+  },
+  "quat_sea": {
+   "article": "Quaternary glaciation",
+   "revid": 1382049061
+  },
+  "manhattan": {
+   "article": "Last Glacial Maximum",
+   "revid": 1383210217
+  },
+  "beringia_wide": {
+   "article": "Beringia",
+   "revid": 1375387022
+  },
+  "beringia_area": {
+   "article": "Beringia",
+   "revid": 1375387022
+  },
+  "bering_depth": {
+   "article": "Beringia",
+   "revid": 1375387022
+  },
+  "sunda_area": {
+   "article": "Sundaland",
+   "revid": 1382038749
+  },
+  "sunda_120": {
+   "article": "Sundaland",
+   "revid": 1382038749
+  },
+  "sahul_area": {
+   "article": "Sahul",
+   "revid": 1382059199
+  },
+  "sahul_split": {
+   "article": "Sahul",
+   "revid": 1382059199
+  },
+  "dogger_flood": {
+   "article": "Doggerland",
+   "revid": 1383229163
+  },
+  "bis_anglian": {
+   "article": "British-Irish Ice Sheet",
+   "revid": 1376231587
+  },
+  "fis_lgm": {
+   "article": "Fennoscandian ice sheet",
+   "revid": 1383107408
+  },
+  "lis_dome": {
+   "article": "Laurentide Ice Sheet",
+   "revid": 1382028958
+  }
+ },
+ "wiki_revs": {
+  "Glacial period": 1352732359,
+  "Last Glacial Maximum": 1383210217,
+  "Ice age": 1379522088,
+  "Quaternary glaciation": 1382049061,
+  "Doggerland": 1383229163,
+  "Beringia": 1375387022,
+  "Sundaland": 1382038749,
+  "Sahul": 1382059199,
+  "Laurentide Ice Sheet": 1382028958,
+  "Fennoscandian ice sheet": 1383107408,
+  "British-Irish Ice Sheet": 1376231587
+ },
+ "source": {
+  "n_stages": 18,
+  "n_mapped": 18,
+  "missing": [],
+  "dropped_sh_km2": 12384306,
+  "dropped_sh_stages": [
+   "lgauss",
+   "ka45"
+  ],
+  "lgm_geographic": true,
+  "invalid_in": 12,
+  "grid_land": 148753862,
+  "caspian_km2": 394833,
+  "black_sea_kept": 454456
+ },
+ "warm": [
+  "mis5c",
+  "mis5a",
+  "ka45"
+ ],
+ "x": {
+  "lgm_area_m": 26.2,
+  "mis6_area_m": 33.8,
+  "union_m": 37.0,
+  "lgm_on_land_m": 17.1,
+  "lgm_on_sea_m": 9.0,
+  "exp120_m": 21.2,
+  "exp120_free_m": 17.5,
+  "exp60_m": 14.3,
+  "smallest_area_m": 6.9,
+  "lgm_places_pct": 5.9,
+  "every_m": 4.8,
+  "mis6_south_na_lat": 37.22,
+  "warm_max_m": 7.2,
+  "doggerland_free_k": 278,
+  "joined60_n": 11,
+  "joins_n": 11
+ }
+}
