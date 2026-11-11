@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this data or code, please cite it as below."
+title: "When the Ice Came South: The Northern Hemisphere's Ice Sheets through the Quaternary, What Lay Beneath Them and the Land the Sea Gave Up"
+type: dataset
+authors:
+  - family-names: Hotham
+    given-names: Tristan
+    orcid: "https://orcid.org/0000-0003-4931-9349"
+    affiliation: "Independent researcher"
+doi: "10.5281/zenodo.23878610"
+url: "https://maps.tristanhotham.com/ice-ages/"
+repository-code: "https://github.com/Tristan-Hotham/ice-ages"
+license: CC-BY-4.0
+keywords:
+  - "ice sheets"
+  - "Quaternary"
+  - "glaciation"
+  - "Last Glacial Maximum"
+  - "Marine Isotope Stage 6"
+  - "sea level"
+  - "land bridges"
+  - "Doggerland"
+  - "Beringia"
+  - "open data"
+  - "maps"
